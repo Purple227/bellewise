@@ -49509,7 +49509,21 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: function data() {
+    //Data calibrace open
+    return {
+      isActive: false
+    };
+  },
+  //Data calibrace close
+  methods: {
+    //Method calibrace open
+    addActiveClass: function addActiveClass() {
+      this.isActive = !this.isActive;
+    }
+  } //Method calibrace open
+
 });
 
 /***/ }),

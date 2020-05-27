@@ -11,11 +11,11 @@
 		<div class="column"> <!-- First column tag open -->
 
 			<div class="content ">
-				<p class="title is-1">
+				<p class="title is-1 fa">
 					Belle-Wise Food Delivery Service
 				</p>
 
-				<p class="subtitle">
+				<p class="subtitle fa">
 					Get a healthy and delicious course deliver <br> to your door in a couple of click.
 				</p>
 

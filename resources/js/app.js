@@ -28,5 +28,20 @@ window.Vue = require('vue');
 const app = new Vue({
     el: '#app',
 
+    data() { //Data calibrace open
+
+	return{
+			isActive: false,
+		}
+	},  //Data calibrace close
+
+	methods: { //Method calibrace open
+
+    addActiveClass() {
+      this.isActive = !this.isActive;
+    },
+
+  }, //Method calibrace open
+
 
 });

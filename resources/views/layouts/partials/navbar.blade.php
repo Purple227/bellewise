@@ -13,15 +13,15 @@
   <div id="navbarExampleTransparentExample" class="navbar-menu">
     <div class="navbar-start">
 
-      <a class="navbar-item" href="https://bulma.io/">
+      <a class="navbar-item is-bold" href="https://bulma.io/">
         Order
       </a>
 
-      <a class="navbar-item" href="https://bulma.io/">
+      <a class="navbar-item is-bold" href="https://bulma.io/">
         Contact
       </a>
 
-      <a class="navbar-item" href="https://bulma.io/">
+      <a class="navbar-item is-bold" href="https://bulma.io/">
         About
       </a>
 
