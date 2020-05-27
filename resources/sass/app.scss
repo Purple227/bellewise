@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+
+// Colors
+@import 'partials/_color';
+
+// Responsive
+@import 'partials/_responsive';
+
+// Reuse Code
+@import 'partials/_reuse_code';
+
+// Framework Customized Component
+@import 'partials/_customize_component';
+
+
+// Bulma Framework
+@import "~bulma/bulma";
+
+// Fontawesome icons and web font
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+
+.body
+{
+	padding: 35px;
+}
+
+.container
+{
+	margin-top: 45px;
+}
+
+.welcome-container
+{
+	padding: 45px;
+}
+
+.bg-light-green
+{
+	background-color: $light-green;
+}
+
+.green
+{
+	color: $green;
+}
+
+.bg-green
+{
+	background-color: $green;
+}
+
+.light-green
+{
+	color: $light-green;
+}
+
+.is-bold
+{
+	font-weight: bold;
+}
+
+
