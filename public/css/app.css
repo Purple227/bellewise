@@ -6411,7 +6411,7 @@ button.dropdown-item:hover {
 
 a.dropdown-item.is-active,
 button.dropdown-item.is-active {
-  background-color: #3273dc;
+  background-color: #6fc353;
   color: #fff;
 }
 
@@ -18050,6 +18050,15 @@ readers do not read off random characters that represent icons */
 
 .body {
   padding: 35px;
+}
+
+.footer {
+  background-color: #F0FFF0;
+  margin-top: 15px;
+}
+
+.notification {
+  background-color: #AFEEEE;
 }
 
 .container {

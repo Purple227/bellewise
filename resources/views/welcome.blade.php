@@ -11,7 +11,7 @@
 		<div class="column"> <!-- First column tag open -->
 
 			<div class="content ">
-				<p class="title is-1 fa">
+				<p class="title is-1 is-family-monospace">
 					Belle-Wise Food Delivery Service
 				</p>
 
