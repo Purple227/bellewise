@@ -20,9 +20,9 @@
 
   <div class="column"> <!-- First column tag open -->
 
-    <div class="content" style="padding: 15px;">
-    	<p class="subtitle is-bold is-marginless"> <i class="fas fa-smile light-green"> Simplicity </i>
-    	<p class="has-text-black fa">
+    <div class="box" style="padding: 15px;">
+    	<p class="subtitle is-bold is-marginless"> <i class="fas fa-smile has-text-info"> <span class="has-text-black"> Simplicity </span> </i>
+    	<p class=" fa">
     		Delivery being made beautifully simple are at the heart of everything we do. 
     	</p>
     </p>
@@ -33,9 +33,9 @@
   <div class="column">
 
 
-    <div class="content" style="padding: 15px;">
-      <p class="subtitle is-bold is-marginless"> <i class="fas fa-heart light-green"> Social Good </i>
-      <p class="has-text-black fa">
+    <div class="box" style="padding: 15px;">
+      <p class="subtitle is-bold is-marginless"> <i class="fas fa-heart has-text-danger"> <span class="has-text-black"> Social Good </span> </i>
+      <p class=" fa">
         We believe in making things better for everyone, even if just by a little bit!
       </p>
     </p>
@@ -46,9 +46,9 @@
   <div class="column">
 
 
-    <div class="content" style="padding: 15px;">
-      <p class="subtitle is-bold is-marginless"> <i class="fas fa-shield-alt light-green"> Trust </i>
-      <p class="has-text-black fa">
+    <div class="box" style="padding: 15px;">
+      <p class="subtitle is-bold is-marginless"> <i class="fas fa-shield-alt light-green"> <span class="has-text-black"> Trust </span> </i>
+      <p class=" fa">
         We work on creating trust which can only be nurtured through authencity and trasparency.
       </p>
     </p>

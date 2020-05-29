@@ -18,17 +18,16 @@ Vue.filter('format', function (value, display) {
 })
  
 
-// Registering components locally
-import Footer from './components/partials/Footer.vue';
-import Contact from './components/Contact.vue';
+// Registering components locally e.g below
+// import Example from './components/ExampleComponent.vue';
 
 const app = new Vue({
 
   el: '#app',
 
   components: { 
-    'foot' : Footer,
-    'contact' : Contact,
+    // Local components here e.g below
+    // 'example': Example,
   },
 
 
@@ -39,6 +38,10 @@ const app = new Vue({
   return{
       isActive: false,
       isDropDown: false,
+      store: true,
+      selectStore : false,
+      closed: true,
+      confirm: false,
     }
   },
 
@@ -51,6 +54,16 @@ const app = new Vue({
     openDropDown() {
       this.isDropDown = !this.isDropDown;
     },
+
+    demoPicker () {
+      this.store = false;
+      this.selectStore = true;
+    },
+
+    demoCheck() {
+      this.closed = false;
+      this.confirm = true;
+    }
 
   },
 

@@ -19,7 +19,7 @@
 					Get a healthy and delicious course deliver <br> to your door in a couple of click.
 				</p>
 
-				<a class="button is-primary is-bold has-text-white is-rounded is-medium "> Make an order </a>
+				<a href="/order" class="button is-primary is-bold has-text-white is-rounded is-medium "> Make an order </a>
 
 			</div>
 
