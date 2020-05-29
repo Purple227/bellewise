@@ -19,16 +19,39 @@ Vue.filter('format', function (value, display) {
  
 
 // Registering components locally
-import Navbar from './components/partials/Navbar.vue';
 import Footer from './components/partials/Footer.vue';
+import Contact from './components/Contact.vue';
 
 const app = new Vue({
 
   el: '#app',
 
   components: { 
-    'navbar': Navbar,
     'foot' : Footer,
+    'contact' : Contact,
+  },
+
+
+
+
+  data() {
+
+  return{
+      isActive: false,
+      isDropDown: false,
+    }
+  },
+
+  methods: {
+
+    addActiveClass() {
+      this.isActive = !this.isActive;
+    },
+
+    openDropDown() {
+      this.isDropDown = !this.isDropDown;
+    },
+
   },
 
 

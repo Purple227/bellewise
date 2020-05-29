@@ -19,7 +19,7 @@
 					Get a healthy and delicious course deliver <br> to your door in a couple of click.
 				</p>
 
-				<a class="button bg-light-green is-bold has-text-white is-rounded is-medium "> Make an order </a>
+				<a class="button is-primary is-bold has-text-white is-rounded is-medium "> Make an order </a>
 
 			</div>
 
@@ -28,7 +28,7 @@
 		<div class="column"> <!-- Second column tag open -->
 
 			<figure class="image  is-5by3">
-				<img src="/images/landing_image.png">
+				<img class="is-rounded" src="/images/landing_image.png">
 			</figure>
 
 		</div> <!-- Second column tag close -->

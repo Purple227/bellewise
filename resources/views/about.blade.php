@@ -62,16 +62,16 @@
 
 
 
-<div class="notification has-text-black" style="padding: 30px;"> <!-- Notification 
+<div class="notification bg-green has-text-black" > <!-- Notification 
   tag open -->
 
-<div class="columns" style="margin-top: 15px;"> <!-- Columns wrapper tag open -->
+<div class="columns" style="padding: 30px;"> <!-- Columns wrapper tag open -->
 
   <div class="column">
     <div class="content">
-      <p class="subtitle has-text-black is-bold is-marginless is-family-monospace">
+      <p class="subtitle has-text-white is-bold is-marginless is-family-monospace">
         Ready for a simple future?
-      <p class="subtitle green is-bold is-family-monospace">
+      <p class="subtitle green is-bold is-family-monospace has-text-white">
         Try us by placing an order!</p>
       </p>
 
@@ -80,7 +80,7 @@
   </div>
 
 
-  <div class="column">
+  <div class="column ">
     <a class="button is-primary is-bold is-pulled-right is-medium"> <span class="fa"> Place Order </span> </a>
   </div>
 

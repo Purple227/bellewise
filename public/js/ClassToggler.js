@@ -4,13 +4,13 @@ export default {
 
 data() {
 
-	return{
-			isActive: false,
-			isDropDown: false,
-		}
-	},
+  return{
+      isActive: false,
+      isDropDown: false,
+    }
+  },
 
-	methods: {
+  methods: {
 
     addActiveClass() {
       this.isActive = !this.isActive;
