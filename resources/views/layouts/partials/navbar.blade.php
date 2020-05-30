@@ -14,7 +14,8 @@
         </button>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
-              <a href="/order/history" class="dropdown-item is-bold">
+
+              <a href="/order/history" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
                 Order History
               </a>
 
@@ -59,7 +60,7 @@
           </button>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
-              <a href="/order/history" class="dropdown-item is-bold">
+              <a href="/order/history" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
                 Order History
               </a>
 

@@ -21,6 +21,7 @@ Vue.filter('format', function (value, display) {
 // Registering components locally e.g below
 // import Example from './components/ExampleComponent.vue';
 
+import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min.js';
 const app = new Vue({
 
   el: '#app',
@@ -35,14 +36,22 @@ const app = new Vue({
 
   data() {
 
-  return{
+    return{
       isActive: false,
       isDropDown: false,
       store: true,
       selectStore : false,
       closed: true,
       confirm: false,
+      date: new Date(),
     }
+  },
+
+  mounted() {
+    const calendar = bulmaCalendar.attach(this.$refs.calendarTrigger, {
+      startDate: this.date,
+    })[0]
+    calendar.on('date:selected', e => (this.date = e.start || null))
   },
 
   methods: {
@@ -67,5 +76,12 @@ const app = new Vue({
 
   },
 
+  computed: {
+    niceDate() {
+      if (this.date) {
+        return this.date.toLocaleDateString()
+      }
+    }
+  },
 
 });

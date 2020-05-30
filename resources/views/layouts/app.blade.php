@@ -13,7 +13,7 @@
 		</main>
 
 		<div class="fixed-cart"> <!-- cart plus fixed tag open -->
-			<a class="button is-medium">
+			<a href="/cart" class="button is-medium {{ Route::currentRouteName() == 'cart' ? 'is-hidden' : '' }}">
 				<span class="icon">
 					<i class="fas fa-cart-plus green"></i>
 				</span>

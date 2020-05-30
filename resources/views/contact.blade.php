@@ -120,7 +120,7 @@
 	</div> <!-- Columns wrapper tag close -->
 
 
-    @include('layouts.partials.order')
+    @include('layouts.partials.place_order')
 
 </div>
 	
