@@ -13,5 +13,17 @@ class OrderController extends Controller
         return view('order');
     }
 
+    public function single()
+    {
+        return view('single_order');
+    }
+
+    public function index()
+    {
+        return view('order.index');
+    }
+
+
+
 
 }

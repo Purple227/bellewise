@@ -5,6 +5,9 @@
 
 <div class="container"> <!-- Container tag open -->
 
+<div class="box">
+
+
 	<div class="columns"> <!-- Columns wrapper tag open -->
 
 		<div class="column is-9"> <!-- First column tag open -->
@@ -118,6 +121,8 @@
 
 
     @include('layouts.partials.order')
+
+</div>
 	
 </div> <!-- Container tag close -->
 

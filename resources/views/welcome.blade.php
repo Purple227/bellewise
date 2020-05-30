@@ -1,6 +1,10 @@
 
 @extends('layouts.app')
 
+@section('title')
+{{ "BelleWise" }}
+@endsection
+
 @section('content')
 
 

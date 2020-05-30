@@ -14,22 +14,13 @@
         </button>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
-            <a href="#" class="dropdown-item">
-              Dropdown item
-            </a>
-            <a class="dropdown-item">
-              Other dropdown item
-            </a>
-            <a href="#" class="dropdown-item is-active">
-              Active dropdown item
-            </a>
-            <a href="#" class="dropdown-item">
-              Other dropdown item
-            </a>
-            <hr class="dropdown-divider">
-            <a href="#" class="dropdown-item">
-              With a divider
-            </a>
+              <a href="/order/history" class="dropdown-item is-bold">
+                Order History
+              </a>
+
+              <a href="#" class="dropdown-item is-bold">
+                Logout
+              </a>
           </div>
         </div>
       </div>
@@ -68,22 +59,14 @@
           </button>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
-              <a href="#" class="dropdown-item">
+              <a href="/order/history" class="dropdown-item is-bold">
                 Order History
               </a>
-              <a class="dropdown-item">
-                
+
+              <a href="#" class="dropdown-item is-bold">
+                Logout
               </a>
-              <a href="#" class="dropdown-item is-active">
-                Active dropdown item
-              </a>
-              <a href="#" class="dropdown-item">
-                Other dropdown item
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                With a divider
-              </a>
+
             </div>
           </div>
         </div>

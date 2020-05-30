@@ -1,10 +1,12 @@
 
-
 @extends('layouts.app')
 
 @section('content')
 
 <div class="container"> <!-- Container tag open -->
+
+<div class="box">
+
 
 	<div class="content"> <!-- Content tag open -->
 
@@ -81,7 +83,7 @@
 
 
   <div class="column ">
-    <a class="button is-primary is-bold is-pulled-right is-medium"> <span class="fa"> Place Order </span> </a>
+    <a href="/order" class="button is-primary is-bold is-pulled-right is-medium"> <span class="fa"> Place Order </span> </a>
   </div>
 
 </div> <!-- Columns wrapper tag close -->
@@ -92,6 +94,8 @@
 
 
 	</div> <!-- Content tag close -->
+
+</div>
 	
 </div> <!-- Container tag close -->
 

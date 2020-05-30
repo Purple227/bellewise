@@ -3,6 +3,7 @@
 
 @section('content')
 
+
     @include('layouts.partials.store')
 
 <!-- Order section start here -->
@@ -23,7 +24,8 @@
 
   <div class="column"> <!-- First column tag open -->
 
-<div class="card" style="cursor: pointer;"> <!-- Card tag open -->
+<a href="/order/demo">
+<div class="card"> <!-- Card tag open -->
 
   <header class="card-header">
     <p class="card-header-title is-centered is-family-monospace">
@@ -39,7 +41,7 @@
   </div>
 
   <div class="card-content">
-    <div class="content fa">
+    <div class="content has-text-black">
       A description about the food and blah blah blah blah blah blah blah.
     </div>
   </div>
@@ -52,13 +54,14 @@
   </footer>
 
 </div> <!-- Card tag close -->
+</a>
 
   </div> <!-- First column tag close -->
 
   <div class="column"> <!-- Second column tag open -->
 
-
-<div class="card" style="cursor: pointer;"> <!-- Card tag open -->
+<a href="/order/demo">
+<div class="card"> <!-- Card tag open -->
 
   <header class="card-header">
     <p class="card-header-title is-centered is-family-monospace">
@@ -74,7 +77,7 @@
   </div>
 
   <div class="card-content">
-    <div class="content fa">
+    <div class="content has-text-black">
       A description about the food and blah blah blah blah blah blah blah.
     </div>
   </div>
@@ -87,6 +90,7 @@
   </footer>
 
 </div> <!-- Card tag close -->
+</a>
 
 
 
@@ -95,8 +99,8 @@
 
   <div class="column"> <!-- Third column tag open -->
 
-
-<div class="card" style="cursor: pointer;"> <!-- Card tag open -->
+<a href="/order/demo">
+<div class="card"> <!-- Card tag open -->
 
   <header class="card-header">
     <p class="card-header-title is-centered is-family-monospace">
@@ -112,7 +116,7 @@
   </div>
 
   <div class="card-content">
-    <div class="content fa">
+    <div class="content has-text-black">
       A description about the food and blah blah blah blah blah blah blah.
     </div>
   </div>
@@ -125,6 +129,7 @@
   </footer>
 
 </div> <!-- Card tag close -->
+</a>
 
 
   </div> <!-- Third column tag close -->
