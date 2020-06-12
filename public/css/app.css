@@ -81,7 +81,7 @@
 .delete {
   -moz-appearance: none;
   -webkit-appearance: none;
-  background-color: rgba(10, 10, 10, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   border: none;
   border-radius: 290486px;
   cursor: pointer;
@@ -131,12 +131,12 @@
 .delete:hover,
 .modal-close:focus,
 .delete:focus {
-  background-color: rgba(10, 10, 10, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .modal-close:active,
 .delete:active {
-  background-color: rgba(10, 10, 10, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .is-small.modal-close,
@@ -1035,7 +1035,7 @@ a.has-text-white:focus {
 }
 
 .has-text-black {
-  color: #0a0a0a !important;
+  color: black !important;
 }
 
 a.has-text-black:hover,
@@ -1044,7 +1044,7 @@ a.has-text-black:focus {
 }
 
 .has-background-black {
-  background-color: #0a0a0a !important;
+  background-color: black !important;
 }
 
 .has-text-light {
@@ -1703,7 +1703,7 @@ a.has-text-danger:focus {
 .box {
   background-color: white;
   border-radius: 6px;
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
   color: #4a4a4a;
   display: block;
   padding: 1.25rem;
@@ -1711,11 +1711,11 @@ a.has-text-danger:focus {
 
 a.box:hover,
 a.box:focus {
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px #3273dc;
+  box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0 0 1px #3273dc;
 }
 
 a.box:active {
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2), 0 0 0 1px #3273dc;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px #3273dc;
 }
 
 .button {
@@ -1814,20 +1814,20 @@ fieldset[disabled] .button.is-text {
 .button.is-white {
   background-color: white;
   border-color: transparent;
-  color: #0a0a0a;
+  color: black;
 }
 
 .button.is-white:hover,
 .button.is-white.is-hovered {
   background-color: #f9f9f9;
   border-color: transparent;
-  color: #0a0a0a;
+  color: black;
 }
 
 .button.is-white:focus,
 .button.is-white.is-focused {
   border-color: transparent;
-  color: #0a0a0a;
+  color: black;
 }
 
 .button.is-white:focus:not(:active),
@@ -1839,7 +1839,7 @@ fieldset[disabled] .button.is-text {
 .button.is-white.is-active {
   background-color: #f2f2f2;
   border-color: transparent;
-  color: #0a0a0a;
+  color: black;
 }
 
 .button.is-white[disabled],
@@ -1850,7 +1850,7 @@ fieldset[disabled] .button.is-white {
 }
 
 .button.is-white.is-inverted {
-  background-color: #0a0a0a;
+  background-color: black;
   color: white;
 }
 
@@ -1861,14 +1861,14 @@ fieldset[disabled] .button.is-white {
 
 .button.is-white.is-inverted[disabled],
 fieldset[disabled] .button.is-white.is-inverted {
-  background-color: #0a0a0a;
+  background-color: black;
   border-color: transparent;
   box-shadow: none;
   color: white;
 }
 
 .button.is-white.is-loading::after {
-  border-color: transparent transparent #0a0a0a #0a0a0a !important;
+  border-color: transparent transparent black black !important;
 }
 
 .button.is-white.is-outlined {
@@ -1883,7 +1883,7 @@ fieldset[disabled] .button.is-white.is-inverted {
 .button.is-white.is-outlined.is-focused {
   background-color: white;
   border-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .button.is-white.is-outlined.is-loading::after {
@@ -1894,7 +1894,7 @@ fieldset[disabled] .button.is-white.is-inverted {
 .button.is-white.is-outlined.is-loading.is-hovered::after,
 .button.is-white.is-outlined.is-loading:focus::after,
 .button.is-white.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #0a0a0a #0a0a0a !important;
+  border-color: transparent transparent black black !important;
 }
 
 .button.is-white.is-outlined[disabled],
@@ -1907,15 +1907,15 @@ fieldset[disabled] .button.is-white.is-outlined {
 
 .button.is-white.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #0a0a0a;
-  color: #0a0a0a;
+  border-color: black;
+  color: black;
 }
 
 .button.is-white.is-inverted.is-outlined:hover,
 .button.is-white.is-inverted.is-outlined.is-hovered,
 .button.is-white.is-inverted.is-outlined:focus,
 .button.is-white.is-inverted.is-outlined.is-focused {
-  background-color: #0a0a0a;
+  background-color: black;
   color: white;
 }
 
@@ -1929,20 +1929,20 @@ fieldset[disabled] .button.is-white.is-outlined {
 .button.is-white.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-white.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #0a0a0a;
+  border-color: black;
   box-shadow: none;
-  color: #0a0a0a;
+  color: black;
 }
 
 .button.is-black {
-  background-color: #0a0a0a;
+  background-color: black;
   border-color: transparent;
   color: white;
 }
 
 .button.is-black:hover,
 .button.is-black.is-hovered {
-  background-color: #040404;
+  background-color: black;
   border-color: transparent;
   color: white;
 }
@@ -1955,7 +1955,7 @@ fieldset[disabled] .button.is-white.is-inverted.is-outlined {
 
 .button.is-black:focus:not(:active),
 .button.is-black.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0 0.125em rgba(0, 0, 0, 0.25);
 }
 
 .button.is-black:active,
@@ -1967,14 +1967,14 @@ fieldset[disabled] .button.is-white.is-inverted.is-outlined {
 
 .button.is-black[disabled],
 fieldset[disabled] .button.is-black {
-  background-color: #0a0a0a;
+  background-color: black;
   border-color: transparent;
   box-shadow: none;
 }
 
 .button.is-black.is-inverted {
   background-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .button.is-black.is-inverted:hover,
@@ -1987,7 +1987,7 @@ fieldset[disabled] .button.is-black.is-inverted {
   background-color: white;
   border-color: transparent;
   box-shadow: none;
-  color: #0a0a0a;
+  color: black;
 }
 
 .button.is-black.is-loading::after {
@@ -1996,21 +1996,21 @@ fieldset[disabled] .button.is-black.is-inverted {
 
 .button.is-black.is-outlined {
   background-color: transparent;
-  border-color: #0a0a0a;
-  color: #0a0a0a;
+  border-color: black;
+  color: black;
 }
 
 .button.is-black.is-outlined:hover,
 .button.is-black.is-outlined.is-hovered,
 .button.is-black.is-outlined:focus,
 .button.is-black.is-outlined.is-focused {
-  background-color: #0a0a0a;
-  border-color: #0a0a0a;
+  background-color: black;
+  border-color: black;
   color: white;
 }
 
 .button.is-black.is-outlined.is-loading::after {
-  border-color: transparent transparent #0a0a0a #0a0a0a !important;
+  border-color: transparent transparent black black !important;
 }
 
 .button.is-black.is-outlined.is-loading:hover::after,
@@ -2023,9 +2023,9 @@ fieldset[disabled] .button.is-black.is-inverted {
 .button.is-black.is-outlined[disabled],
 fieldset[disabled] .button.is-black.is-outlined {
   background-color: transparent;
-  border-color: #0a0a0a;
+  border-color: black;
   box-shadow: none;
-  color: #0a0a0a;
+  color: black;
 }
 
 .button.is-black.is-inverted.is-outlined {
@@ -2039,14 +2039,14 @@ fieldset[disabled] .button.is-black.is-outlined {
 .button.is-black.is-inverted.is-outlined:focus,
 .button.is-black.is-inverted.is-outlined.is-focused {
   background-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .button.is-black.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-black.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-black.is-inverted.is-outlined.is-loading:focus::after,
 .button.is-black.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #0a0a0a #0a0a0a !important;
+  border-color: transparent transparent black black !important;
 }
 
 .button.is-black.is-inverted.is-outlined[disabled],
@@ -3769,11 +3769,11 @@ fieldset[disabled] .button {
 
 .notification.is-white {
   background-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .notification.is-black {
-  background-color: #0a0a0a;
+  background-color: black;
   color: white;
 }
 
@@ -3893,19 +3893,19 @@ fieldset[disabled] .button {
 }
 
 .progress.is-black::-webkit-progress-value {
-  background-color: #0a0a0a;
+  background-color: black;
 }
 
 .progress.is-black::-moz-progress-bar {
-  background-color: #0a0a0a;
+  background-color: black;
 }
 
 .progress.is-black::-ms-fill {
-  background-color: #0a0a0a;
+  background-color: black;
 }
 
 .progress.is-black:indeterminate {
-  background-image: linear-gradient(to right, #0a0a0a 30%, #ededed 30%);
+  background-image: linear-gradient(to right, black 30%, #ededed 30%);
 }
 
 .progress.is-light::-webkit-progress-value {
@@ -4109,13 +4109,13 @@ fieldset[disabled] .button {
 .table th.is-white {
   background-color: white;
   border-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .table td.is-black,
 .table th.is-black {
-  background-color: #0a0a0a;
-  border-color: #0a0a0a;
+  background-color: black;
+  border-color: black;
   color: white;
 }
 
@@ -4378,11 +4378,11 @@ fieldset[disabled] .button {
 
 .tag:not(body).is-white {
   background-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .tag:not(body).is-black {
-  background-color: #0a0a0a;
+  background-color: black;
   color: white;
 }
 
@@ -4796,7 +4796,7 @@ fieldset[disabled] .input:-ms-input-placeholder {
 
 .textarea,
 .input {
-  box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+  box-shadow: inset 0 0.0625em 0.125em rgba(0, 0, 0, 0.05);
   max-width: 100%;
   width: 100%;
 }
@@ -4824,7 +4824,7 @@ fieldset[disabled] .input:-ms-input-placeholder {
 
 .is-black.textarea,
 .is-black.input {
-  border-color: #0a0a0a;
+  border-color: black;
 }
 
 .is-black.textarea:focus,
@@ -4835,7 +4835,7 @@ fieldset[disabled] .input:-ms-input-placeholder {
 .is-black.input:active,
 .is-black.is-active.textarea,
 .is-black.is-active.input {
-  box-shadow: 0 0 0 0.125em rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0 0.125em rgba(0, 0, 0, 0.25);
 }
 
 .is-light.textarea,
@@ -5136,11 +5136,11 @@ fieldset[disabled] .select select:hover {
 }
 
 .select.is-black:not(:hover)::after {
-  border-color: #0a0a0a;
+  border-color: black;
 }
 
 .select.is-black select {
-  border-color: #0a0a0a;
+  border-color: black;
 }
 
 .select.is-black select:hover,
@@ -5152,7 +5152,7 @@ fieldset[disabled] .select select:hover {
 .select.is-black select.is-focused,
 .select.is-black select:active,
 .select.is-black select.is-active {
-  box-shadow: 0 0 0 0.125em rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0 0.125em rgba(0, 0, 0, 0.25);
 }
 
 .select.is-light:not(:hover)::after {
@@ -5370,39 +5370,39 @@ fieldset[disabled] .select select:hover {
 .file.is-white .file-cta {
   background-color: white;
   border-color: transparent;
-  color: #0a0a0a;
+  color: black;
 }
 
 .file.is-white:hover .file-cta,
 .file.is-white.is-hovered .file-cta {
   background-color: #f9f9f9;
   border-color: transparent;
-  color: #0a0a0a;
+  color: black;
 }
 
 .file.is-white:focus .file-cta,
 .file.is-white.is-focused .file-cta {
   border-color: transparent;
   box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.25);
-  color: #0a0a0a;
+  color: black;
 }
 
 .file.is-white:active .file-cta,
 .file.is-white.is-active .file-cta {
   background-color: #f2f2f2;
   border-color: transparent;
-  color: #0a0a0a;
+  color: black;
 }
 
 .file.is-black .file-cta {
-  background-color: #0a0a0a;
+  background-color: black;
   border-color: transparent;
   color: white;
 }
 
 .file.is-black:hover .file-cta,
 .file.is-black.is-hovered .file-cta {
-  background-color: #040404;
+  background-color: black;
   border-color: transparent;
   color: white;
 }
@@ -5410,7 +5410,7 @@ fieldset[disabled] .select select:hover {
 .file.is-black:focus .file-cta,
 .file.is-black.is-focused .file-cta {
   border-color: transparent;
-  box-shadow: 0 0 0.5em rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25);
   color: white;
 }
 
@@ -5856,7 +5856,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .help.is-black {
-  color: #0a0a0a;
+  color: black;
 }
 
 .help.is-light {
@@ -6276,7 +6276,7 @@ fieldset[disabled] .select select:hover {
 
 .card {
   background-color: white;
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
   color: #4a4a4a;
   max-width: 100%;
   position: relative;
@@ -6285,7 +6285,7 @@ fieldset[disabled] .select select:hover {
 .card-header {
   background-color: transparent;
   align-items: stretch;
-  box-shadow: 0 0.125em 0.25em rgba(10, 10, 10, 0.1);
+  box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.1);
   display: flex;
 }
 
@@ -6381,7 +6381,7 @@ fieldset[disabled] .select select:hover {
 .dropdown-content {
   background-color: white;
   border-radius: 4px;
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
 }
@@ -6406,7 +6406,7 @@ button.dropdown-item {
 a.dropdown-item:hover,
 button.dropdown-item:hover {
   background-color: whitesmoke;
-  color: #0a0a0a;
+  color: black;
 }
 
 a.dropdown-item.is-active,
@@ -6539,7 +6539,7 @@ button.dropdown-item.is-active {
 .list {
   background-color: white;
   border-radius: 4px;
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .list-item {
@@ -6734,7 +6734,7 @@ a.list-item {
 
 .message.is-white .message-header {
   background-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .message.is-white .message-body {
@@ -6746,12 +6746,12 @@ a.list-item {
 }
 
 .message.is-black .message-header {
-  background-color: #0a0a0a;
+  background-color: black;
   color: white;
 }
 
 .message.is-black .message-body {
-  border-color: #0a0a0a;
+  border-color: black;
 }
 
 .message.is-light {
@@ -6922,7 +6922,7 @@ a.list-item {
 }
 
 .modal-background {
-  background-color: rgba(10, 10, 10, 0.86);
+  background-color: rgba(0, 0, 0, 0.86);
 }
 
 .modal-content,
@@ -7013,12 +7013,12 @@ a.list-item {
 
 .navbar.is-white {
   background-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .navbar.is-white .navbar-brand > .navbar-item,
 .navbar.is-white .navbar-brand .navbar-link {
-  color: #0a0a0a;
+  color: black;
 }
 
 .navbar.is-white .navbar-brand > a.navbar-item:focus,
@@ -7028,15 +7028,15 @@ a.list-item {
 .navbar.is-white .navbar-brand .navbar-link:hover,
 .navbar.is-white .navbar-brand .navbar-link.is-active {
   background-color: #f2f2f2;
-  color: #0a0a0a;
+  color: black;
 }
 
 .navbar.is-white .navbar-brand .navbar-link::after {
-  border-color: #0a0a0a;
+  border-color: black;
 }
 
 .navbar.is-white .navbar-burger {
-  color: #0a0a0a;
+  color: black;
 }
 
 @media screen and (min-width: 1024px) {
@@ -7044,7 +7044,7 @@ a.list-item {
   .navbar.is-white .navbar-start .navbar-link,
   .navbar.is-white .navbar-end > .navbar-item,
   .navbar.is-white .navbar-end .navbar-link {
-    color: #0a0a0a;
+    color: black;
   }
 
   .navbar.is-white .navbar-start > a.navbar-item:focus,
@@ -7060,29 +7060,29 @@ a.list-item {
   .navbar.is-white .navbar-end .navbar-link:hover,
   .navbar.is-white .navbar-end .navbar-link.is-active {
     background-color: #f2f2f2;
-    color: #0a0a0a;
+    color: black;
   }
 
   .navbar.is-white .navbar-start .navbar-link::after,
   .navbar.is-white .navbar-end .navbar-link::after {
-    border-color: #0a0a0a;
+    border-color: black;
   }
 
   .navbar.is-white .navbar-item.has-dropdown:focus .navbar-link,
   .navbar.is-white .navbar-item.has-dropdown:hover .navbar-link,
   .navbar.is-white .navbar-item.has-dropdown.is-active .navbar-link {
     background-color: #f2f2f2;
-    color: #0a0a0a;
+    color: black;
   }
 
   .navbar.is-white .navbar-dropdown a.navbar-item.is-active {
     background-color: white;
-    color: #0a0a0a;
+    color: black;
   }
 }
 
 .navbar.is-black {
-  background-color: #0a0a0a;
+  background-color: black;
   color: white;
 }
 
@@ -7146,7 +7146,7 @@ a.list-item {
   }
 
   .navbar.is-black .navbar-dropdown a.navbar-item.is-active {
-    background-color: #0a0a0a;
+    background-color: black;
     color: white;
   }
 }
@@ -7949,7 +7949,7 @@ a.navbar-item.is-active,
 
   .navbar-menu {
     background-color: white;
-    box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     padding: 0.5rem 0;
   }
 
@@ -7970,7 +7970,7 @@ a.navbar-item.is-active,
   }
 
   .navbar.is-fixed-bottom-touch.has-shadow {
-    box-shadow: 0 -2px 3px rgba(10, 10, 10, 0.1);
+    box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.1);
   }
 
   .navbar.is-fixed-top-touch {
@@ -8041,7 +8041,7 @@ a.navbar-item.is-active,
   .navbar.is-transparent .navbar-dropdown a.navbar-item:focus,
   .navbar.is-transparent .navbar-dropdown a.navbar-item:hover {
     background-color: whitesmoke;
-    color: #0a0a0a;
+    color: black;
   }
 
   .navbar.is-transparent .navbar-dropdown a.navbar-item.is-active {
@@ -8072,7 +8072,7 @@ a.navbar-item.is-active,
     border-radius: 6px 6px 0 0;
     border-top: none;
     bottom: 100%;
-    box-shadow: 0 -8px 8px rgba(10, 10, 10, 0.1);
+    box-shadow: 0 -8px 8px rgba(0, 0, 0, 0.1);
     top: auto;
   }
 
@@ -8116,7 +8116,7 @@ a.navbar-item.is-active,
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     border-top: 2px solid #dbdbdb;
-    box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     display: none;
     font-size: 0.875rem;
     left: 0;
@@ -8138,7 +8138,7 @@ a.navbar-item.is-active,
   .navbar-dropdown a.navbar-item:focus,
   .navbar-dropdown a.navbar-item:hover {
     background-color: whitesmoke;
-    color: #0a0a0a;
+    color: black;
   }
 
   .navbar-dropdown a.navbar-item.is-active {
@@ -8150,7 +8150,7 @@ a.navbar-item.is-active,
   .navbar-dropdown.is-boxed {
     border-radius: 6px;
     border-top: none;
-    box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
     display: block;
     opacity: 0;
     pointer-events: none;
@@ -8192,7 +8192,7 @@ a.navbar-item.is-active,
   }
 
   .navbar.is-fixed-bottom-desktop.has-shadow {
-    box-shadow: 0 -2px 3px rgba(10, 10, 10, 0.1);
+    box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.1);
   }
 
   .navbar.is-fixed-top-desktop {
@@ -8221,7 +8221,7 @@ a.navbar-item.is-active,
 
   a.navbar-item.is-active,
   .navbar-link.is-active {
-    color: #0a0a0a;
+    color: black;
   }
 
   a.navbar-item.is-active:not(:focus):not(:hover),
@@ -8312,7 +8312,7 @@ a.navbar-item.is-active,
 .pagination-previous:active,
 .pagination-next:active,
 .pagination-link:active {
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .pagination-previous[disabled],
@@ -8413,7 +8413,7 @@ a.navbar-item.is-active,
 
 .panel {
   border-radius: 6px;
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
   font-size: 1rem;
 }
 
@@ -8423,7 +8423,7 @@ a.navbar-item.is-active,
 
 .panel.is-white .panel-heading {
   background-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .panel.is-white .panel-tabs a.is-active {
@@ -8435,16 +8435,16 @@ a.navbar-item.is-active,
 }
 
 .panel.is-black .panel-heading {
-  background-color: #0a0a0a;
+  background-color: black;
   color: white;
 }
 
 .panel.is-black .panel-tabs a.is-active {
-  border-bottom-color: #0a0a0a;
+  border-bottom-color: black;
 }
 
 .panel.is-black .panel-block.is-active .panel-icon {
-  color: #0a0a0a;
+  color: black;
 }
 
 .panel.is-light .panel-heading {
@@ -11051,7 +11051,7 @@ label.panel-block:hover {
 
 .hero.is-white {
   background-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .hero.is-white a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
@@ -11060,16 +11060,16 @@ label.panel-block:hover {
 }
 
 .hero.is-white .title {
-  color: #0a0a0a;
+  color: black;
 }
 
 .hero.is-white .subtitle {
-  color: rgba(10, 10, 10, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .hero.is-white .subtitle a:not(.button),
 .hero.is-white .subtitle strong {
-  color: #0a0a0a;
+  color: black;
 }
 
 @media screen and (max-width: 1023px) {
@@ -11080,7 +11080,7 @@ label.panel-block:hover {
 
 .hero.is-white .navbar-item,
 .hero.is-white .navbar-link {
-  color: rgba(10, 10, 10, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .hero.is-white a.navbar-item:hover,
@@ -11088,11 +11088,11 @@ label.panel-block:hover {
 .hero.is-white .navbar-link:hover,
 .hero.is-white .navbar-link.is-active {
   background-color: #f2f2f2;
-  color: #0a0a0a;
+  color: black;
 }
 
 .hero.is-white .tabs a {
-  color: #0a0a0a;
+  color: black;
   opacity: 0.9;
 }
 
@@ -11106,20 +11106,20 @@ label.panel-block:hover {
 
 .hero.is-white .tabs.is-boxed a,
 .hero.is-white .tabs.is-toggle a {
-  color: #0a0a0a;
+  color: black;
 }
 
 .hero.is-white .tabs.is-boxed a:hover,
 .hero.is-white .tabs.is-toggle a:hover {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hero.is-white .tabs.is-boxed li.is-active a,
 .hero.is-white .tabs.is-boxed li.is-active a:hover,
 .hero.is-white .tabs.is-toggle li.is-active a,
 .hero.is-white .tabs.is-toggle li.is-active a:hover {
-  background-color: #0a0a0a;
-  border-color: #0a0a0a;
+  background-color: black;
+  border-color: black;
   color: white;
 }
 
@@ -11134,7 +11134,7 @@ label.panel-block:hover {
 }
 
 .hero.is-black {
-  background-color: #0a0a0a;
+  background-color: black;
   color: white;
 }
 
@@ -11158,7 +11158,7 @@ label.panel-block:hover {
 
 @media screen and (max-width: 1023px) {
   .hero.is-black .navbar-menu {
-    background-color: #0a0a0a;
+    background-color: black;
   }
 }
 
@@ -11195,7 +11195,7 @@ label.panel-block:hover {
 
 .hero.is-black .tabs.is-boxed a:hover,
 .hero.is-black .tabs.is-toggle a:hover {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hero.is-black .tabs.is-boxed li.is-active a,
@@ -11204,16 +11204,16 @@ label.panel-block:hover {
 .hero.is-black .tabs.is-toggle li.is-active a:hover {
   background-color: white;
   border-color: white;
-  color: #0a0a0a;
+  color: black;
 }
 
 .hero.is-black.is-bold {
-  background-image: linear-gradient(141deg, black 0%, #0a0a0a 71%, #181616 100%);
+  background-image: linear-gradient(141deg, black 0%, black 71%, #0d0c0c 100%);
 }
 
 @media screen and (max-width: 768px) {
   .hero.is-black.is-bold .navbar-menu {
-    background-image: linear-gradient(141deg, black 0%, #0a0a0a 71%, #181616 100%);
+    background-image: linear-gradient(141deg, black 0%, black 71%, #0d0c0c 100%);
   }
 }
 
@@ -11279,7 +11279,7 @@ label.panel-block:hover {
 
 .hero.is-light .tabs.is-boxed a:hover,
 .hero.is-light .tabs.is-toggle a:hover {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hero.is-light .tabs.is-boxed li.is-active a,
@@ -11363,7 +11363,7 @@ label.panel-block:hover {
 
 .hero.is-dark .tabs.is-boxed a:hover,
 .hero.is-dark .tabs.is-toggle a:hover {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hero.is-dark .tabs.is-boxed li.is-active a,
@@ -11447,7 +11447,7 @@ label.panel-block:hover {
 
 .hero.is-primary .tabs.is-boxed a:hover,
 .hero.is-primary .tabs.is-toggle a:hover {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hero.is-primary .tabs.is-boxed li.is-active a,
@@ -11531,7 +11531,7 @@ label.panel-block:hover {
 
 .hero.is-link .tabs.is-boxed a:hover,
 .hero.is-link .tabs.is-toggle a:hover {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hero.is-link .tabs.is-boxed li.is-active a,
@@ -11615,7 +11615,7 @@ label.panel-block:hover {
 
 .hero.is-info .tabs.is-boxed a:hover,
 .hero.is-info .tabs.is-toggle a:hover {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hero.is-info .tabs.is-boxed li.is-active a,
@@ -11699,7 +11699,7 @@ label.panel-block:hover {
 
 .hero.is-success .tabs.is-boxed a:hover,
 .hero.is-success .tabs.is-toggle a:hover {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hero.is-success .tabs.is-boxed li.is-active a,
@@ -11783,7 +11783,7 @@ label.panel-block:hover {
 
 .hero.is-warning .tabs.is-boxed a:hover,
 .hero.is-warning .tabs.is-toggle a:hover {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hero.is-warning .tabs.is-boxed li.is-active a,
@@ -11867,7 +11867,7 @@ label.panel-block:hover {
 
 .hero.is-danger .tabs.is-boxed a:hover,
 .hero.is-danger .tabs.is-toggle a:hover {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hero.is-danger .tabs.is-boxed li.is-active a,
@@ -18053,7 +18053,7 @@ readers do not read off random characters that represent icons */
 }
 
 .active {
-  border-top: solid 2px #51a039;
+  border-top: solid 2px black;
   transition: 500ms;
 }
 
@@ -18099,16 +18099,23 @@ readers do not read off random characters that represent icons */
   height: 100%;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .fixed-cart {
   position: fixed;
   bottom: 0;
   right: 0;
+  left: 0;
+  margin: 20px;
 }
 
 .fixed-order {
   position: fixed;
   bottom: 0;
   left: 0;
+  margin: 20px;
 }
 
 .green {

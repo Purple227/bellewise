@@ -26,8 +26,13 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
+    "axios": "^0.19.2",
     "bulma-calendar": "^6.0.7",
     "moment": "^2.26.0",
-    "vue-clickaway": "^2.2.2"
+    "vue-axios": "^2.1.5",
+    "vue-browser-geolocation": "^1.8.0",
+    "vue-clickaway": "^2.2.2",
+    "vue2-google-maps": "^0.10.7",
+    "vuelidate": "^0.7.5"
   }
 }

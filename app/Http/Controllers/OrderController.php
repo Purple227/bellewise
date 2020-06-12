@@ -10,7 +10,7 @@ class OrderController extends Controller
 
     public function order()
     {
-        return view('order');
+        return view('order_item');
     }
 
     public function single()

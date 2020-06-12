@@ -61,13 +61,13 @@
 				</p>
 
 				<span class="icon">
-					<i class="fab fa-facebook-f light-green"></i>
+					<i class="fab fa-facebook-f has-text-black"></i>
 				</span>
 				<span class="icon" style="margin-left: 18px;">
-					<i class="fab fa-twitter light-green"></i>
+					<i class="fab fa-twitter has-text-black"></i>
 				</span>
 				<span class="icon" style="margin-left: 18px;">
-					<i class="fab fa-instagram light-green"></i>
+					<i class="fab fa-instagram has-text-black"></i>
 				</span>
 				
 			</div>		

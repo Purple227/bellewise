@@ -30,7 +30,7 @@
 
 .active
 {
-	border-top: solid 2px $green;
+	border-top: solid 2px $black;
 	transition: 500ms;
 }
 
@@ -79,11 +79,18 @@
   height: 100%;
 }
 
+.pointer
+{
+  cursor: pointer;
+}
+
 .fixed-cart
  {
   position: fixed;
   bottom: 0;
-  right: 0; 
+  right: 0;
+  left: 0;
+  margin: 20px;
 }
 
 .fixed-order
@@ -91,6 +98,7 @@
   position: fixed;
   bottom: 0;
   left: 0; 
+  margin: 20px;
 }
 
 .green
@@ -112,5 +120,7 @@
 {
 	font-weight: bold;
 }
+
+
 
 

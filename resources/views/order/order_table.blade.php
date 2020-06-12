@@ -87,7 +87,7 @@
 		</p>
 
 		<p class="card-footer-item">
-		<a ref='calendarTrigger' type='button' data-display-mode="dialog" > Sort By Date</a>
+			<a ref='calendarTrigger' type='button' data-display-mode="dialog" > Sort By Date</a>
 		</p>
 
 

@@ -2,24 +2,23 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="columns is-marginless is-centered">
+        <div class="column is-5">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <header class="card-header">
+                    <p class="card-header-title">{{ __('Verify Your Email Address') }}</p>
+                </header>
 
-                <div class="card-body">
+                <div class="card-content">
                     @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="notification is-success">
+                            <button class="delete"></button>
                             {{ __('A fresh verification link has been sent to your email address.') }}
                         </div>
                     @endif
 
                     {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
+                    {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
                 </div>
             </div>
         </div>
