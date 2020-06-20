@@ -48,6 +48,16 @@
       About
     </a>
 
+    <a href="/register" class="navbar-item is-bold {{ Route::currentRouteName() == 'register' ? 'active' : '' }}">
+      Register
+    </a>
+
+    <a href="/login" class="navbar-item is-bold {{ Route::currentRouteName() == 'login' ? 'active' : '' }}">
+      Login
+    </a>
+
+
+
   </div>
 
   <div class="navbar-end">

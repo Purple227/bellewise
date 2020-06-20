@@ -81,7 +81,6 @@ const app = new Vue({
         email: "Purple@gmail.com",
         phone: '080XXXXXXXX',
         address: null,
-        City: null,
       },
 
       details: false,
@@ -100,6 +99,7 @@ const app = new Vue({
   },
 
   validations: { // Validation calibrace open
+
     confirmDetails: { // Form calibrace open
       name: {
         required,
@@ -127,6 +127,10 @@ const app = new Vue({
         email,
         maxLength: maxLength(255)
       },
+      address: {
+        required,
+        minLength: minLength(6)
+      },
       password: {
         required,
         minLength: minLength(6)
@@ -134,7 +138,12 @@ const app = new Vue({
       passwordConfirmation: {
         sameAsPassword: sameAs('password')
       },
-    }
+    }, // RegistrationDetails calibrace closes
+
+    address: {
+      required,
+      minLength: minLength(6)
+    },
 
 
 

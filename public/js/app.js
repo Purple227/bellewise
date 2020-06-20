@@ -58237,8 +58237,7 @@ var app = new Vue({
         name: "Purple Cole",
         email: "Purple@gmail.com",
         phone: '080XXXXXXXX',
-        address: null,
-        City: null
+        address: null
       },
       details: false,
       address: null,
@@ -58282,6 +58281,10 @@ var app = new Vue({
         email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["email"],
         maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["maxLength"])(255)
       },
+      address: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["minLength"])(6)
+      },
       password: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["minLength"])(6)
@@ -58289,6 +58292,11 @@ var app = new Vue({
       passwordConfirmation: {
         sameAsPassword: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["sameAs"])('password')
       }
+    },
+    // RegistrationDetails calibrace closes
+    address: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["minLength"])(6)
     }
   },
   // Validation calibrace close
@@ -58420,8 +58428,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /opt/lampp/htdocs/service-delivery-plus/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/service-delivery-plus/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\service-delivery\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\service-delivery\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
