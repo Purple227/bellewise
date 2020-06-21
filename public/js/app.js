@@ -58237,7 +58237,13 @@ var app = new Vue({
         name: "Purple Cole",
         email: "Purple@gmail.com",
         phone: '080XXXXXXXX',
-        address: null
+        password: null,
+        passwordConfirmation: null,
+        address: ""
+      },
+      loginDetails: {
+        emial: null,
+        password: null
       },
       details: false,
       address: null,
@@ -58285,6 +58291,11 @@ var app = new Vue({
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["minLength"])(6)
       },
+      phone: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["minLength"])(11),
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["maxLength"])(11)
+      },
       password: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["minLength"])(6)
@@ -58294,9 +58305,23 @@ var app = new Vue({
       }
     },
     // RegistrationDetails calibrace closes
+    loginDetails: {
+      email: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
+        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["email"]
+      },
+      password: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["minLength"])(6)
+      }
+    },
     address: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["minLength"])(6)
+    },
+    email: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["email"]
     }
   },
   // Validation calibrace close

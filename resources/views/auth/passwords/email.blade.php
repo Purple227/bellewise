@@ -38,9 +38,16 @@
 
                             <div class="field-body">
                                 <div class="field">
-                                    <p class="control">
+                                    <p class="control has-icons-right has-icons-left">
                                         <input class="input" id="email" type="email" name="email"
                                                value="{{ old('email') }}" required autofocus>
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-envelope fa-lg has-text-primary"></i>
+                                    </span>
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-exclamation-triangle has-text-danger" v-if="$v.loginDetails.email.$invalid"> </i>
+                                        <i class="fas fa-check has-text-primary" v-else> </i>
+                                    </span>    
                                     </p>
 
                                     @if ($errors->has('email'))
@@ -58,7 +65,7 @@
                             <div class="field-body">
                                 <div class="field is-grouped">
                                     <div class="control">
-                                        <button type="submit" class="button is-primary">Send Password Reset Link
+                                        <button type="submit" class="button is-primary" disabled>Send Password Reset Link
                                         </button>
                                     </div>
                                 </div>

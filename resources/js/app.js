@@ -80,7 +80,14 @@ const app = new Vue({
         name: "Purple Cole",
         email: "Purple@gmail.com",
         phone: '080XXXXXXXX',
-        address: null,
+        password: null,
+        passwordConfirmation: null,
+        address: "",
+      },
+
+      loginDetails: {
+        emial: null,
+        password: null,
       },
 
       details: false,
@@ -131,6 +138,13 @@ const app = new Vue({
         required,
         minLength: minLength(6)
       },
+      
+      phone: {
+        required,
+        minLength: minLength(11),
+        maxLength: maxLength(11)
+      },
+
       password: {
         required,
         minLength: minLength(6)
@@ -140,14 +154,26 @@ const app = new Vue({
       },
     }, // RegistrationDetails calibrace closes
 
+    loginDetails: {
+      email: {
+        required,
+        email,
+      },
+      password: {
+        required,
+        minLength: minLength(6)
+      },
+    },
+
     address: {
       required,
       minLength: minLength(6)
     },
 
-
-
-
+    email: {
+      required,
+      email,
+    },
 
   }, // Validation calibrace close
 
