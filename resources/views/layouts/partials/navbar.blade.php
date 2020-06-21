@@ -15,13 +15,13 @@
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
 
-        <a href="/track-order" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
+        <a href="/track-order" class="dropdown-item is-bold {{ Route::currentRouteName() == 'track' ? 'is-active' : '' }}">
           Track Order
         </a>
 
 
         <a href="/order/history" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
-          Order History
+          My Orders
         </a>
 
         <a href="#" class="dropdown-item is-bold">
@@ -68,7 +68,7 @@
   <div class="navbar-end">
 
     <div class="navbar-item">
-      <div class="field is-grouped is-hidden-mobile">
+      <div class="field is-grouped is-hidden-mobile is-hidden-tablet">
 
         <div class="dropdown is-right" v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
           <button class="button is-primary">
@@ -80,12 +80,12 @@
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
 
-            <a href="/track-order" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
+            <a href="/track-order" class="dropdown-item is-bold {{ Route::currentRouteName() == 'track' ? 'is-active' : '' }}">
               Track Order
             </a>
 
             <a href="/order/history" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
-              Order History
+              My Orders
             </a>
 
             <a href="#" class="dropdown-item is-bold">

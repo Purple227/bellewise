@@ -23,7 +23,10 @@ class OrderController extends Controller
         return view('order.index');
     }
 
-
+    public function track()
+    {
+        return view('order.track');
+    }
 
 
 }

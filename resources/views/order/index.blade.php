@@ -5,36 +5,27 @@
 
 <div class="container"> <!-- Container tag open -->
 
-	<div class="box"> <!-- Box tag open -->
 
-		<div class="content"> <!-- Content tag open -->
+<div class="field is-grouped is-grouped-right">
+  <div class="control">
+    <div class="tags has-addons are-medium">
+      <span class="tag is-black">Active Orders </span>
+      <span class="tag is-primary"> 8 </span>
+    </div>
+  </div>
 
-			<div class="columns"> <!-- Columns wrapper tag open -->
+  <div class="control">
+    <div class="tags has-addons are-medium">
+      <span class="tag is-black"> Completed Orders</span>
+      <span class="tag is-primary"> 8 </span>
+    </div>
+  </div>
 
-				<div class="column is-9"> <!-- First column tag close -->
-					@include('order.order_table')
+</div>
 
-				</div> <!-- First column tag open -->
-
-
-				<div class="column"> <!-- Second column tag open -->
-					<div class="box">
-
-						<p class="subtitle fa is-bold has-text-black"> Recent </p>
-						
-					</div>
-				</div> <!-- Second column tag open -->
-
-
-
-			</div> <!-- Columns wrapper tag close -->
-
-		</div> <!-- Content tag close -->
-
-	</div> <!-- Box tag open -->
+	@include('order.active_order')
 
 	@include('layouts.partials.order_action')
-
 
 </div> <!-- Container tag close -->
 

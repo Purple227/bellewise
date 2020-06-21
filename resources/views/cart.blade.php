@@ -1,4 +1,4 @@
-<!-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -93,7 +93,7 @@
 
 					<div class="card-header"> <!-- card header tag open -->
 						<div class="card-header-title is-centered">
-							<span class="subtitle is-bold"> Your Order Is Confirmed </span>
+							<span class="subtitle is-bold"> Your Order Is Placed </span>
 						</div>
 					</div> <!-- card header tag close -->
 
@@ -107,7 +107,7 @@
 
   <footer class="card-footer">
     <a href="/order/history" class="card-footer-item has-text-black is-bold">Track Order</a>
-    <a href="#" class="card-footer-item has-text-black is-bold">Order ID : #564328</a>
+    <a href="/order/history" class="card-footer-item has-text-black is-bold">Order ID : #564328</a>
   </footer>
 </div>  <!-- card tag close -->
 
@@ -407,4 +407,4 @@
 
 
 
-@endsection -->
+@endsection 
