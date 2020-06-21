@@ -59,7 +59,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <!-- Desktop input display -->
-                                <p class="control has-icons-left has-icons-right is-hidden-mobile">
+                                <p class="control has-icons-left has-icons-right">
 
                                     <gmap-autocomplete class="input is-primary" required>
                                     </gmap-autocomplete>
@@ -108,7 +108,7 @@
                                     <input class="input is-primary" id="email" type="email" v-model="registerDetails.email" name="email"
                                     value="{{ old('email') }}" required autofocus>
                                     <span class="icon is-small is-left">
-                                        <i class="fas fa-envelope fa-lg has-text-success"></i>
+                                        <i class="fas fa-envelope fa-lg has-text-primary"></i>
                                     </span>
                                     <span class="icon is-small is-right">
                                         <i class="fas fa-exclamation-triangle has-text-danger" v-if="$v.registerDetails.email.$invalid"> </i>
@@ -159,7 +159,7 @@
                                     <input class="input is-primary" id="password-confirm" type="password"
                                     name="password_confirmation" v-model="registerDetails.passwordConfirmation" required>
                                     <span class="icon is-small is-left">
-                                        <i class="fas fa-key fa-lg has-text-success"></i>
+                                        <i class="fas fa-key fa-lg has-text-primary"></i>
                                     </span>
                                     <span class="icon is-small is-right">
                                         <i class="fas fa-exclamation-triangle has-text-danger" v-if="$v.registerDetails.passwordConfirmation.$invalid"> </i>
@@ -170,44 +170,44 @@
                         </div>
                     </div>
 
-                        <div class="field is-horizontal">
+                    <div class="field is-horizontal">
 
-                            <div class="field-body">
-                                <div class="field is-grouped">
-                                    <div class="control">
-                                        <button type="submit" class="button is-primary">Register</button>
-                                    </div>
+                        <div class="field-body">
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <button type="submit" class="button is-primary">Register</button>
                                 </div>
                             </div>
-
-                            <div class="field-label">
-                                <div class="field has-addons">
-  <p class="control">
-    <button class="button is-bold">
-      Or Sign Up
-    </button>
-  </p>
-  <p class="control">
-    <button class="button">
-      <span class="icon is-small">
-        <i class="fab fa-facebook-f has-text-info"></i>
-      </span>
-    </button>
-  </p>
-  <p class="control">
-    <button class="button">
-      <span class="icon is-small">
-        <i class="fab fa-twitter has-text-info"></i>
-      </span>
-    </button>
-  </p>
-</div>
-                            </div>
-
                         </div>
-                </form>
+
+                        <div class="field-label">
+                            <div class="field has-addons">
+                              <p class="control">
+                                <button class="button is-bold">
+                                  Or Sign Up
+                              </button>
+                          </p>
+                          <p class="control">
+                            <button class="button">
+                              <span class="icon is-small">
+                                <i class="fab fa-facebook-f has-text-info"></i>
+                            </span>
+                        </button>
+                    </p>
+                    <p class="control">
+                        <button class="button">
+                          <span class="icon is-small">
+                            <i class="fab fa-twitter has-text-info"></i>
+                        </span>
+                    </button>
+                </p>
             </div>
         </div>
+
     </div>
+</form>
+</div>
+</div>
+</div>
 </div>
 @endsection

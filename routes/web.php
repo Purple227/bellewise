@@ -27,6 +27,8 @@ Route::get('/order/demo', 'OrderController@single')->name('single_order');
 Route::get('/order/history', 'OrderController@index')->name('history');
 Route::get('/cart', 'CartController@cart')->name('cart');
 Route::get('/shop', 'ShopController@shop')->name('shop');
+Route::get('/track-order', 'OrderController@track')->name('track');
+
 
 
 

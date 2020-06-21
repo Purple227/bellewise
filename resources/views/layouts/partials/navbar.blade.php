@@ -15,6 +15,11 @@
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
 
+        <a href="/track-order" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
+          Track Order
+        </a>
+
+
         <a href="/order/history" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
           Order History
         </a>
@@ -74,6 +79,11 @@
         </button>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
+
+            <a href="/track-order" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
+              Track Order
+            </a>
+
             <a href="/order/history" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
               Order History
             </a>

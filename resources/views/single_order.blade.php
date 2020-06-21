@@ -66,7 +66,7 @@
     <div class="column">  <!-- Second column tag open -->
 
       <figure class="image is-2by1">
-        <img src="../images/food.png" alt="Placeholder image">
+        <img src="../images/food-sample.svg" alt="Placeholder image">
       </figure>
 
 

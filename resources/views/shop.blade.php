@@ -19,6 +19,19 @@
   </p>
 
 
+<div class="box">
+<div class="field has-addons has-addons-centered">
+  <div class="control is-expanded">
+    <input class="input is-primary" type="text" placeholder="Search Restaurant">
+  </div>
+  <div class="control">
+    <a class="button is-primary">
+      Search
+    </a>
+  </div>
+</div>
+</div>
+
 
 
   <div class="content" style="margin-top: 6%;" > <!-- Content tag open -->

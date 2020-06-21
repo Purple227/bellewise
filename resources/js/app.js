@@ -94,6 +94,7 @@ const app = new Vue({
       address: null,
 
       isActive: false,
+      orderStaus: false,
       isDropDown: false,
       closed: true,
       confirm: false,
@@ -127,7 +128,7 @@ const app = new Vue({
     registerDetails: {
       name: {
         required,
-        maxLength: maxLength(20)
+        maxLength: maxLength(30)
       },
       email: {
         required,
@@ -210,6 +211,13 @@ const app = new Vue({
       this.cart = false;
       this.checkout = false;
       this.details = true;
+    },
+
+    orderMethod() {
+      this.cart = false;
+      this.checkout = false;
+      this.details = false;
+      this.orderStaus = true;
     },
 
     bulmaCalendar() {

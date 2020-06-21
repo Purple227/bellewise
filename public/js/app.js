@@ -58248,6 +58248,7 @@ var app = new Vue({
       details: false,
       address: null,
       isActive: false,
+      orderStaus: false,
       isDropDown: false,
       closed: true,
       confirm: false,
@@ -58280,7 +58281,7 @@ var app = new Vue({
     registerDetails: {
       name: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["maxLength"])(20)
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["maxLength"])(30)
       },
       email: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__["required"],
@@ -58352,6 +58353,12 @@ var app = new Vue({
       this.cart = false;
       this.checkout = false;
       this.details = true;
+    },
+    orderMethod: function orderMethod() {
+      this.cart = false;
+      this.checkout = false;
+      this.details = false;
+      this.orderStaus = true;
     },
     bulmaCalendar: function bulmaCalendar() {
       var _this = this;

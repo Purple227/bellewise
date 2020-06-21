@@ -1,8 +1,7 @@
 
+
 <div class="card">
 	<div class="card-content">
-
-
 
 		<table class="table is-bordered">
 

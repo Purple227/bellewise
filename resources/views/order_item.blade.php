@@ -24,6 +24,18 @@
   </ul>
 </div>
 
+<div class="box">
+<div class="field has-addons has-addons-centered">
+  <div class="control is-expanded">
+    <input class="input is-primary" type="text" placeholder="Search Food">
+  </div>
+  <div class="control">
+    <a class="button is-primary">
+      Search
+    </a>
+  </div>
+</div>
+</div>
 
 
 <div class="content" style="margin-top: 6%;" > <!-- Content tag open -->
@@ -44,7 +56,7 @@
 
           <div class="card-image">
             <figure class="image   is-2by1">
-              <img src="/images/food.png" alt="Image">
+              <img src="/images/food-sample.svg" alt="Image">
             </figure>
           </div>
 
@@ -80,7 +92,7 @@
 
           <div class="card-image">
             <figure class="image   is-2by1">
-              <img src="/images/food.png" alt="Image">
+              <img src="/images/food-sample.svg" alt="Image">
             </figure>
           </div>
 
@@ -119,7 +131,7 @@
 
           <div class="card-image">
             <figure class="image   is-2by1">
-              <img src="/images/food.png" alt="Image">
+              <img src="/images/food-sample.svg" alt="Image">
             </figure>
           </div>
 
