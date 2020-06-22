@@ -58328,6 +58328,7 @@ var app = new Vue({
   // Validation calibrace close
   mounted: function mounted() {
     this.getUserLoctionInfo();
+    this.bulmaCalendar();
   },
   methods: {
     //Method calibrace open

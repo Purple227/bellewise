@@ -24,11 +24,7 @@
           My Orders
         </a>
 
-        <a href="#" class="dropdown-item is-bold">
-          FAQ
-        </a>
-
-        <a href="#" class="dropdown-item is-bold">
+        <a href="/faq" class="dropdown-item is-bold">
           Logout
         </a>
       </div>
@@ -52,6 +48,10 @@
     <a href="/about" class="navbar-item is-bold {{ Route::currentRouteName() == 'about' ? 'active' : '' }}">
       About
     </a>
+    <a href="/faq" class="navbar-item is-bold {{ Route::currentRouteName() == 'faq' ? 'active' : '' }}">
+      FAQ
+    </a>
+
 
     <a href="/register" class="navbar-item is-bold {{ Route::currentRouteName() == 'register' ? 'active' : '' }}">
       Register
@@ -86,10 +86,6 @@
 
             <a href="/order/history" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
               My Orders
-            </a>
-
-            <a href="#" class="dropdown-item is-bold">
-              FAQ
             </a>
 
             <a href="#" class="dropdown-item is-bold">

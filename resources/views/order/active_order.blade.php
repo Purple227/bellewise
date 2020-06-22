@@ -9,7 +9,7 @@
 		<div class="card">
 			<header class="card-header">
 				<p class="card-header-title is-centered">
-					<span class="subtitle is-bold"> My Orders </span>
+					<span class="subtitle is-bold"> Order List </span>
 				</p>
 			</header>
 			<div class="card-content">

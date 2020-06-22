@@ -4,9 +4,6 @@
 
 <div class="container"> <!-- Container tag open -->
 
-
-
-
 	<div class="box" v-if="details">
 		<div class="columns"> <!-- Columns wrapper tag open -->
 
@@ -88,8 +85,7 @@
 
 			<div class="column is-half is-offset-one-quarter"> <!-- is half column tag open -->
 
-<div class="card"> <!-- card tag open -->
-
+				<div class="card"> <!-- card tag open -->
 
 					<div class="card-header"> <!-- card header tag open -->
 						<div class="card-header-title is-centered">
@@ -98,18 +94,18 @@
 					</div> <!-- card header tag close -->
 
 
-  <div class="card-image">
-    <figure class="image is-2by1">
-      <img src="/images/confirmed.svg" alt="Placeholder image">
-    </figure>
-  </div>
+					<div class="card-image">
+						<figure class="image is-2by1">
+							<img src="/images/confirmed.svg" alt="Placeholder image">
+						</figure>
+					</div>
 
 
-  <footer class="card-footer">
-    <a href="/order/history" class="card-footer-item has-text-black is-bold">Track Order</a>
-    <a href="/order/history" class="card-footer-item has-text-black is-bold">Order ID : #564328</a>
-  </footer>
-</div>  <!-- card tag close -->
+					<footer class="card-footer">
+						<a href="/track-order" class="card-footer-item has-text-black is-bold">Track Order</a>
+						<a href="/track-order" class="card-footer-item has-text-black is-bold">Order ID : #564328 </a>
+					</footer>
+				</div>  <!-- card tag close -->
 
 			</div> <!-- is half column tag close -->
 
@@ -121,7 +117,6 @@
 	<div class="box" v-if="cart"> <!-- Box container tag open -->
 
 		<!-- Second section -->
-
 		<div class="column is-half is-offset-one-quarter"> <!-- is half column tag open -->
 
 			<div class="card">
@@ -132,6 +127,8 @@
 				</header>
 				<div class="card-content">
 					<div class="content">
+
+						<p class="is-bold"> Estimated Delivery Time 40min</p>
 
 						<div class="notification is-light"> <!-- Notifacatin tag open -->
 							<button class="delete"></button>
@@ -237,6 +234,12 @@
 
 						</div> <!-- Notifacatin tag close -->
 
+						<div class="">
+							<p class="subtitle  is-inline"> Set Delivery Time</p> 
+							<!--p class="subtitle is-inline is-pulled-right">N2750.00</p-->
+							<button ref='calendarTrigger' data-display-mode="dialog" type='button' class="">Change</button> 
+						</div>
+						<br>
 
 						<div class="">
 							<p class="subtitle  is-inline">Order</p> 
@@ -252,7 +255,6 @@
 							<p class="subtitle is-inline">Summary</p> 
 							<p class="subtitle is-inline is-pulled-right">N3250.00</p> 
 						</div>
-
 
 					</div>
 				</div>
@@ -276,11 +278,7 @@
 </div> <!-- Box container tag open -->
 
 
-
-
 <!-- Checkout section -->
-
-
 <div class="box" v-if="checkout"> <!-- Box container tag open -->
 
 	<div class="columns"> <!-- Columns wrapper tag open -->

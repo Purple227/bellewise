@@ -13,7 +13,7 @@
 
   <p class="subtitle is-bold has-text-black has-text-centered is-family-monospace"> 
    <i class="fas fa-store green fa-2x"> </i> <br> 
-   Dash Restaurant
+   Ordering From Dash Restaurant
  </p>
 
  <div class="tabs is-inline-block">

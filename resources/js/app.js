@@ -6,7 +6,7 @@
 
  require('./bootstrap');
 
-window.Vue = require('vue');
+ window.Vue = require('vue');
 
 
  import axios from 'axios';
@@ -180,6 +180,7 @@ const app = new Vue({
 
   mounted() {
     this.getUserLoctionInfo()
+    this.bulmaCalendar()
   },
 
   methods: { //Method calibrace open
@@ -251,7 +252,6 @@ console.log(" Your address is" + this.address);
  }, 800) // Timeout calibrace close
 
     },
-
 
   }, //Method calibrace close
 
