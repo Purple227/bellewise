@@ -68,7 +68,7 @@
   <div class="navbar-end">
 
     <div class="navbar-item">
-      <div class="field is-grouped is-hidden-mobile is-hidden-tablet">
+      <div class="field is-grouped is-hidden-mobile">
 
         <div class="dropdown is-right" v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
           <button class="button is-primary">

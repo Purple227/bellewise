@@ -33,26 +33,30 @@
 
 								<div class="content"> <!-- Content tag open -->
 									<p class="is-small is-bold has-text-primary"> Estimated Delivery Time 40min 	
-								</p> 
-								<a href="/track-order" class="button is-small is-fullwidth">
-										<i class="fas fa-eye has-text-primary"></i>
-								</a>
-							</div> <!-- Content tag close -->
+									</p> 
 
-						</div> <!-- Second column tag close -->
+									<a href="/track-order" class="button is-fullwidth">
+										<span class="icon">
+											<i class="fas fa-eye has-text-primary"></i>
+										</span>
+										<span class="is-bold has-text-primary"> View </span>
+									</a>
+								</div> <!-- Content tag close -->
 
-
-					</div> <!-- Columns wrapper tag close -->
-
-				</div> <!-- Notifacatin tag close -->
-
+							</div> <!-- Second column tag close -->
 
 
-				<div class="notification is-light"> <!-- Notifacatin tag open -->
+						</div> <!-- Columns wrapper tag close -->
 
-					<div class="columns"> <!-- Columns wrapper tag open -->
+					</div> <!-- Notifacatin tag close -->
 
-						<div class="column"> <!-- First column tag open -->
+
+
+					<div class="notification is-light"> <!-- Notifacatin tag open -->
+
+						<div class="columns"> <!-- Columns wrapper tag open -->
+
+							<div class="column"> <!-- First column tag open -->
 								<div class="content">
 									<strong> ORDER ID: #564328 </strong>
 									<p class="is-small"> 20-Dec-2020, 3:30 PM </p> 
@@ -66,26 +70,29 @@
 
 								<div class="content"> <!-- Content tag open -->
 									<p class="is-small is-bold has-text-info"> Delivered On 5 Dec
-								</p> 
-								<a href="/track-order" class="button is-small is-fullwidth">
-										<i class="fas fa-eye has-text-primary"></i>
-								</a>
-							</div> <!-- Content tag close -->
+									</p> 
+									<a href="/track-order" class="button is-fullwidth">
+										<span class="icon">
+											<i class="fas fa-eye has-text-primary"></i>
+										</span>
+										<span class="is-bold has-text-primary"> View </span>
+									</a>
+								</div> <!-- Content tag close -->
 
-						</div> <!-- Second column tag close -->
-
-
-					</div> <!-- Columns wrapper tag close -->
-
-				</div> <!-- Notifacatin tag close -->
+							</div> <!-- Second column tag close -->
 
 
+						</div> <!-- Columns wrapper tag close -->
 
-				<div class="notification is-light"> <!-- Notifacatin tag open -->
+					</div> <!-- Notifacatin tag close -->
 
-					<div class="columns"> <!-- Columns wrapper tag open -->
 
-						<div class="column"> <!-- First column tag open -->
+
+					<div class="notification is-light"> <!-- Notifacatin tag open -->
+
+						<div class="columns"> <!-- Columns wrapper tag open -->
+
+							<div class="column"> <!-- First column tag open -->
 								<div class="content">
 									<strong> ORDER ID: #564328 </strong>
 									<p class="is-small"> 20-Dec-2020, 3:30 PM </p> 
@@ -99,24 +106,27 @@
 
 								<div class="content"> <!-- Content tag open -->
 									<p class="is-small is-bold has-text-primary"> Estimated Delivery Time 40min 
-								</p> 
-								<a href="/track-order" class="button is-small is-fullwidth">
-										<i class="fas fa-eye has-text-primary"></i>
-								</a>
-							</div> <!-- Content tag close -->
+									</p> 
+									<a href="/track-order" class="button is-fullwidth">
+										<span class="icon">
+											<i class="fas fa-eye has-text-primary"></i>
+										</span>
+										<span class="is-bold has-text-primary"> View </span>
+									</a>
+								</div> <!-- Content tag close -->
 
-						</div> <!-- Second column tag close -->
+							</div> <!-- Second column tag close -->
 
 
-					</div> <!-- Columns wrapper tag close -->
+						</div> <!-- Columns wrapper tag close -->
 
-				</div> <!-- Notifacatin tag close -->
+					</div> <!-- Notifacatin tag close -->
 
-				<div class="notification is-light"> <!-- Notifacatin tag open -->
+					<div class="notification is-light"> <!-- Notifacatin tag open -->
 
-					<div class="columns"> <!-- Columns wrapper tag open -->
+						<div class="columns"> <!-- Columns wrapper tag open -->
 
-						<div class="column"> <!-- First column tag open -->
+							<div class="column"> <!-- First column tag open -->
 								<div class="content">
 									<strong> ORDER ID: #564328 </strong>
 									<p class="is-small"> 20-Dec-2020, 3:30 PM </p> 
@@ -130,31 +140,34 @@
 
 								<div class="content"> <!-- Content tag open -->
 									<p class="is-small is-bold has-text-info"> Delivered On 5 Dec
-								</p> 
-								<a href="/track-order" class="button is-small is-fullwidth">
-										<i class="fas fa-eye has-text-primary"></i>
-								</a>
-							</div> <!-- Content tag close -->
+									</p> 
+									<a href="/track-order" class="button is-fullwidth">
+										<span class="icon">
+											<i class="fas fa-eye has-text-primary"></i>
+										</span>
+										<span class="is-bold has-text-primary"> View </span>
+									</a>
+								</div> <!-- Content tag close -->
 
-						</div> <!-- Second column tag close -->
-
-
-					</div> <!-- Columns wrapper tag close -->
-
-				</div> <!-- Notifacatin tag close -->
+							</div> <!-- Second column tag close -->
 
 
+						</div> <!-- Columns wrapper tag close -->
+
+					</div> <!-- Notifacatin tag close -->
+
+
+				</div>
 			</div>
+			<footer class="card-footer">
+				<a class="card-footer-item is-bold has-text-black"> Previous </a>
+				<a class="card-footer-item is-bold has-text-black"> 4 of 8 </a>
+				<a class="card-footer-item is-bold has-text-black"> Next </a>
+
+			</footer>
 		</div>
-		<footer class="card-footer">
-			<a class="card-footer-item is-bold has-text-black"> Previous </a>
-			<a class="card-footer-item is-bold has-text-black"> 4 of 8 </a>
-			<a class="card-footer-item is-bold has-text-black"> Next </a>
 
-		</footer>
 	</div>
-
-</div>
 
 </div> <!-- is half column tag close-->
 
