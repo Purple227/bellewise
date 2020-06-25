@@ -7,6 +7,7 @@
 
 @section('content')
 
+
 <div class="container"> <!-- Container tag open -->
 
   <div class="box">
@@ -100,8 +101,6 @@
 </div> <!-- Content tag close -->
 
 </div>
-
-@include('layouts.partials.view_cart')
 
 
 </div> <!-- Container tag close -->

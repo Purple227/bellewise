@@ -8,15 +8,15 @@
 @section('content')
 
 
-<div class="welcome-container"> <!-- parent tag open -->
+<div class="welcome-container "> <!-- parent tag open -->
 
 	<div class="columns"> <!-- Coluns wrapper tag open -->
 
 		<div class="column"> <!-- First column tag open -->
 
-			<div class="content ">
+			<div class="content animate__animated animate__backInLeft animate__fast">
 				<p class="title is-1 is-family-monospace">
-					Belle-Wise Food Delivery Service
+					Bellewise Food Delivery Service
 				</p>
 
 				<p class="subtitle fa">
@@ -31,9 +31,13 @@
 
 		<div class="column"> <!-- Second column tag open -->
 
+			<div class="content animate__animated animate__backInRight animate__fast">
+
 			<figure class="image  is-5by3">
 				<img class="is-rounded" src="/images/food.png">
 			</figure>
+
+		</div>
 
 		</div> <!-- Second column tag close -->
 

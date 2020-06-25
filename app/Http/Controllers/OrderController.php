@@ -17,16 +17,22 @@ class OrderController extends Controller
     {
         return view('single_order');
     }
+    
+    public function track()
+    {
+        return view('order.track');
+    }
 
     public function index()
     {
         return view('order.index');
     }
 
-    public function track()
+    public function favorite()
     {
-        return view('order.track');
+        return view('order.favorite');
     }
+
 
 
 }

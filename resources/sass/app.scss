@@ -17,10 +17,15 @@
 // Import bulma calendar
 @import '~bulma-calendar/dist/css/bulma-calendar.min.css';
 
+@import "~bulma-o-steps/bulma-steps.min";
+
 // Fontawesome icons and web font
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+// Getting animate css
+@import "~animate.css/animate";
 
 
 .body

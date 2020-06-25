@@ -15,7 +15,7 @@
 
 	<p class="subtitle is-bold has-text-black has-text-centered is-family-monospace"> 
     <i class="fas fa-store green fa-2x"> </i> <br> 
-    Selet Restaurant
+    Select Restaurant
   </p>
 
 
@@ -37,7 +37,7 @@
   <div class="content" style="margin-top: 6%;" > <!-- Content tag open -->
 
     <p class="subtitle has-text-black  is-italic"> 
-     6 Restaurants Open
+     6 Restaurants
    </p>
 
 
@@ -48,7 +48,7 @@
       <a href="/order">
         <div class="card"> <!-- Card tag open -->
           <div class="card-image">
-            <figure class="image  is-16by9">
+            <figure class="image is-3by1">
               <img src="/images/restaurant.svg" alt="Image">
             </figure>
           </div>
@@ -71,7 +71,7 @@
       <a href="/order">
         <div class="card"> <!-- Card tag open -->
           <div class="card-image">
-            <figure class="image  is-16by9">
+            <figure class="image is-3by1">
               <img src="/images/restaurant.svg" alt="Image">
             </figure>
           </div>
@@ -96,7 +96,7 @@
       <a href="/order">
         <div class="card"> <!-- Card tag open -->
           <div class="card-image">
-            <figure class="image  is-16by9">
+            <figure class="image is-3by1">
               <img src="/images/restaurant.svg" alt="Image">
             </figure>
           </div>

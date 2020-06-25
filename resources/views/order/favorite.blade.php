@@ -2,6 +2,15 @@
 @extends('layouts.app')
 
 @section('title')
+{{ "Favorite" }}
+@endsection
+
+@section('content')
+
+
+@extends('layouts.app')
+
+@section('title')
 {{ "Order" }}
 @endsection
 
@@ -12,30 +21,9 @@
 <div class="container"> <!-- Container tag open -->
 
   <p class="subtitle is-bold has-text-black has-text-centered is-family-monospace"> 
-   <i class="fas fa-store green fa-2x"> </i> <br> 
-   Ordering From Dash Restaurant
+   <i class="fas fa-heart green fa-2x"> </i> <br> 
+   Favorite Foods
  </p>
-
- <div class="tabs is-inline-block">
-  <ul>
-    <li class="is-active"><a class="has-text-primary">Most Selling</a></li>
-    <li><a class="has-text-primary">Best Combos</a></li>
-    <li><a class="has-text-primary">Suggestion</a></li>
-  </ul>
-</div>
-
-<div class="box">
-<div class="field has-addons has-addons-centered">
-  <div class="control is-expanded">
-    <input class="input is-primary" type="text" placeholder="Search Food">
-  </div>
-  <div class="control">
-    <a class="button is-primary">
-      Search
-    </a>
-  </div>
-</div>
-</div>
 
 
 <div class="content" style="margin-top: 6%;" > <!-- Content tag open -->
@@ -74,7 +62,7 @@
 
             <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-plus fa-border has-text-primary"></i> </p>
 
-            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-star"> </i>  </p>
+            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-star has-text-danger"> </i>  </p>
 
           </footer>
 
@@ -115,7 +103,7 @@
 
             <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-plus fa-border has-text-primary"></i> </p>
 
-            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-star"> </i>  </p>
+            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-star has-text-danger"> </i>  </p>
 
           </footer>
 
@@ -156,7 +144,7 @@
 
             <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-plus fa-border has-text-primary"></i> </p>
 
-            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-star"> </i>  </p>
+            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-star has-text-danger"> </i>  </p>
 
           </footer>
 
@@ -194,12 +182,12 @@
 
 </div>
 
-@include('layouts.partials.view_cart')
-
-
 </div>  <!-- Container tag close -->
 
 
 
 @endsection
 
+
+
+@endsection

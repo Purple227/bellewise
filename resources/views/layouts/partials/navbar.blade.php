@@ -2,7 +2,7 @@
 <nav class="navbar is-transparent">
   <div class="navbar-brand ">
     <a class="navbar-item {{ Route::currentRouteName() == 'welcome' ? 'active' : '' }}"  href="/">
-      <!-- <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28"> --> <span class="subtitle is-bold light-green is-family-sans-serif ">  Belle  -  <span class="green"> Wise </span> </span> 
+      <!-- <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28"> --> <span class="subtitle is-bold light-green is-family-sans-serif ">  Belle <span class="green">Wise</span> </span> 
     </a>
 
     <div class="dropdown is-right navbar-item is-hidden-desktop is-hidden-fullhd " v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
@@ -24,6 +24,10 @@
           My Orders
         </a>
 
+        <a href="/favorite" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
+          My Favorites
+        </a>
+
         <a href="/faq" class="dropdown-item is-bold">
           Logout
         </a>
@@ -32,9 +36,7 @@
   </div>
 
   <div class="navbar-burger burger" data-target="navbarExampleTransparentExample" v-bind:class="{ 'is-active': isActive }"  @click="addActiveClass">
-    <span class="green is-bold"></span>
-    <span class="green is-bold"></span>
-    <span class="green is-bold"></span>
+    <span class="fas fa-bars has-text-success"></span>
   </div>
 </div>
 
@@ -48,10 +50,6 @@
     <a href="/about" class="navbar-item is-bold {{ Route::currentRouteName() == 'about' ? 'active' : '' }}">
       About
     </a>
-    <a href="/faq" class="navbar-item is-bold {{ Route::currentRouteName() == 'faq' ? 'active' : '' }}">
-      FAQ
-    </a>
-
 
     <a href="/register" class="navbar-item is-bold {{ Route::currentRouteName() == 'register' ? 'active' : '' }}">
       Register
@@ -87,6 +85,11 @@
             <a href="/order/history" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
               My Orders
             </a>
+
+            <a href="/favorite" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
+              My Favorites
+            </a>
+
 
             <a href="#" class="dropdown-item is-bold">
               Logout
