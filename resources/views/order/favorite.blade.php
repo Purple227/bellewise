@@ -2,161 +2,256 @@
 @extends('layouts.app')
 
 @section('title')
-{{ "Favorite" }}
+{{ "Favourite" }}
 @endsection
 
 @section('content')
 
-
-@extends('layouts.app')
-
-@section('title')
-{{ "Order" }}
-@endsection
-
-@section('content')
-
-<!-- Order section start here -->
 
 <div class="container"> <!-- Container tag open -->
 
+  <!-- Header section -->
   <p class="subtitle is-bold has-text-black has-text-centered is-family-monospace"> 
-   <i class="fas fa-heart green fa-2x"> </i> <br> 
-   Favorite Foods
+   <i class="fas fa-list green fa-2x"> </i> <br> 
+   Favourite List
  </p>
 
 
-<div class="content" style="margin-top: 6%;" > <!-- Content tag open -->
 
-  <div class="columns"> <!-- Columns wrapper tag open -->
+<!-- Search input section -->
+<div class="field has-addons has-addons-centered">
+  <div class="control has-icons-left is-expanded">
+    <input class="input is-primary" type="text" placeholder="Search Favourite Food" autofocus>
+    <span class="icon is-small is-left">
+      <i class="fas fa-search has-text-primary"></i>
+    </span>
+  </div>
+  <div class="control">
+    <a class="button is-primary">
+      Search
+    </a>
+  </div>
+</div>
 
-    <div class="column"> <!-- First column tag open -->
+<div class="columns is-multiline"> <!-- Columns wrapper tag open -->
 
-        <div class="card"> <!-- Card tag open -->
-<a href="/order/demo">
-          <header class="card-header">
-            <p class="card-header-title is-centered is-family-monospace">
-              FOOD NAME
-            </p>
-          </header>
+  <div class="column is-6"> <!-- First Column tag open -->
+    <article class="message is-black">
+      <div class="message-body">
 
+        <article class="media"> <!-- Media article tag open -->
+          <figure class="media-left" >
+            <a href="/order/demo">
+              <p class="image is-128x128">
+                <img src="/images/food-sample.svg">
+              </p>
+            </a>
+          </figure>
 
-          <div class="card-image" style="margin-top: 5px">
-            <figure class="image is-3by1">
-              <img src="/images/food-sample.svg" alt="Image">
-            </figure>
-          </div>
-
-          <div class="card-content">
-            <div class="content has-text-black">
-              A description about the food and blah blah blah blah blah blah blah.
-              <br>
-              <p class="fa has-text-primary is-bold"> By dash restaurant</p>
+          <div class="media-content "> <!-- Media content tag open -->
+            <div class="content">
+              <a href="/order/demo" style="text-decoration: none;">
+                <p class="is-marginless">
+                  <strong> Food Name </strong> 
+                  <br>
+                  Lorem ipsum dolor sit amet, consectetur adip.
+                  <br>
+                  <strong class="fas fa-coins has-text-primary"> <span class="has-text-black" style="text-decoration: line-through;"> N800.00 </span> <span class="has-text-black" style="margin-left: 8px;"s> N750.00 </span> </strong>      
+                </p>
+              </a>
             </div>
-          </div>
 
-        </a>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-star" style="color: red;"></i></span>
+                </a>
+                <a class="level-item">
+                  <button class="button">
+                    <span class="icon is-small">
+                      <i class="fas fa-plus has-text-primary"></i>
+                    </span>
+                    <span class="is-bold">Add</span>
+                  </button>
+                </a>
+              </div>
+            </nav>
 
-          <footer class="card-footer">
-            <a href="/order/demo" class="card-footer-item button is-black is-medium is-bold is-family-monospace"> N750.00  </a>
-
-            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-plus fa-border has-text-primary"></i> </p>
-
-            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-star has-text-danger"> </i>  </p>
-
-          </footer>
-
-        </div> <!-- Card tag close -->
-
-
-    </div> <!-- First column tag close -->
-
-    <div class="column"> <!-- Second column tag open -->
-
-        <div class="card"> <!-- Card tag open -->
-<a href="/order/demo">
-          <header class="card-header">
-            <p class="card-header-title is-centered is-family-monospace">
-              FOOD NAME
-            </p>
-          </header>
+          </div> <!-- Media content tag close -->
 
 
-          <div class="card-image" style="margin-top: 5px">
-            <figure class="image is-3by1">
-              <img src="/images/food-sample.svg" alt="Image">
-            </figure>
-          </div>
+        </article> <!-- Media article tag close -->
 
-          <div class="card-content">
-            <div class="content has-text-black">
-              A description about the food and blah blah blah blah blah blah blah.
-              <br>
-              <p class="fa has-text-primary is-bold"> By dash restaurant</p>
+      </div>
+    </article>
+  </div> <!-- First column tag close -->
+
+  <div class="column is-6"> <!-- Second Column tag open -->
+    <article class="message is-black">
+      <div class="message-body">
+
+        <article class="media"> <!-- Media article tag open -->
+          <figure class="media-left" >
+            <a href="/order/demo">
+              <p class="image is-128x128">
+                <img src="/images/food-sample.svg">
+              </p>
+            </a>
+          </figure>
+
+          <div class="media-content "> <!-- Media content tag open -->
+            <div class="content">
+              <a href="/order/demo" style="text-decoration: none;">
+                <p class="is-marginless">
+                  <strong> Food Name </strong> 
+                  <br>
+                  Lorem ipsum dolor sit amet, consectetur adip.
+                  <br>
+                  <strong class="fas fa-coins has-text-primary"> <span class="has-text-black" style="text-decoration: line-through;"> N800.00 </span> <span class="has-text-black" style="margin-left: 8px;"s> N750.00 </span> </strong>      
+                </p>
+              </a>
             </div>
-          </div>
 
-        </a>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-star" style="color: red;"></i></span>
+                </a>
+                <a class="level-item">
+                  <button class="button">
+                    <span class="icon is-small">
+                      <i class="fas fa-plus has-text-primary"></i>
+                    </span>
+                    <span class="is-bold">Add</span>
+                  </button>
+                </a>
+              </div>
+            </nav>
 
-          <footer class="card-footer">
-            <a href="/order/demo" class="card-footer-item button is-black is-medium is-bold is-family-monospace"> N750.00  </a>
-
-            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-plus fa-border has-text-primary"></i> </p>
-
-            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-star has-text-danger"> </i>  </p>
-
-          </footer>
-
-        </div> <!-- Card tag close -->
-
-
-    </div> <!-- Second column tag open -->
-
-    <div class="column"> <!-- Third column tag open -->
-
-        <div class="card"> <!-- Card tag open -->
-<a href="/order/demo">
-          <header class="card-header">
-            <p class="card-header-title is-centered is-family-monospace">
-              FOOD NAME
-            </p>
-          </header>
+          </div> <!-- Media content tag close -->
 
 
-          <div class="card-image" style="margin-top: 5px">
-            <figure class="image is-3by1">
-              <img src="/images/food-sample.svg" alt="Image">
-            </figure>
-          </div>
+        </article> <!-- Media article tag close -->
 
-          <div class="card-content">
-            <div class="content has-text-black">
-              A description about the food and blah blah blah blah blah blah blah.
-              <br>
-              <p class="fa has-text-primary is-bold"> By dash restaurant</p>
+
+      </div>
+    </article>
+  </div> <!-- Second column tag close -->
+
+
+  <div class="column is-6"> <!-- Third Column tag open -->
+    <article class="message is-black">
+      <div class="message-body">
+
+
+        <article class="media"> <!-- Media article tag open -->
+          <figure class="media-left" >
+            <a href="/order/demo">
+              <p class="image is-128x128">
+                <img src="/images/food-sample.svg">
+              </p>
+            </a>
+          </figure>
+
+          <div class="media-content "> <!-- Media content tag open -->
+            <div class="content">
+              <a href="/order/demo" style="text-decoration: none;">
+                <p class="is-marginless">
+                  <strong> Food Name </strong> 
+                  <br>
+                  Lorem ipsum dolor sit amet, consectetur adip.
+                  <br>
+                  <strong class="fas fa-coins has-text-primary"> <span class="has-text-black" style="text-decoration: line-through;"> N800.00 </span> <span class="has-text-black" style="margin-left: 8px;"s> N750.00 </span> </strong>      
+                </p>
+              </a>
             </div>
-          </div>
 
-        </a>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-star" style="color: red;"></i></span>
+                </a>
+                <a class="level-item">
+                  <button class="button">
+                    <span class="icon is-small">
+                      <i class="fas fa-plus has-text-primary"></i>
+                    </span>
+                    <span class="is-bold">Add</span>
+                  </button>
+                </a>
+              </div>
+            </nav>
 
-          <footer class="card-footer">
-            <a href="/order/demo" class="card-footer-item button is-black is-medium is-bold is-family-monospace"> N750.00  </a>
+          </div> <!-- Media content tag close -->
 
-            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-plus fa-border has-text-primary"></i> </p>
 
-            <p class="card-footer-item button is-black is-medium is-bold is-family-monospace"> <i class="fas fa-star has-text-danger"> </i>  </p>
+        </article> <!-- Media article tag close -->
 
-          </footer>
 
-        </div> <!-- Card tag close -->
+      </div>
+    </article>
+  </div> <!-- Third column tag close -->
 
-    </div> <!-- Third column tag close -->
 
-  </div> <!-- Columns wrapper tag close -->
+    <div class="column is-6"> <!-- Fourth Column tag open -->
+    <article class="message is-black">
+      <div class="message-body">
 
-  
-</div>  <!-- Content tag close -->
 
+        <article class="media"> <!-- Media article tag open -->
+          <figure class="media-left" >
+            <a href="/order/demo">
+              <p class="image is-128x128">
+                <img src="/images/food-sample.svg">
+              </p>
+            </a>
+          </figure>
+
+          <div class="media-content "> <!-- Media content tag open -->
+            <div class="content">
+              <a href="/order/demo" style="text-decoration: none;">
+                <p class="is-marginless">
+                  <strong> Food Name </strong> 
+                  <br>
+                  Lorem ipsum dolor sit amet, consectetur adip.
+                  <br>
+                  <strong class="fas fa-coins has-text-primary"> <span class="has-text-black" style="text-decoration: line-through;"> N800.00 </span> <span class="has-text-black" style="margin-left: 8px;"s> N750.00 </span> </strong>      
+                </p>
+              </a>
+            </div>
+
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-star" style="color: red;"></i></span>
+                </a>
+                <a class="level-item">
+                  <button class="button">
+                    <span class="icon is-small">
+                      <i class="fas fa-plus has-text-primary"></i>
+                    </span>
+                    <span class="is-bold">Add</span>
+                  </button>
+                </a>
+              </div>
+            </nav>
+
+          </div> <!-- Media content tag close -->
+
+
+        </article> <!-- Media article tag close -->
+
+
+      </div>
+    </article>
+  </div> <!-- Fourth column tag close -->
+
+
+</div> <!-- Columns wrapper tag close -->
+
+
+
+<!-- Pagination section -->
 
 <div class="buttons has-addons is-centered">
   <a class="button">
@@ -182,12 +277,12 @@
 
 </div>
 
-</div>  <!-- Container tag close -->
+
+@include('layouts.partials.view_cart')
 
 
 
-@endsection
-
+</div> <!-- Container tag open -->
 
 
 @endsection

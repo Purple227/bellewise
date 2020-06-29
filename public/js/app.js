@@ -58254,7 +58254,9 @@ var app = new Vue({
       payment: false,
       paymentToggle: false,
       confirm: false,
-      orderStatus: false
+      orderStatus: false,
+      faqMenu: false,
+      search: false
     };
   },
   validations: {

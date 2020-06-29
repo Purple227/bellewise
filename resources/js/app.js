@@ -102,6 +102,8 @@ const app = new Vue({
       paymentToggle: false,
       confirm: false,
       orderStatus: false,
+      faqMenu: false,
+      search: false,
 
     }
   },

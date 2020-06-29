@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="box"> <!-- Box container tag open -->
+
 <section class="hero is-primary">
     <div class="hero-body">
         <div class="container">
@@ -146,4 +148,6 @@
 </div>
 </div>
 </div>
+
+</div> <!-- Box container tag close -->
 @endsection

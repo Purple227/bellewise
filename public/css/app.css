@@ -23507,3 +23507,7 @@ readers do not read off random characters that represent icons */
   font-weight: bold;
 }
 
+.center {
+  padding: 50px 0;
+}
+

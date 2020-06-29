@@ -16,7 +16,7 @@
 
       <div class="column is-5">  <!-- First column tag open -->
 
-        <div class="content" >
+        <div class="content" > <!-- Content tag open -->
 
           <p class="subtitle has-text-black is-bold">
            FOOD NAME
@@ -50,15 +50,18 @@
 
         </div>
 
-        <div class="buttons is-centered">
-
-          <a class="button is-primary is-bold is-fullwidth">
-            N750.00
-          </a>
-
+        <div class="buttons has-addons is-centered">
+          <button class="button is-bold" style="text-decoration: line-through;"> N800.00 </button>
+          <button class="button is-bold">750.00</button>
         </div>
 
-      </div>
+        <div class="buttons has-addons is-centered">
+          <button class="button is-bold"> <i class="fas fa-star" style="color: red"></i> </button>
+          <button class="button is-bold"> Add To Cart</button>
+        </div>
+
+
+      </div> <!-- Content tag close -->
 
     </div>  <!-- First column tag close -->
 

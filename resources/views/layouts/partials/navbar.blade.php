@@ -2,7 +2,7 @@
 <nav class="navbar is-transparent">
   <div class="navbar-brand ">
     <a class="navbar-item {{ Route::currentRouteName() == 'welcome' ? 'active' : '' }}"  href="/">
-      <!-- <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28"> --> <span class="subtitle is-bold light-green is-family-sans-serif ">  Belle <span class="green">Wise</span> </span> 
+      <!-- <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28"> --> <span class="subtitle is-bold light-green is-family-sans-serif ">  Belle<span class="green">Wise</span> </span> 
     </a>
 
     <div class="dropdown is-right navbar-item is-hidden-desktop is-hidden-fullhd " v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
@@ -24,11 +24,11 @@
           My Orders
         </a>
 
-        <a href="/favorite" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
+        <a href="/favorite" class="dropdown-item is-bold {{ Route::currentRouteName() == 'favorite' ? 'is-active' : '' }}">
           My Favorites
         </a>
 
-        <a href="/faq" class="dropdown-item is-bold">
+        <a href="#" class="dropdown-item is-bold">
           Logout
         </a>
       </div>
@@ -43,12 +43,16 @@
 <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{ 'is-active': isActive }" @click="addActiveClass">
   <div class="navbar-start">
 
+    <a href="/about" class="navbar-item is-bold {{ Route::currentRouteName() == 'about' ? 'active' : '' }}">
+      About
+    </a>
+
     <a href="/contact" class="navbar-item is-bold {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">
       Contact 
     </a>
 
-    <a href="/about" class="navbar-item is-bold {{ Route::currentRouteName() == 'about' ? 'active' : '' }}">
-      About
+    <a href="/faq" class="navbar-item is-bold {{ Route::currentRouteName() == 'faq' ? 'active' : '' }}">
+      FAQ
     </a>
 
     <a href="/register" class="navbar-item is-bold {{ Route::currentRouteName() == 'register' ? 'active' : '' }}">
@@ -86,7 +90,7 @@
               My Orders
             </a>
 
-            <a href="/favorite" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
+            <a href="/favorite" class="dropdown-item is-bold {{ Route::currentRouteName() == 'favorite' ? 'is-active' : '' }}">
               My Favorites
             </a>
 
@@ -105,3 +109,11 @@
 </div>
 </div>
 </nav>
+
+<div class="notification is-primary is-light is-bold has-text-centered is-hidden-desktop">
+  Delivering to: @{{ address }}
+</div>
+
+<div class="notification is-primary is-light is-bold has-text-centered is-hidden-mobile is-hidden-tablet">
+  Delivering to: address will be getting from the user registration dettails on desktop
+</div>

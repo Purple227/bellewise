@@ -150,40 +150,46 @@
 
 
  						<hr>
- 						<strong class="is-size-5"> Order Details </strong>
+ 						<strong class="is-size-6"> Order Details </strong>
  						<br>
- 						<strong class="is-size-5"> Order ID: #564328 </strong>
+ 						<strong class="is-size-6"> Order ID: #564328 </strong>
 
 
  						<br>
  						<br>
 
  						<div class="">
- 							<p class="subtitle  is-inline">Order</p> 
- 							<p class="subtitle is-inline is-pulled-right">N2750.00</p> 
+ 							<p class="is-bold is-inline">Order</p> 
+ 							<p class="is-bold is-inline is-pulled-right">N2750.00</p> 
  						</div>
  						<br>
  						<div class="">
- 							<p class="subtitle is-inline">Delivery</p> 
- 							<p class="subtitle is-inline is-pulled-right">N500.00</p> 
+ 							<p class="is-bold is-inline">Delivery</p> 
+ 							<p class="is-bold is-inline is-pulled-right">N500.00</p> 
  						</div>
  						<br>
  						<div class="">
- 							<p class="subtitle is-inline"> Summary</p> 
- 							<p class="subtitle is-inline is-pulled-right">N3250.00</p> 
+ 							<p class="is-bold is-inline"> Summary</p> 
+ 							<p class="is-bold is-inline is-pulled-right">N3250.00</p> 
  						</div>
 
-<hr>
+ 						<hr>
 
-
-
-
+ 						<div class="">
+ 							<p class="is-inline is-bold"> Payment Method</p> 
+ 							<p class="is-inline is-bold is-pulled-right"> On Delivery</p> 
+ 						</div>
+ 						<br>
+ 						<div class="">
+ 							<p class="is-bold is-inline"> Placed </p> 
+ 							<p class="is-bold is-inline is-pulled-right"> May 11 Mon, 07:44PM  </p> 
+ 						</div>
 
  					</div>
  				</div>
- 				<footer class="card-footer">
+<!--  				<footer class="card-footer">
  					<a href="/contact" class="card-footer-item is-bold has-text-black"> Contact Us </a>
- 				</footer>
+ 				</footer> -->
  			</div>
 
  		</div>
