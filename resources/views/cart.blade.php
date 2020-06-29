@@ -129,9 +129,9 @@
 						</div> <!-- Notifacatin tag close -->
 
 						<div class="">
-							<p class="subtitle  is-inline"> Set Delivery Time</p> 
+							<p class="subtitle  is-inline"> Set Delivery Time:</p> 
 							<!--p class="subtitle is-inline is-pulled-right">N2750.00</p-->
-							<button ref='calendarTrigger' data-display-mode="dialog" type='button' class="">Change</button> 
+							<input class="slider is-fullwidth is-large is-inline is-pulled-right is-marginless is-paddingless" step="1" min="0" max="100" value="50" type="range">
 						</div>
 						<br>
 

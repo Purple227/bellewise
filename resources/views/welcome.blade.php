@@ -31,6 +31,8 @@
 					 Fast and efficient.
 				</p>
 
+        <a href="/shop" class="button is-black is-bold is-medium"> Order Food Now </a>
+
 			</div>
 
 		</div>  <!-- First column tag close -->
@@ -116,19 +118,6 @@ We'll handle the rest.
 
 </div> <!-- First column tag close -->
 
-<div class="column is-6"> <!-- Second column tag open -->
-
-<div class="box" style="padding: 45px;">
-  <p class="is-bold has-text-black has-text-centered "> 
-   <i class="fas fa-hand-pointer has-text-primary fa-6x"> </i> <br> 
-   Easy to use, order
-   <br>
-    within 3 clicks.
- </p>
-</div>
-
-</div> <!-- Second column tag close -->
-
 <div class="column is-6"> <!-- Third column tag open -->
 
 <div class="box" style="padding: 45px;">
@@ -168,7 +157,7 @@ We'll handle the rest.
 
 </div> <!-- Fifth column tag close -->
 
-<div class="column is-6"> <!-- Sixth column tag open -->
+<div class="column"> <!-- Sixth column tag open -->
 
 <div class="box" style="padding: 45px;">
   <p class="is-bold has-text-black has-text-centered "> 
@@ -185,7 +174,8 @@ We'll handle the rest.
 
   <p class="subtitle is-bold has-text-black has-text-centered is-family-monospace"> 
    Try it out today
-   <button class="button is-primary is-bold"> Order Food Now</button>
+   <br>
+   <a href="/shop" class="button is-primary is-bold"> Order Food Now</a>
  </p>
 
 
