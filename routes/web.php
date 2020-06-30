@@ -26,6 +26,7 @@ Route::get('/about', 'AboutController@about')->name('about');
 
 Route::get('/contact', 'ContactController@contact')->name('contact');
 
+Route::get('/shop', 'ShopController@shop')->name('shop');
 
 Route::get('/order', 'OrderController@order')->name('order');
 Route::get('/order/demo', 'OrderController@single')->name('single_order');
@@ -36,7 +37,6 @@ Route::get('/track-order', 'OrderController@track')->name('track');
 Route::get('/cart', 'CartController@cart')->name('cart');
 
 
-Route::get('/shop', 'ShopController@shop')->name('shop');
 
 
 Route::get('/faq', 'FAQController@index')->name('faq');

@@ -88,7 +88,7 @@
 
 
     <div class="column ">
-      <a href="/order" class="button is-black is-bold is-pulled-right is-medium"> <span class="fa"> Place Order </span> </a>
+      <a href="/shop" class="button is-black is-bold is-pulled-right is-medium"> <span class="fa"> Place Order </span> </a>
     </div>
 
   </div> <!-- Columns wrapper tag close -->
