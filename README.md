@@ -7,15 +7,6 @@ Bellewise is a food plug that get all your favorite meal from any restaurant and
 
 ![](/public/images/screenshot/Home.png)
 
-![](/public/images/screenshot/About.png)
-
-![](/public/images/screenshot/Contact.png)
-
-![](/public/images/screenshot/Restaurant.png)
-
-![](/public/images/screenshot/Order-item.png)
-
-![](/public/images/screenshot/Single.png)
 
 
 
@@ -23,7 +14,7 @@ Bellewise is a food plug that get all your favorite meal from any restaurant and
 
 How to install my app 
 
-1) git clone https://github.com/Purple227/service-delivery.git
+1) git clone https://github.com/Purple227/bellewise
 
 2) cd into clone folder
 
@@ -36,3 +27,5 @@ How to install my app
 6) set up your respective database
 
 7) php artisan migrate
+
+7) php artisan serve

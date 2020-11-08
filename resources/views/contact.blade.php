@@ -14,7 +14,7 @@
 
 		<div class="columns"> <!-- Columns wrapper tag open -->
 
-			<div class="column is-9"> <!-- First column tag open -->
+			<div class="column is-8"> <!-- First column tag open -->
 
 				<div class="content iframe-container">
 
@@ -25,7 +25,7 @@
 			</div>  <!-- First column tag close -->
 
 
-			<div class="column is-3"> <!-- Second column tag open -->
+			<div class="column is-4"> <!-- Second column tag open -->
 
 
 				<div class="box"> <!-- Content tag open -->
@@ -36,13 +36,13 @@
 
 					<br>
 
-					<span class="icon has-text-primary is-medium">
+					<span class="icon has-text-info is-medium">
 						<i class="fab fa-facebook-f fa-lg"></i>
 					</span>
-					<span class="icon has-text-primary is-medium" style="margin-left: 28px;">
+					<span class="icon has-text-link	 is-medium" style="margin-left: 28px;">
 						<i class="fab fa-twitter fa-lg"></i>
 					</span>
-					<span class="icon has-text-primary is-medium" style="margin-left: 28px;">
+					<span class="icon has-text-warning is-medium" style="margin-left: 28px;">
 						<i class="fab fa-instagram fa-lg"></i>
 					</span>
 
@@ -60,24 +60,26 @@
 
 					<div class="field">
 						<div class="control has-icons-left has-icons-right">
-							<input class="input is-black" type="Email" placeholder="Email">
+							<input class="input is-black" type="Email" placeholder="Email" v-model="contact.email">
 							<span class="icon is-small is-left">
-								<i class="fas fa-envelope has-text-primary"></i>
+								<i class="fas fa-envelope light-orange"></i>
 							</span>
 							<span class="icon is-small is-right">
-								<i class="fas fa-exclamation-triangle has-text-danger"></i>
+								<i class="fas fa-exclamation-triangle has-text-danger" v-if="$v.contact.email.$invalid"> </i>
+								<i class="fas fa-check orange" v-else> </i>
 							</span>
 						</div>
 					</div>
 
 					<div class="field">
 						<div class="control has-icons-right has-icons-left">
-							<input class="input is-black" type="text" placeholder="Subject">
+							<input class="input is-black" type="text" placeholder="Subject" v-model="contact.subject">
 							<span class="icon is-small is-left">
-								<i class="fas fa-heading has-text-primary"></i>
+								<i class="fas fa-heading light-orange"></i>
 							</span>
 							<span class="icon is-small is-right">
-								<i class="fas fa-exclamation-triangle has-text-danger"></i>
+								<i class="fas fa-check orange" v-if="$v.contact.subject.required"> </i>
+								<i class="fas fa-exclamation-triangle has-text-danger" v-else> </i>
 							</span>
 						</div>
 					</div>
@@ -85,13 +87,20 @@
 
 					<div class="field">
 						<div class="control">
-							<textarea class="textarea is-black" placeholder="Message"></textarea>
+							<textarea class="textarea is-black" placeholder="Message" v-model="contact.message"></textarea>
 						</div>
+						<p class="help is-danger is-bold" v-if="$v.contact.message.required">
+							You straight
+						</p>
+
+						<p class="help orange is-bold" v-else>
+							Field required
+						</p>
 					</div>
 
 					<div class="field">
 						<div class="control">
-							<button class="button is-primary">SEND</button>
+							<button class="button bg-orange is-bold has-text-black" v-bind:class="{ 'orange': contact.loader  }" :disabled="$v.contact.$invalid">SEND</button>
 						</div>
 					</div>
 
@@ -108,9 +117,9 @@
 
 
 					<p class="is-bold is-marginless">
-						<i class="fas fa-envelope has-text-primary"> <span class="has-text-black"> belle-wise@gmail.com </span> </i>
+						<i class="fas fa-envelope light-orange"> <span class="has-text-black"> bellewiselogistics@gmail.com </span>  </i>
 						<p class="is-bold">
-							<i class="fas fa-phone has-text-primary"> <span class="has-text-black"> +234XXXXXXXXXX </span> </i>
+							<i class="fas fa-phone light-orange"> <span class="has-text-black"> +234XXXXXXXXXX </span> </i>
 						</p>
 					</p>
 

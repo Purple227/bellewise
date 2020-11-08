@@ -16,7 +16,7 @@
 
 // Import bulma calendar
 @import '~bulma-calendar/dist/css/bulma-calendar.min.css';
-
+@import "~bulma-pageloader/dist/css/bulma-pageloader.min.css";
 @import "~bulma-o-steps/bulma-steps.min";
 
 // Fontawesome icons and web font
@@ -35,24 +35,26 @@
 
 .active
 {
-	border-top: solid 2px $black;
+	border-top: solid 2px $orange;
 	transition: 500ms;
+}
+
+.verification-hero, .terms-hero, .register-hero, .login-hero, .restaurant-hero
+{
+  background-color: $orange;
+  margin-top: 25px;
 }
 
 .footer
 {
-	background-color: $honey-dew;
+	background-color: $light-salmon;
 	margin-top: 15px;
-}
-
-.container
-{
-	margin-top: 45px;
+  border-radius: 2px solid $light-salmon;
 }
 
 .welcome-container
 {
-	padding: 45px;
+	padding: 35px;
 }
 
 .shop
@@ -60,10 +62,6 @@
   cursor: pointer;
 }
 
-.bg-light-green
-{
-	background-color: $light-green;
-}
 
 .iframe-container {
   position: relative;
@@ -106,21 +104,6 @@
   margin: 20px;
 }
 
-.green
-{
-	color: $green;
-}
-
-.bg-green
-{
-	background-color: $green;
-}
-
-.light-green
-{
-	color: $light-green;
-}
-
 .is-bold
 {
 	font-weight: bold;
@@ -128,5 +111,40 @@
 
 .center {
   padding: 50px 0;
+}
+
+.orange
+{
+  color: $orange;
+}
+
+.light-orange
+{
+  color: $light-salmon;
+}
+
+.deep-grey
+{
+  color: $deep-grey;
+}
+
+.bg-orange
+{
+  background-color: $orange;
+}
+
+.bg-deep-grey
+{
+  background-color: $deep-grey;
+}
+
+.bg-light-orange
+{
+  background-color: $light-salmon;
+}
+
+.cursor
+{
+  cursor: pointer;
 }
 

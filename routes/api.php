@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::patch('verification/{id}', 'VerifyController@checkVerification');
+Route::post('resend-code/', 'VerifyController@resendCode');
+
+Route::apiResources([
+    'user' => 'UserController',
+]);

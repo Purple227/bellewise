@@ -50,3 +50,15 @@
                 </div>
             </div>
         </nav>
+
+
+
+
+
+@prepend('register_scripts')
+<script defer >
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMMvXXoWKcvj12iqduwt5l294fLPBsuaM&libraries=places&callback=getPlaceAddress">
+</script>
+@endprepend 
+
+        //let input = document.querySelector('.set-address').value = 'Lugbe'

@@ -15,4 +15,6 @@
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+	@stack('register_address_field_style')
+
 </head>

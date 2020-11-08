@@ -1,119 +1,80 @@
 
-<nav class="navbar is-transparent">
-  <div class="navbar-brand ">
-    <a class="navbar-item {{ Route::currentRouteName() == 'welcome' ? 'active' : '' }}"  href="/">
-      <!-- <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28"> --> <span class="subtitle is-bold light-green is-family-sans-serif ">  Belle<span class="green">Wise</span> </span> 
-    </a>
 
-    <div class="dropdown is-right navbar-item is-hidden-desktop is-hidden-fullhd " v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
-      <button class="button is-primary">
-        <i class="fas fa-user has-text-white"></i>
-      </span>      <span class="icon is-small">
-        <i class="fas fa-angle-down has-text-white"></i>
-      </span>
-    </button>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-      <div class="dropdown-content">
+<nav class="navbar" role="navigation" aria-label="main navigation" aria-label="dropdown navigation">
 
-        <a href="/track-order" class="dropdown-item is-bold {{ Route::currentRouteName() == 'track' ? 'is-active' : '' }}">
-          Track Order
-        </a>
+  <div class="navbar-brand">
 
-
-        <a href="/order/history" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
-          My Orders
-        </a>
-
-        <a href="/favorite" class="dropdown-item is-bold {{ Route::currentRouteName() == 'favorite' ? 'is-active' : '' }}">
-          My Favorites
-        </a>
-
-        <a href="#" class="dropdown-item is-bold">
-          Logout
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="navbar-burger burger" data-target="navbarExampleTransparentExample" v-bind:class="{ 'is-active': isActive }"  @click="addActiveClass">
-    <span class="fas fa-bars has-text-success"></span>
-  </div>
-</div>
-
-<div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{ 'is-active': isActive }" @click="addActiveClass">
-  <div class="navbar-start">
-
-    <a href="/about" class="navbar-item is-bold {{ Route::currentRouteName() == 'about' ? 'active' : '' }}">
-      About
-    </a>
-
-    <a href="/contact" class="navbar-item is-bold {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">
-      Contact 
-    </a>
-
-    <a href="/faq" class="navbar-item is-bold {{ Route::currentRouteName() == 'faq' ? 'active' : '' }}">
-      FAQ
-    </a>
-
-    <a href="/register" class="navbar-item is-bold {{ Route::currentRouteName() == 'register' ? 'active' : '' }}">
-      Register
-    </a>
-
-    <a href="/login" class="navbar-item is-bold {{ Route::currentRouteName() == 'login' ? 'active' : '' }}">
-      Login
+    <a class="navbar-item" href="/">
+      <img src="/images/logo.webp" width="112" height="28">
     </a>
 
 
+    <div class="dropdown has-dropdown navbar-item is-hidden-desktop" v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
 
-  </div>
-
-  <div class="navbar-end">
-
-    <div class="navbar-item">
-      <div class="field is-grouped is-hidden-mobile">
-
-        <div class="dropdown is-right" v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
-          <button class="button is-primary">
-            <i class="fas fa-user has-text-white"></i>
-          </span>      <span class="icon is-small">
-            <i class="fas fa-angle-down has-text-white"></i>
+      <div class="dropdown-trigger">
+        <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span class="fas fa-user orange"></span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down light-orange" aria-hidden="true"></i>
           </span>
         </button>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
+      </div>
 
-            <a href="/track-order" class="dropdown-item is-bold {{ Route::currentRouteName() == 'track' ? 'is-active' : '' }}">
-              Track Order
-            </a>
-
-            <a href="/order/history" class="dropdown-item is-bold {{ Route::currentRouteName() == 'history' ? 'is-active' : '' }}">
-              My Orders
-            </a>
-
-            <a href="/favorite" class="dropdown-item is-bold {{ Route::currentRouteName() == 'favorite' ? 'is-active' : '' }}">
-              My Favorites
-            </a>
-
-
-            <a href="#" class="dropdown-item is-bold">
-              Logout
-            </a>
-
-          </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item">
+            Dropdown item
+          </a>
+          <a class="dropdown-item">
+            Other dropdown item
+          </a>
+          <a href="#" class="dropdown-item is-active">
+            Active dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Other dropdown item
+          </a>
         </div>
       </div>
 
     </div>
+
+
+    <a role="button" class="navbar-burger burger navbar-item is-hidden-desktop" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" v-bind:class="{ 'is-active': isActive }"  @click="addActiveClass">
+      <i class="fa fa-bars fa-lg orange is-bold" aria-hidden="true"></i>
+    </a>
+
+
   </div>
 
-</div>
-</div>
+  <div id="navbarBasicExample" class="navbar-menu" v-bind:class="{ 'is-active': isActive }" @click="addActiveClass">
+    <div class="navbar-start">
+
+      <a class="navbar-item is-bold {{ Route::currentRouteName() == 'welcome' ? 'active' : '' }}"  href="/">
+        Home
+      </a>
+
+      <a class="navbar-item is-bold {{ Route::currentRouteName() == 'about' ? 'active' : '' }}"  href="/about">
+        About
+      </a>
+
+      <a class="navbar-item is-bold {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}"  href="/contact">
+        Contact
+      </a>
+    </div>
+
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a href="/register" class="button bg-orange">
+            <span class="is-bold has-text-white"> Sign up </span> 
+          </a>
+          <a href="/login" class="button is-light">
+            <span class="is-bold orange"> Log in </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
-
-<div class="notification is-primary is-light is-bold has-text-centered is-hidden-desktop">
-  Delivering to: @{{ address }}
-</div>
-
-<div class="notification is-primary is-light is-bold has-text-centered is-hidden-mobile is-hidden-tablet">
-  Delivering to: address will be getting from the user registration dettails on desktop
-</div>

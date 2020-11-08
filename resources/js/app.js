@@ -14,6 +14,8 @@
  import VueGeolocation from 'vue-browser-geolocation';
  import * as VueGoogleMaps from 'vue2-google-maps';
  import Vuelidate from 'vuelidate';
+ import VuePlaceAutocomplete from 'vue-place-autocomplete';
+
 
 
  Vue.use(VueGoogleMaps, {
@@ -30,19 +32,7 @@
  Vue.use(VueGeolocation);
  Vue.use(VueAxios, axios);
  Vue.use(Vuelidate);
-
- import moment from 'moment'
- Vue.prototype.moment = moment
-//Vue.use(require('vue-moment'));
-Vue.filter('format', function (value, display) {
-  if (!value) return ''
-    return moment(value).format(display);
-})
-
-Vue.filter('characterCounter', function (value) {
-  if (!value) return 0
-    return value.length;
-})
+ Vue.use(VuePlaceAutocomplete);
 
 
 // Registering components locally e.g below
@@ -68,7 +58,7 @@ const app = new Vue({
         lat: 0,
         lng: 0,
         status: null,
-      },   
+      },  
 
       confirmDetails: {
         name: 'Customer Registered Name',
@@ -76,18 +66,36 @@ const app = new Vue({
         address: null,
       },
 
+      verification: {
+        code: null,
+        loader: false,
+        errors: null,
+        resendCode: false,
+      },
+
       registerDetails: {
-        name: "Purple Cole",
-        email: "Purple@gmail.com",
-        phone: '080XXXXXXXX',
+        name: " ",
+        email: null,
+        phone: null,
         password: null,
         passwordConfirmation: null,
-        address: "",
+        address: " ",
+        countryCode: '234',
+        loader: false,
+        errors: null,
+        status: null,
       },
 
       loginDetails: {
         emial: null,
         password: null,
+      },
+
+      contact: {
+        emial: null,
+        subject: null,
+        message: null,
+        loader: false,
       },
 
       details: false,
@@ -108,134 +116,187 @@ const app = new Vue({
     }
   },
 
+
   validations: { // Validation calibrace open
 
-    confirmDetails: { // Form calibrace open
+    registerDetails: {
+
       name: {
         required,
         maxLength: maxLength(30)
       },
-      phone: {
-        required,
-        minLength: minLength(11),
-        maxLength: maxLength(11)
-      },
+
       address: {
         required,
-        minLength: minLength(6)
       },
-    }, // Form calibrace close
 
-
-    registerDetails: {
-      name: {
-        required,
-        maxLength: maxLength(30)
-      },
       email: {
         required,
         email,
         maxLength: maxLength(255)
       },
-      address: {
-        required,
-        minLength: minLength(6)
-      },
       
       phone: {
         required,
-        minLength: minLength(11),
-        maxLength: maxLength(11)
+        minLength: minLength(10),
+        maxLength: maxLength(10)
       },
 
       password: {
         required,
         minLength: minLength(6)
       },
+
       passwordConfirmation: {
         sameAsPassword: sameAs('password')
       },
+
     }, // RegistrationDetails calibrace closes
 
-    loginDetails: {
+
+    loginDetails: { //LoinDetails calibrace open
+
       email: {
         required,
         email,
       },
+
       password: {
         required,
         minLength: minLength(6)
       },
-    },
 
-    address: {
-      required,
-      minLength: minLength(6)
-    },
+    }, //Loindetails calibrace close
 
-    email: {
-      required,
-      email,
-    },
+      contact: { //Contact calibrace open
+
+        email: {
+          required,
+          email
+        },
+
+        subject: {
+          required,
+        },
+
+        message: {
+          required,
+        }
+
+      }, //Contact calibrace closes
+
+
+    verification: { //Verification calibrace open
+
+      code: {
+        required,
+        minLength: minLength(4),
+        maxLength: maxLength(4)
+      }
+
+    } //Verification calibrace close
+
 
   }, // Validation calibrace close
 
-  mounted() {
+
+
+  created() {
     this.getUserLoctionInfo()
     this.bulmaCalendar()
   },
 
   methods: { //Method calibrace open
 
-    addActiveClass() {
-      this.isActive = !this.isActive;
-    },
+    verifyMethod() { // Verify method calibrace open 
 
-    openDropDown() {
-      this.isDropDown = !this.isDropDown;
-    },
+      this.verification.loader = true
+      let self = this
 
-    bulmaCalendar() {
-      const calendar = bulmaCalendar.attach(this.$refs.calendarTrigger, {
-        startDate: this.date,
-      })[0]
-      calendar.on('date:selected', e => (this.date = e.start || null))
-    },
+      Vue.axios.patch('/api/verification/' + window.localStorage.getItem('userId'), {
+        code: this.verification.code.toString(),
+        user_verification_id: window.localStorage.getItem('userVerificationId').toString(),
+        password: window.localStorage.getItem('userPassword'),
+        email: window.localStorage.getItem('userEmail'),
+      }).then((response) => {
+        window.localStorage.removeItem('userPassword')
+        window.localStorage.removeItem('userEmail')
+      }).catch(error=>{
+        self.verification.loader = false
+        self.verification.errors = 'Incorrect code'
+      })
 
-    getUserLoctionInfo() {
-      this.$getLocation({
+  }, // Verify method calibrace close
+
+  resendCode() {
+
+      let self = this
+
+      Vue.axios.patch('/api/resend-code', {
+        user_verification_id: window.localStorage.getItem('userPhone').toString(),
+      }).then((response) => {
+        self.verification.errors = 'Code resend successful'
+      }).catch(error=>{
+        self.verification.errors = 'Please wait for atleast a minute before resending code'
+      })
+
+  },
+
+  registerPostMethod() {
+    this.registerDetails.loader = true
+    let self = this
+    Vue.axios.post('/api/user', {
+      name: this.registerDetails.name,
+      address: this.registerDetails.address,
+      phone: this.registerDetails.countryCode + this.registerDetails.phone,
+      password: this.registerDetails.password,
+      email: this.registerDetails.email
+    })
+    .then(function (response) {
+      window.localStorage.setItem('userId', response.data.user_id)
+      window.localStorage.setItem('userVerificationId', response.data.user_verification_id)
+      window.localStorage.setItem('userPhone', response.data.user_phone)
+      window.localStorage.setItem('userPassword', response.data.user_password)
+      window.localStorage.setItem('userEmail', response.data.user_email)
+      window.location ='/verification'
+    })
+    .catch(function (error) {
+      self.registerDetails.loader = false
+      self.registerDetails.errors = error.response.data
+    });
+
+  },
+
+  addActiveClass() {
+    this.isActive = !this.isActive;
+  },
+
+  openDropDown() {
+    this.isDropDown = !this.isDropDown;
+  },
+
+  bulmaCalendar() {
+    const calendar = bulmaCalendar.attach(this.$refs.calendarTrigger, {
+      startDate: this.date,
+    })[0]
+    calendar.on('date:selected', e => (this.date = e.start || null))
+  },
+
+  getUserLoctionInfo() {
+    this.$getLocation({
         enableHighAccuracy: true, //defaults to false
       })
-      .then(coordinates => {
-        this.coordinates.lat = coordinates.lat
-        this.coordinates.lng = coordinates.lng
-      })
-      .catch(function (error) {
-        this.coordinates.status = 'Pls Allow Location Permission'
-      })
+    .then(coordinates => {
+      this.coordinates.lat = coordinates.lat
+      this.coordinates.lng = coordinates.lng
+    })
+    .catch(function (error) {
+      this.coordinates.status = 'Pls Allow Location Permission'
+    })
 
-      setTimeout(() => { // Timeout calibrace open 
-        this.axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + this.coordinates.lat + "," + this.coordinates.lng + "&key=AIzaSyDMMvXXoWKcvj12iqduwt5l294fLPBsuaM", true)
-        .then((response) => {
-          console.log(response)
-          console.log(response.data.results[0].formatted_address)
-// Ideally you'd search for the index with type = sublocality in address_components
-this.address = response.data.results[0].formatted_address
-console.log(" Your address is" + this.address);
-})
- }, 800) // Timeout calibrace close
-
-    },
+  },
 
   }, //Method calibrace close
 
-  computed: {
-    niceDate() {
-      if (this.date) {
-        return this.date.toLocaleDateString()
-      }
-    },
-
-  }, 
 
 });

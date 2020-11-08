@@ -21,8 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/verification', 'VerifyController@verify')->name('verify');
 
-Route::get('/about', 'AboutController@about')->name('about');
+Route::get('/about', 'PageController@about')->name('about');
+Route::get('/terms', 'PageController@terms')->name('terms');
+Route::get('/policy', 'PageController@policy')->name('policy');
 
 Route::get('/contact', 'ContactController@contact')->name('contact');
 

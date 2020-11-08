@@ -11,7 +11,7 @@
 	<div class="box"> <!-- Box container tag open -->
 
 		<!-- Second section -->
-		<div class="column is-half is-offset-one-quarter"> <!-- is half column tag open -->
+		<div class="column is-half-desktop is-offset-one-quarter-desktop"> <!-- is half column tag open -->
 
 			<div class="card">
 				<header class="card-header">

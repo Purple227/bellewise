@@ -54,7 +54,7 @@
 
 
     <div class="box" style="padding: 15px;">
-      <p class="subtitle is-bold is-marginless"> <i class="fas fa-shield-alt light-green"> <span class="has-text-black"> Trust </span> </i>
+      <p class="subtitle is-bold is-marginless"> <i class="fas fa-shield-alt orange"> <span class="has-text-black"> Trust </span> </i>
         <p class=" fa">
           We work on creating trust which can only be nurtured through authencity and trasparency.
         </p>
@@ -69,7 +69,7 @@
 
 
 
-<div class="notification bg-green has-text-black" > <!-- Notification 
+<div class="notification bg-orange has-text-white" > <!-- Notification 
   tag open -->
 
   <div class="columns" style="padding: 30px;"> <!-- Columns wrapper tag open -->

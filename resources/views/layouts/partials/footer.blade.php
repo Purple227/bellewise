@@ -29,7 +29,7 @@
 				</p>
 
 				<ul>
-					<li> <a href="#" class="has-text-black"> Career </a> </li>
+					<li> <a href="/" class="has-text-black"> Home </a> </li>
 					<li> <a href="/about" class="has-text-black"> About </a> </li>
 					<li> <a href="/contact" class="has-text-black"> Contact Us </a> </li>
 				</ul>
@@ -44,8 +44,8 @@
 				</p>
 
 				<ul>
-					<li> <a href="#" class="has-text-black"> Terms & Condition </a> </li>
-					<li> <a href="#" class="has-text-black"> Privacy Policy </a> </li>
+					<li> <a href="/terms" class="has-text-black"> Terms & Condition </a> </li>
+					<li> <a href="/policy" class="has-text-black"> Privacy Policy </a> </li>
 				</ul>
 				
 			</div>		
