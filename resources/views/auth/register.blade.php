@@ -184,7 +184,7 @@
     <div class="field-body">
         <div class="field is-grouped">
             <div class="control">
-                <button type="submit" class="button bg-orange is-bold" :disabled="$v.registerDetails.$invalid" @click="registerPostMethod"> Register </button>
+                <button type="submit" class="button bg-orange is-bold" v-bind:class="{ 'is-loading': registerDetails.loader }" :disabled="$v.registerDetails.$invalid" @click="registerPostMethod"> Register </button>
             </div>
         </div>
     </div>

@@ -208,10 +208,8 @@ const app = new Vue({
   methods: { //Method calibrace open
 
     verifyMethod() { // Verify method calibrace open 
-
       this.verification.loader = true
       let self = this
-
       Vue.axios.patch('/api/verification/' + window.localStorage.getItem('userId'), {
         code: this.verification.code.toString(),
         user_verification_id: window.localStorage.getItem('userVerificationId').toString(),
@@ -229,9 +227,7 @@ const app = new Vue({
   }, // Verify method calibrace close
 
   resendCode() {
-
       let self = this
-
       Vue.axios.post('/api/resend-code', {
         user_phone: window.localStorage.getItem('userPhone').toString(),
       }).then((response) => {
@@ -243,8 +239,8 @@ const app = new Vue({
   },
 
   registerPostMethod() {
-    this.registerDetails.loader = true
     let self = this
+    self.registerDetails.loader = true
     Vue.axios.post('/api/user', {
       name: this.registerDetails.name,
       address: this.registerDetails.address,

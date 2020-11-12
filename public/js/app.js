@@ -45659,8 +45659,8 @@ var app = new Vue({
       });
     },
     registerPostMethod: function registerPostMethod() {
-      this.registerDetails.loader = true;
       var self = this;
+      self.registerDetails.loader = true;
       Vue.axios.post('/api/user', {
         name: this.registerDetails.name,
         address: this.registerDetails.address,
