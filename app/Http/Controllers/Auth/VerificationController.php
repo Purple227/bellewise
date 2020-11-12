@@ -3,40 +3,64 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
+use Nexmo\Client\Credentials\Basic;
+use Nexmo\Client;
+use Nexmo\Verify\Verification;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class VerificationController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Email Verification Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling email verification for any
-    | user that recently registered with the application. Emails may also
-    | be re-sent if the user didn't receive the original email message.
-    |
-    */
 
-    use VerifiesEmails;
 
-    /**
-     * Where to redirect users after verification.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function checkVerification(Request $request, $id) // Check validaton method calibrace open
     {
-        $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
-        $this->middleware('throttle:6,1')->only('verify', 'resend');
+        $user = User::find($id);
+
+        $basic  = new Basic('e1ee698d', '3vsIsgixcRp5bmRM');
+        $client = new Client($basic);
+
+        $request_id = (string) $request->user_verification_id;
+        $verification = new Verification($request_id);
+        $result = $client->verify()->check($verification, (string) $request->code);
+
+        $status = $result->getResponseData();
+
+
+        if ($status[status] == 0 ) 
+        {
+            $user->verify = true;
+            $user->save();
+            $credentials = $request->only('email', 'password');
+
+            if (Auth::attempt($credentials)) {
+            // Authentication passed...
+                return response()->json( redirect()->intended() );
+            }
+
+        }
+
+
+    } // Check validaton method calibrace close
+
+    public function verify()
+    {
+        return view('auth.verify_sms');
     }
+
+    public function resendCode(Request $request)
+    {
+
+        $credentials = new Basic('e1ee698d', '3vsIsgixcRp5bmRM');
+        $user_credentials = new Client($credentials);
+
+        $verification = $user_credentials->verify()->start([ 
+            'number' => (string) $request->user_phone,
+            'brand'  => 'Bellewisefoods',
+            'code_length'  => '4']); 
+    }
+
+
+
 }

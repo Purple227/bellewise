@@ -9,9 +9,9 @@
 	<div class="columns is-mobile">
 		<div class="column is-half-desktop is-offset-one-quarter-desktop">
 
-			<div class="notification bg-light-orange" v-if="verification.errors">
-				<button class="delete" @click="verification.errors = false"></button>
-				Primar lorem ipsum dolor sit amet, consectetur
+			<div class="notification bg-light-orange" v-if="verification.status">
+				<button class="delete" @click="verification.status = false"></button>
+				@{{ verification.status }}
 			</div>
 
 			<section class="hero verification-hero box">
@@ -37,7 +37,7 @@
 					</div>
 				</div>
 
-				<p class="is-bold has-text-centered cursor is-inline center" @click="resendCode"> RESEND CODE </p>
+				<p class="is-bold has-text-centered cursor is-inline center" @click="resendCode"> REQUEST CODE </p>
 
 				<br>
 

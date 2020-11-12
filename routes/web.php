@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/verification', 'VerifyController@verify')->name('verify');
+Route::get('/verification', 'Auth\VerificationController@verify')->name('verify');
 
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/terms', 'PageController@terms')->name('terms');

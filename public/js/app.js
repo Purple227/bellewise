@@ -45519,7 +45519,7 @@ var app = new Vue({
       verification: {
         code: null,
         loader: false,
-        errors: null,
+        status: null,
         resendCode: false
       },
       registerDetails: {
@@ -45531,7 +45531,7 @@ var app = new Vue({
         address: " ",
         countryCode: '234',
         loader: false,
-        errors: null,
+        errors: {},
         status: null
       },
       loginDetails: {
@@ -45626,7 +45626,6 @@ var app = new Vue({
   // Validation calibrace close
   created: function created() {
     this.getUserLoctionInfo();
-    this.bulmaCalendar();
   },
   methods: {
     //Method calibrace open
@@ -45642,20 +45641,21 @@ var app = new Vue({
       }).then(function (response) {
         window.localStorage.removeItem('userPassword');
         window.localStorage.removeItem('userEmail');
+        window.location = '/';
       })["catch"](function (error) {
         self.verification.loader = false;
-        self.verification.errors = 'Incorrect code';
+        self.verification.status = " Error Processing code try again or request a new code in 380 seconds";
       });
     },
     // Verify method calibrace close
     resendCode: function resendCode() {
       var self = this;
-      Vue.axios.patch('/api/resend-code', {
-        user_verification_id: window.localStorage.getItem('userPhone').toString()
+      Vue.axios.post('/api/resend-code', {
+        user_phone: window.localStorage.getItem('userPhone').toString()
       }).then(function (response) {
         self.verification.errors = 'Code resend successful';
       })["catch"](function (error) {
-        self.verification.errors = 'Please wait for atleast a minute before resending code';
+        self.verification.status = 'Please wait for atleast 380 seconds before requesting a new code.';
       });
     },
     registerPostMethod: function registerPostMethod() {
@@ -45685,26 +45685,15 @@ var app = new Vue({
     openDropDown: function openDropDown() {
       this.isDropDown = !this.isDropDown;
     },
-    bulmaCalendar: function bulmaCalendar() {
-      var _this = this;
-
-      var calendar = bulma_calendar_dist_js_bulma_calendar_min_js__WEBPACK_IMPORTED_MODULE_6___default.a.attach(this.$refs.calendarTrigger, {
-        startDate: this.date
-      })[0];
-
-      calendar.on('date:selected', function (e) {
-        return _this.date = e.start || null;
-      });
-    },
     getUserLoctionInfo: function getUserLoctionInfo() {
-      var _this2 = this;
+      var _this = this;
 
       this.$getLocation({
         enableHighAccuracy: true //defaults to false
 
       }).then(function (coordinates) {
-        _this2.coordinates.lat = coordinates.lat;
-        _this2.coordinates.lng = coordinates.lng;
+        _this.coordinates.lat = coordinates.lat;
+        _this.coordinates.lng = coordinates.lng;
       })["catch"](function (error) {
         this.coordinates.status = 'Pls Allow Location Permission';
       });

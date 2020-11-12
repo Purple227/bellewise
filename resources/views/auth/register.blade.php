@@ -41,7 +41,7 @@
                         </p>
 
                         <p class="help is-danger">
-                            @{{ registerDetails.errors == null ? '' : registerDetails.errors.name[0] }}
+                            @{{ registerDetails.errors.name }}
                         </p>
                         
                     </div>
@@ -66,7 +66,7 @@
               </a>
           </p>
           <p class="help is-danger">
-            @{{ registerDetails.errors == null ? '' : registerDetails.errors.address[0] }}
+            @{{ registerDetails.errors.address }}
         </p>
         
     </div>
@@ -96,7 +96,7 @@
     </div>
 
     <p class="help is-danger">
-        @{{ registerDetails.errors == null ? '' : registerDetails.errors.phone[0] }}
+        @{{ registerDetails.errors.phone }}
     </p>
 
 </div> <!-- First column tag close -->
@@ -125,7 +125,7 @@
                 </p>
 
                 <p class="help is-danger">
-                    @{{ registerDetails.errors == null ? '' : registerDetails.errors.email[0] }}
+                    @{{ registerDetails.errors.email }}
                 </p>
             </div>
         </div>
@@ -148,7 +148,7 @@
                 </p>
 
                 <p class="help is-danger">
-                    @{{ registerDetails.errors == null ? '' : registerDetails.errors.password[0] }}
+                    @{{ registerDetails.errors.password }}
                 </p>
                 
             </div>
@@ -184,7 +184,7 @@
     <div class="field-body">
         <div class="field is-grouped">
             <div class="control">
-                <button type="submit" class="button bg-orange is-bold" v-bind:class="{ 'is-loading': registerDetails.loader }" :disabled="$v.registerDetails.$invalid" @click="registerPostMethod"> Register </button>
+                <button type="submit" class="button bg-orange is-bold" :disabled="$v.registerDetails.$invalid" @click="registerPostMethod"> Register </button>
             </div>
         </div>
     </div>

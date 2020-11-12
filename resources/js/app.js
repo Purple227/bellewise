@@ -69,7 +69,7 @@ const app = new Vue({
       verification: {
         code: null,
         loader: false,
-        errors: null,
+        status: null,
         resendCode: false,
       },
 
@@ -82,7 +82,7 @@ const app = new Vue({
         address: " ",
         countryCode: '234',
         loader: false,
-        errors: null,
+        errors: {},
         status: null,
       },
 
@@ -203,7 +203,6 @@ const app = new Vue({
 
   created() {
     this.getUserLoctionInfo()
-    this.bulmaCalendar()
   },
 
   methods: { //Method calibrace open
@@ -221,9 +220,10 @@ const app = new Vue({
       }).then((response) => {
         window.localStorage.removeItem('userPassword')
         window.localStorage.removeItem('userEmail')
+        window.location ='/'
       }).catch(error=>{
         self.verification.loader = false
-        self.verification.errors = 'Incorrect code'
+        self.verification.status = " Error Processing code try again or request a new code in 380 seconds"
       })
 
   }, // Verify method calibrace close
@@ -232,12 +232,12 @@ const app = new Vue({
 
       let self = this
 
-      Vue.axios.patch('/api/resend-code', {
-        user_verification_id: window.localStorage.getItem('userPhone').toString(),
+      Vue.axios.post('/api/resend-code', {
+        user_phone: window.localStorage.getItem('userPhone').toString(),
       }).then((response) => {
         self.verification.errors = 'Code resend successful'
       }).catch(error=>{
-        self.verification.errors = 'Please wait for atleast a minute before resending code'
+        self.verification.status = 'Please wait for atleast 380 seconds before requesting a new code.'
       })
 
   },
@@ -273,13 +273,6 @@ const app = new Vue({
 
   openDropDown() {
     this.isDropDown = !this.isDropDown;
-  },
-
-  bulmaCalendar() {
-    const calendar = bulmaCalendar.attach(this.$refs.calendarTrigger, {
-      startDate: this.date,
-    })[0]
-    calendar.on('date:selected', e => (this.date = e.start || null))
   },
 
   getUserLoctionInfo() {
