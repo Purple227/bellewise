@@ -45536,7 +45536,9 @@ var app = new Vue({
       },
       loginDetails: {
         emial: null,
-        password: null
+        password: null,
+        errors: null,
+        loader: null
       },
       contact: {
         emial: null,
@@ -45631,13 +45633,11 @@ var app = new Vue({
     //Method calibrace open
     verifyMethod: function verifyMethod() {
       // Verify method calibrace open 
-      this.verification.loader = true;
       var self = this;
-      Vue.axios.patch('/api/verification/' + window.localStorage.getItem('userId'), {
+      self.verification.loader = true;
+      Vue.axios.patch('/verification' + window.localStorage.getItem('userId'), {
         code: this.verification.code.toString(),
-        user_verification_id: window.localStorage.getItem('userVerificationId').toString(),
-        password: window.localStorage.getItem('userPassword'),
-        email: window.localStorage.getItem('userEmail')
+        user_verification_id: window.localStorage.getItem('userVerificationId').toString()
       }).then(function (response) {
         window.localStorage.removeItem('userPassword');
         window.localStorage.removeItem('userEmail');
@@ -45650,11 +45650,14 @@ var app = new Vue({
     // Verify method calibrace close
     resendCode: function resendCode() {
       var self = this;
+      self.verification.loader = true;
       Vue.axios.post('/api/resend-code', {
         user_phone: window.localStorage.getItem('userPhone').toString()
       }).then(function (response) {
-        self.verification.errors = 'Code resend successful';
+        window.localStorage.setItem('userVerificationId', response.data);
+        self.verification.status = 'Code resend successful';
       })["catch"](function (error) {
+        self.verification.loader = false;
         self.verification.status = 'Please wait for atleast 380 seconds before requesting a new code.';
       });
     },
@@ -45677,6 +45680,28 @@ var app = new Vue({
       })["catch"](function (error) {
         self.registerDetails.loader = false;
         self.registerDetails.errors = error.response.data;
+      });
+    },
+    loginMethod: function loginMethod() {
+      var self = this;
+      self.loginDetails.loader = true;
+      Vue.axios.post('/user/login', {
+        email: this.loginDetails.email,
+        password: this.loginDetails.password
+      }).then(function (response) {
+        window.localStorage.setItem('userEmail', response.data.email);
+        window.localStorage.setItem('userPassword', response.data.password);
+        window.localStorage.setItem('userPhone', response.data.phone);
+        var verify = response.data.verify;
+        url_redirect = verify == 'verify' ? window.location = '/' : window.location = '/verification';
+      })["catch"](function (error) {
+        self.loginDetails.loader = false;
+        self.loginDetails.errors = error.response;
+      });
+    },
+    logoutMethod: function logoutMethod() {
+      Vue.axios.post('/logout').then(function (response) {
+        window.location.reload();
       });
     },
     addActiveClass: function addActiveClass() {

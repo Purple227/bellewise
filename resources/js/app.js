@@ -89,6 +89,8 @@ const app = new Vue({
       loginDetails: {
         emial: null,
         password: null,
+        errors: null,
+        loader: null,
       },
 
       contact: {
@@ -208,13 +210,11 @@ const app = new Vue({
   methods: { //Method calibrace open
 
     verifyMethod() { // Verify method calibrace open 
-      this.verification.loader = true
       let self = this
-      Vue.axios.patch('/api/verification/' + window.localStorage.getItem('userId'), {
+      self.verification.loader = true
+      Vue.axios.patch('/verification' + window.localStorage.getItem('userId'), {
         code: this.verification.code.toString(),
         user_verification_id: window.localStorage.getItem('userVerificationId').toString(),
-        password: window.localStorage.getItem('userPassword'),
-        email: window.localStorage.getItem('userEmail'),
       }).then((response) => {
         window.localStorage.removeItem('userPassword')
         window.localStorage.removeItem('userEmail')
@@ -227,14 +227,17 @@ const app = new Vue({
   }, // Verify method calibrace close
 
   resendCode() {
-      let self = this
-      Vue.axios.post('/api/resend-code', {
-        user_phone: window.localStorage.getItem('userPhone').toString(),
-      }).then((response) => {
-        self.verification.errors = 'Code resend successful'
-      }).catch(error=>{
-        self.verification.status = 'Please wait for atleast 380 seconds before requesting a new code.'
-      })
+    let self = this
+    self.verification.loader = true
+    Vue.axios.post('/api/resend-code', {
+      user_phone: window.localStorage.getItem('userPhone').toString(),
+    }).then((response) => {
+      window.localStorage.setItem('userVerificationId', response.data)
+      self.verification.status = 'Code resend successful'
+    }).catch(error=>{
+      self.verification.loader = false
+      self.verification.status = 'Please wait for atleast 380 seconds before requesting a new code.'
+    })
 
   },
 
@@ -262,6 +265,39 @@ const app = new Vue({
     });
 
   },
+
+  loginMethod() {
+
+    let self = this
+    self.loginDetails.loader = true
+    Vue.axios.post('/user/login', {
+      email: this.loginDetails.email,
+      password: this.loginDetails.password,
+    })
+    .then(function (response) {
+
+      window.localStorage.setItem('userEmail', response.data.email)
+      window.localStorage.setItem('userPassword', response.data.password)
+      window.localStorage.setItem('userPhone', response.data.phone)
+
+      let verify = response.data.verify
+      url_redirect =  verify == 'verify' ?  window.location ='/' : window.location ='/verification'
+
+    })
+    .catch(function (error) {
+      self.loginDetails.loader = false
+      self.loginDetails.errors = error.response
+    });
+
+  },
+
+  logoutMethod() {
+    Vue.axios.post('/logout')
+    .then(function (response) {
+      window.location.reload()
+    })
+  },
+
 
   addActiveClass() {
     this.isActive = !this.isActive;

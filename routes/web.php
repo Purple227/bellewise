@@ -39,8 +39,8 @@ Route::get('/track-order', 'OrderController@track')->name('track');
 
 Route::get('/cart', 'CartController@cart')->name('cart');
 
-
-
+Route::post('user/login', 'Auth\UserController@authenticate');
+Route::patch('verification/{id}', 'Auth\VerificationController@checkVerification');
 
 Route::get('/faq', 'FAQController@index')->name('faq');
 

@@ -24,15 +24,20 @@ class UserController extends Controller
         //
     }
 
-
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('email', 'password');
 
+        $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return response()->json( redirect()->intended() );
+            $check_verify_status = Auth::user()->verify == 1 ? 'verify' : 'non verify' ;
+            $login_credentials = ['verify' => $check_verify_status, 'email' => $request->email, 'password' => $request->password, 'phone' => Auth::user()->phone];
+            $logout_check =  $check_verify_status == 'non verify' ? Auth::logout() : '' ;
+            return response()->json($login_credentials);
+        }else {
+            return response()->json('Credential do not match our records', 400);
         }
+
     }
 
     /**
@@ -80,6 +85,7 @@ class UserController extends Controller
         return response()->json($verification_credentials);
 
     }
+
 
     /**
      * Display the specified resource.

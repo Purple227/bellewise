@@ -59,8 +59,10 @@ class VerificationController extends Controller
             'number' => (string) $request->user_phone,
             'brand'  => 'Bellewisefoods',
             'code_length'  => '4']); 
+
+        $request_id = $verification->getRequestId();
+        return response()->json($request_id);
+
     }
-
-
 
 }

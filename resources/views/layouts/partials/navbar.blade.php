@@ -8,7 +8,6 @@
       <img src="/images/logo.webp" width="112" height="28">
     </a>
 
-    @auth
     <!-- Mobile auth user dropdown -->
     <div class="dropdown has-dropdown navbar-item is-hidden-desktop" v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
       <div class="dropdown-trigger">
@@ -30,14 +29,12 @@
           <a href="#" class="dropdown-item">
             Update Profile
           </a>
-          <a class="dropdown-item">
+          <a class="dropdown-item" @click="logoutMethod">
             Logout
           </a>
         </div>
       </div>
     </div>
-    @endauth
-
 
 
     <a role="button" class="navbar-burger burger navbar-item is-hidden-desktop" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" v-bind:class="{ 'is-active': isActive }"  @click="addActiveClass">
@@ -65,7 +62,8 @@
 
     <div class="navbar-end">
 
-      @guest
+
+@guest
       <div class="navbar-item">
         <div class="buttons">
           <a href="/register" class="button bg-orange">
@@ -76,42 +74,45 @@
           </a>
         </div>
       </div>
-    </div>
-    @endguest
+@endguest
 
 
-    @auth
-    <!-- Desktop auth user dropdown -->
-    <div class="dropdown has-dropdown  is-hidden-mobile " v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
-      <div class="dropdown-trigger navbar-item">
-        <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span class="fas fa-user orange"></span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down light-orange" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-          <a href="#" class="dropdown-item">
-            My Orders
-          </a>
-          <a href="#" class="dropdown-item">
-            My Favorites
-          </a>
-          <a href="#" class="dropdown-item">
-            Update Profile
-          </a>
-          <a class="dropdown-item">
-            Logout
-          </a>
+
+
+@auth
+      <!-- Desktop auth user dropdown -->
+      <div class="dropdown has-dropdown is-hidden-mobile " v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
+        <div class="dropdown-trigger navbar-item">
+          <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span class="fas fa-user orange"></span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down light-orange" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a href="#" class="dropdown-item">
+              My Orders
+            </a>
+            <a href="#" class="dropdown-item">
+              My Favorites
+            </a>
+            <a href="#" class="dropdown-item">
+              Update Profile
+            </a>
+            <a class="dropdown-item" @click="logoutMethod">
+              Logout
+            </a>
+          </div>
         </div>
       </div>
+@endauth
+
+
+
+
     </div>
-    @endauth
 
 
-  </div>
-
-
-</nav>
+  </nav>

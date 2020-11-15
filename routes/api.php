@@ -18,9 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::patch('verification/{id}', 'Auth\VerificationController@checkVerification');
+//Route::patch('verification/{id}', 'Auth\VerificationController@checkVerification');
 Route::post('resend-code', 'Auth\VerificationController@resendCode');
-Route::post('', 'Auth\VerificationController@resendCode');
+
+//Route::post('user/login', 'Auth\UserController@authenticate');
+//Route::post('user/logout', 'Auth\UserController@logout');
 
 Route::apiResources([
     'user' => 'Auth\UserController',
