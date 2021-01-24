@@ -3,10 +3,14 @@
 @extends('layouts.app')
 
 @section('title')
-{{ "Demo item" }}
+@verbatim
+ {{ viewMenu.name }}
+ @endverbatim
 @endsection
 
 @section('content')
+
+@verbatim
 
 <div class="container"> <!-- Container tag open -->
 
@@ -19,47 +23,48 @@
         <div class="content" > <!-- Content tag open -->
 
           <p class="subtitle has-text-black is-bold">
-           FOOD NAME
+           {{ getSingleMenu.name}}
          </p>
 
          <p class="">
-           Chicken dimsum description and
-           son wow i get tired lazy me damn.
-           Chicken dimsum description and
-           son wow i get tired lazy me damn.
+          {{ getSingleMenu.descripion }}
          </p>
 
          <div class="buttons is-centered">
 
-          <a class="button is-primary">
+          <a class="button bg-orange" @click="downCounter">
             <span class="icon is-small">
               <i class="fas fa-minus has-text-white"></i>
             </span>
           </a>
 
-          <a class="button has-text-primary is-bold">
-            2
+          <a class="button orange is-bold">
+             {{ mealCounter }}
           </a>
 
 
-          <a class="button is-primary">
+          <a class="button bg-orange" @click="upCounter">
             <span class="icon is-small">
-              <i class="fas fa-plus"></i>
+              <i class="fas fa-plus has-text-white"></i>
             </span>
           </a>
 
         </div>
 
         <div class="buttons has-addons is-centered">
-          <button class="button is-bold" style="text-decoration: line-through;"> N800.00 </button>
-          <button class="button is-bold">750.00</button>
+          <button class="button is-bold" style="text-decoration: line-through;"> ₦{{ mealCounter *  getSingleMenu.price }} </button>
+          <button class="button is-bold"> ₦{{ mealCounter * (getSingleMenu.price - (getSingleMenu.price * activeRestaurantDiscount / 100)) | money(2) }} </button>
         </div>
 
-        <div class="buttons has-addons is-centered">
+        <div class="buttons has-addons is-centered" @click="removeFromCart(getSingleMenu.id)" v-if="currentCartBasket.some(check => check.id === getSingleMenu.ID)">
+          <button class="button is-bold"> <i class="fas fa-star" style="color: red"></i> </button>
+          <button class="button is-bold"> Remove From Cart</button>
+        </div>
+
+        <div class="buttons has-addons is-centered" @click="addToCart(getSingleMenu.ID, mealCounter * (getSingleMenu.price - (getSingleMenu.price * activeRestaurantDiscount / 100)), getSingleMenu.name, mealCounter )" v-else>
           <button class="button is-bold"> <i class="fas fa-star" style="color: red"></i> </button>
           <button class="button is-bold"> Add To Cart</button>
         </div>
-
 
       </div> <!-- Content tag close -->
 
@@ -69,7 +74,7 @@
     <div class="column">  <!-- Second column tag open -->
 
       <figure class="image is-2by1">
-        <img src="../images/food-sample.svg" alt="Placeholder image">
+        <img :src="'https://admin.bellewisefoods.com/storage/'+getSingleMenu.image" alt="Placeholder image">
       </figure>
 
 
@@ -82,10 +87,15 @@
 </div>  <!-- Container tag close -->
 
 
+@endverbatim
+
+{{--
 <div class="pointer " v-if="toggleNotify" @click="toggleNotify = false"> 
   @include('layouts.partials.cart_status')
 </div>
-<div class="pointer " v-else> 
+--}}
+
+<div class="pointer"> 
   @include('layouts.partials.view_cart')
 </div>
 

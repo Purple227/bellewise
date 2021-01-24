@@ -15,7 +15,9 @@
 @import "~bulma/bulma";
 
 // Import bulma calendar
-@import '~bulma-calendar/dist/css/bulma-calendar.min.css';
+@import '~bulma-extensions/bulma-calendar/dist/css/bulma-calendar.min.css';
+
+
 @import "~bulma-pageloader/dist/css/bulma-pageloader.min.css";
 @import "~bulma-o-steps/bulma-steps.min";
 

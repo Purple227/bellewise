@@ -32,12 +32,12 @@ Route::get('/contact', 'ContactController@contact')->name('contact');
 Route::get('/shop', 'ShopController@shop')->name('shop');
 
 Route::get('/order', 'OrderController@order')->name('order');
-Route::get('/order/demo', 'OrderController@single')->name('single_order');
+Route::get('/order/view', 'OrderController@single')->name('single_order');
 Route::get('/order/history', 'OrderController@index')->name('history');
 Route::get('/favorite', 'OrderController@favorite')->name('favorite');
 Route::get('/track-order', 'OrderController@track')->name('track');
 
-Route::get('/cart', 'CartController@cart')->name('cart');
+Route::get('/cart', 'CartController@cart')->name('cart')->middleware('auth');;
 
 Route::post('user/login', 'Auth\UserController@authenticate');
 Route::patch('verification/{id}', 'Auth\VerificationController@checkVerification');

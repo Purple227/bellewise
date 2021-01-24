@@ -111,7 +111,7 @@
     <div class="field-body">
         <div class="field is-grouped">
             <div class="control">
-                <button type="submit" class="button bg-orange is-bold" v-bind:class="{ 'is-loading': loginDetails.loader }" :disabled="$v.loginDetails.$invalid" @click="loginMethod">Login</button>
+                <button type="submit" class="button bg-orange has-text-white" v-bind:class="{ 'is-loading': loginDetails.loader }" :disabled="$v.loginDetails.$invalid" @click="loginMethod">Login</button>
             </div>
 
             <p class="control" v-if="false">

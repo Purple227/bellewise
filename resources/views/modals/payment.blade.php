@@ -82,8 +82,8 @@
 
 	</section>
 	<footer class="modal-card-foot">
-		<button class="button is-primary" @click="[payment = false, confirm = true]"> Save </button>
-		<button class="button is-black" @click="payment = false"> Cancel </button>
+		<button class="button bg-orange is-bold has-text-white" @click="[payment = false, confirm = true]"> Save </button>
+		<button class="button is-black is-bold" @click="[payment = false]"> Cancel </button>
 	</footer>
 </div>
 </div>

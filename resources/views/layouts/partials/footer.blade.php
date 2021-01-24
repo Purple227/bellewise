@@ -60,25 +60,26 @@
 					We Social
 				</p>
 
-				<span class="icon">
+				<a href="https://www.facebook.com/bellewisefoods/" class="icon" target="_blank">
 					<i class="fab fa-facebook-f has-text-black"></i>
-				</span>
-				<span class="icon" style="margin-left: 18px;">
+				</a>
+
+				<a href="https://twitter.com/Bellewisefoods?s=09" class="icon" style="margin-left: 18px;" target="_blank">
 					<i class="fab fa-twitter has-text-black"></i>
-				</span>
-				<span class="icon" style="margin-left: 18px;">
+				</a>
+
+				<a href="https://instagram.com/bellewisefoods?igshid=1qmxkidbq8u1g" class="icon" style="margin-left: 18px;" target="_blank">
 					<i class="fab fa-instagram has-text-black"></i>
-				</span>
+				</a>
 				
 			</div>		
 
 		</div>  <!-- Fourth column tag close -->
-
-
-
 
 	</div> <!-- Columns wrapper tag close -->
 
 
 
 </footer>
+
+

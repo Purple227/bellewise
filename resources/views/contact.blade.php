@@ -18,7 +18,7 @@
 
 				<div class="content iframe-container">
 
-					<iframe class="responsive-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.7224011754424!2d8.34146551447402!3d4.98571994050913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1067876bfab198c5%3A0x8f69a9455294eada!2sApples%20Fried%20Chicken%20Ltd!5e0!3m2!1sen!2sng!4v1590710760362!5m2!1sen!2sng"></iframe>
+					<iframe class="responsive-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.7224011754424!2d8.34146551447402!3d4.98571994050913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1067876bfab198c5%3A0x8f69a9455294eada!2sApples%20Fried%20Chicken%20Ltd!5e0!3m2!1sen!2sng!4v1590710760362!5m2!1sen!2sng"> </iframe>
 				</div>
 
 

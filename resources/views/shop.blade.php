@@ -8,6 +8,10 @@
 @section('content')
 
 
+@verbatim
+
+<div class="pageloader bg-orange" v-bind:class="{ 'is-active': status }"><span class="title"> Bellewise Loading</span></div>
+
 <div class="container"> <!-- Container tag open -->
 
   <!-- Header section -->
@@ -28,7 +32,7 @@
 
       <li @click="search = !search">
         <a>
-          <span class="icon is-small"><i class="fas fa-search has-text-primary" aria-hidden="true"></i></span>
+          <span class="icon is-small"><i class="fas fa-search orange" aria-hidden="true"></i></span>
           <span class="is-bold">Search</span>
         </a>
       </li>
@@ -37,19 +41,16 @@
   </div>
 
 
-
-
-
   <!-- Search input section -->
-  <div class="field has-addons has-addons-centered" v-if=search>
+  <div class="field has-addons has-addons-centered" v-if="search">
     <div class="control has-icons-left is-expanded">
-      <input class="input is-primary" type="text" placeholder="Search Restaurant" autofocus>
+      <input class="input" type="text" placeholder="Search Restaurant" v-model="searchQuery" v-on:keyup="searchRestaurant" autofocus>
       <span class="icon is-small is-left">
-        <i class="fas fa-search has-text-primary"></i>
+        <i class="fas fa-search orange"></i>
       </span>
     </div>
     <div class="control">
-      <a class="button is-primary">
+      <a class="button bg-orange is-bold has-text-white" v-bind:class="{ 'is-loading': isSpinning }">
         Search
       </a>
     </div>
@@ -58,33 +59,34 @@
 
 
 
-  <p class="is-bold is-italic"> 6 Restaurants open</p>
+  <p class="is-bold is-italic"> Open Restaurants</p>
   <br>
 
   <div class="columns is-multiline"> <!-- Columns wrapper tag open -->
 
-    <div class="column is-6"> <!-- First Column tag open -->
+    <div class="column is-6" v-for="(activeRestaurants, index) in searchQuery.length  > 1  ? searchResult : activeRestaurant " :key="index"> <!-- First Column tag open -->
       <article class="message is-black">
         <div class="message-body">
 
           <article class="media"> <!-- Media article tag open -->
             <figure class="media-left" >
-              <a href="/order">
+              <a href="/order" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id)">
                 <p class="image is-128x128">
-                  <img src="/images/restaurant.svg">
+                  <img src="/images/default_image.svg" v-if="activeRestaurants.image.length <= 'default_image.svg'.length">
+                  <img :src="'https://admin.bellewisefoods.com/storage/'+activeRestaurants.image" v-else>
                 </p>
               </a>
             </figure>
             <div class="media-content "> <!-- Media content tag open -->
-              <a href="/order" style="text-decoration: none;">
+              <a href="/order" style="text-decoration: none;" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id, activeRestaurants.discount)">
                 <div class="content">
                   <p class="is-marginless">
-                    <strong> Restaurant Name </strong> <small> Updated</small> <small>31min ago</small>
+                    <strong> {{ activeRestaurants.name.substring(0,20) }} </strong> <small> Updated </small> <small> {{ activeRestaurants.updated_at | format('D MMM YYYY - h:mm A') }} </small>
                     <div class="tags are-small is-marginless">
-                      <span class="tag is-primary">Salad</span>
-                      <span class="tag is-primary">Soups</span>
+                      <span class="tag is-black"> tags </span>
+                      <span class="tag is-black"> tags </span>
                     </div>
-                    <strong class="fas fa-tag is-bold has-text-primary"> <span class="has-text-black"> 35% Off </span> </strong> 
+                    <strong class="fas fa-tag is-bold" style="color: #FF4500"> <span class="has-text-black"> {{ activeRestaurants.discount }} % Off</span> </strong> 
                   </p>
                 </div>
               </a>
@@ -99,149 +101,50 @@
       </article>
     </div> <!-- First column tag close -->
 
-    <div class="column is-6"> <!-- Second Column tag open -->
-      <article class="message is-black">
-        <div class="message-body">
-
-          <article class="media"> <!-- Media article tag open -->
-            <figure class="media-left" >
-              <a href="/order">
-                <p class="image is-128x128">
-                  <img src="/images/restaurant.svg">
-                </p>
-              </a>
-            </figure>
-            <div class="media-content "> <!-- Media content tag open -->
-              <a href="/order" style="text-decoration: none;">
-                <div class="content">
-                  <p class="is-marginless">
-                    <strong> Restaurant Name </strong> <small> Updated</small> <small>31min ago</small>
-                    <div class="tags are-small is-marginless">
-                      <span class="tag is-primary">Salad</span>
-                      <span class="tag is-primary">Soups</span>
-                    </div>
-                    <strong class="fas fa-tag is-bold has-text-primary"> <span class="has-text-black"> 35% Off </span> </strong> 
-                  </p>
-                </div>
-              </a>
-            </div> <!-- Media content tag close -->
-
-            <div class="media-right">
-            </div>
-
-          </article> <!-- Media article tag close -->
-
-        </div>
-      </article>
-    </div> <!-- Second column tag close -->
-
-
-    <div class="column is-6"> <!-- Third Column tag open -->
-      <article class="message is-black">
-        <div class="message-body">
-          
-          <article class="media"> <!-- Media article tag open -->
-            <figure class="media-left" >
-              <a href="/order">
-                <p class="image is-128x128">
-                  <img src="/images/restaurant.svg">
-                </p>
-              </a>
-            </figure>
-            <div class="media-content "> <!-- Media content tag open -->
-              <a href="/order" style="text-decoration: none;">
-                <div class="content">
-                  <p class="is-marginless">
-                    <strong> Restaurant Name </strong> <small> Updated</small> <small>31min ago</small>
-                    <div class="tags are-small is-marginless">
-                      <span class="tag is-primary">Salad</span>
-                      <span class="tag is-primary">Soups</span>
-                    </div>
-                    <strong class="fas fa-tag is-bold has-text-primary"> <span class="has-text-black"> 35% Off </span> </strong> 
-                  </p>
-                </div>
-              </a>
-            </div> <!-- Media content tag close -->
-
-            <div class="media-right">
-            </div>
-
-          </article> <!-- Media article tag close -->
-
-        </div>
-      </article>
-    </div> <!-- Third column tag close -->
-
-    <div class="column is-6"> <!-- Fourth Column tag open -->
-      <article class="message is-black">
-        <div class="message-body">
-
-          <article class="media"> <!-- Media article tag open -->
-            <figure class="media-left" >
-              <a href="/order">
-                <p class="image is-128x128">
-                  <img src="/images/restaurant.svg">
-                </p>
-              </a>
-            </figure>
-            <div class="media-content "> <!-- Media content tag open -->
-              <a href="/order" style="text-decoration: none;">
-                <div class="content">
-                  <p class="is-marginless">
-                    <strong> Restaurant Name </strong> <small> Updated</small> <small>31min ago</small>
-                    <div class="tags are-small is-marginless">
-                      <span class="tag is-primary">Salad</span>
-                      <span class="tag is-primary">Soups</span>
-                    </div>
-                    <strong class="fas fa-tag is-bold has-text-primary"> <span class="has-text-black"> 35% Off </span> </strong> 
-                  </p>
-                </div>
-              </a>
-            </div> <!-- Media content tag close -->
-
-            <div class="media-right">
-            </div>
-
-          </article> <!-- Media article tag close -->
-
-        </div>
-      </article>
-    </div> <!-- Fourth column tag close -->
-
   </div> <!-- Columns wrapper tag close -->
 
 
   <!-- Pagination section -->
-
-  <div class="buttons has-addons is-centered">
-    <a class="button">
+  <div class="buttons has-addons is-centered" v-if="activeRestaurant.length >= 1">
+    <a class="button" v-if="restaurantPagination.previousPageUrl" @click="activeRestaurantData(restaurantPagination.previousPageUrl)">
       <span class="icon is-small">
-        <i class="fas fa-arrow-left green"></i>
+        <i class="fas fa-arrow-left orange"></i>
       </span>
       <span> Previous </span>
     </a>
 
 
     <a class="button">
-
-      3 0f 6
+      {{ restaurantPagination.to}} 0f {{restaurantPagination.total}}
     </a>
 
 
-    <a class="button">
+    <a class="button" v-if="restaurantPagination.nextPageUrl" @click="activeRestaurantData(restaurantPagination.nextPageUrl)">
       <span class="icon is-small">
-        <i class="fas fa-arrow-right green"></i>
+        <i class="fas fa-arrow-right orange"></i>
       </span>
       <span> Next </span>
     </a>
-
   </div>
 
 
 
+<div class="card" v-if="activeRestaurant.length <= 0">
+  <div class="card-content">
+    <div class="content is-bold has-text-centered subtitle">
+
+  <span class="fa"> No restaurant found. </span>
+
+    </div>
+  </div>
+</div>
+
 
 
 </div> <!-- Container tag open -->
+
+
+@endverbatim
 
 
 @endsection
