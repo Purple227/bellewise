@@ -8,11 +8,12 @@
 @section('content')
 
 
-@verbatim
-
 <div class="pageloader bg-orange" v-bind:class="{ 'is-active': status }"><span class="title"> Bellewise Loading</span></div>
 
 <div class="container"> <!-- Container tag open -->
+
+    @verbatim
+
 
   <!-- Header section -->
   <section class="hero restaurant-hero box">
@@ -81,10 +82,10 @@
               <a href="/order" style="text-decoration: none;" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id, activeRestaurants.discount)">
                 <div class="content">
                   <p class="is-marginless">
-                    <strong> {{ activeRestaurants.name.substring(0,20) }} </strong> <small> Updated </small> <small> {{ activeRestaurants.updated_at | format('D MMM YYYY - h:mm A') }} </small>
+                    <strong> {{ activeRestaurants.name.substring(0,20) }} </strong> <small> Updated </small> <small> {{ activeRestaurants.updated_at | format('D MMM YYYY') }} </small>
                     <div class="tags are-small is-marginless">
-                      <span class="tag is-black"> tags </span>
-                      <span class="tag is-black"> tags </span>
+                      <!--span class="tag is-black"> tags </span-->
+                      <!--span class="tag is-black"> tags </span-->
                     </div>
                     <strong class="fas fa-tag is-bold" style="color: #FF4500"> <span class="has-text-black"> {{ activeRestaurants.discount }} % Off</span> </strong> 
                   </p>
@@ -139,12 +140,17 @@
   </div>
 </div>
 
+@endverbatim
 
+
+<!--  section -->
+<div class="" v-if="restaurantID"> 
+@include("modals.restaurant_check")
+</div>
 
 </div> <!-- Container tag open -->
 
 
-@endverbatim
 
 
 @endsection

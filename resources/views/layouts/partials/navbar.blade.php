@@ -8,6 +8,7 @@
       <img src="/images/logo.webp" width="112" height="28">
     </a>
 
+@auth
     <!-- Mobile auth user dropdown -->
     <div class="dropdown has-dropdown navbar-item is-hidden-desktop" v-bind:class="{ 'is-active': isDropDown }" @click="openDropDown">
       <div class="dropdown-trigger">
@@ -20,14 +21,14 @@
       </div>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
-          <a href="#" class="dropdown-item">
+          <a href=" {{ route('track') }} " class="dropdown-item">
+            Order Status
+          </a>
+          <a href="{{ route('history') }}" class="dropdown-item">
             My Orders
           </a>
-          <a href="#" class="dropdown-item">
+          <a href=" {{ route('favorite') }} " class="dropdown-item">
             My Favorites
-          </a>
-          <a href="#" class="dropdown-item">
-            Update Profile
           </a>
           <a class="dropdown-item" @click="logoutMethod">
             Logout
@@ -35,6 +36,7 @@
         </div>
       </div>
     </div>
+@endauth
 
 
     <a role="button" class="navbar-burger burger navbar-item is-hidden-desktop" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" v-bind:class="{ 'is-active': isActive }"  @click="addActiveClass">
@@ -51,6 +53,10 @@
         Home
       </a>
 
+      <a class="navbar-item is-bold {{ Route::currentRouteName() == 'shop' ? 'active' : '' }}"  href="/shop">
+        Order
+      </a>
+
       <a class="navbar-item is-bold {{ Route::currentRouteName() == 'about' ? 'active' : '' }}"  href="/about">
         About
       </a>
@@ -58,6 +64,7 @@
       <a class="navbar-item is-bold {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}"  href="/contact">
         Contact
       </a>
+
     </div>
 
     <div class="navbar-end">
@@ -92,14 +99,14 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
-            <a href="#" class="dropdown-item">
+          <a href=" {{ route('track') }} " class="dropdown-item">
+            Order Status
+          </a>
+            <a href=" {{ route('history') }} " class="dropdown-item">
               My Orders
             </a>
-            <a href="#" class="dropdown-item">
+            <a href=" {{ route('favorite') }} " class="dropdown-item">
               My Favorites
-            </a>
-            <a href="#" class="dropdown-item">
-              Update Profile
             </a>
             <a class="dropdown-item" @click="logoutMethod">
               Logout
@@ -109,10 +116,11 @@
       </div>
 @endauth
 
-
-
-
     </div>
 
-
   </nav>
+
+
+<div>
+  @include('layouts.partials.location')
+</div>

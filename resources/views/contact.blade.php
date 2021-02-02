@@ -133,9 +133,18 @@
 		</div> <!-- Columns wrapper tag close -->
 
 
-		@include('layouts.partials.view_cart')
+<div class="" v-if="currentCartBasket">
+@include('layouts.partials.view_cart')
+</div>
+
+<div class="" v-else>
+@include('layouts.partials.order_action')
+</div>
+
+
 
 	</div>
+
 	
 </div> <!-- Container tag close -->
 

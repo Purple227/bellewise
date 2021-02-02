@@ -133,15 +133,18 @@ const app = new Vue({
 
       isActive: false,
       isDropDown: false,
+      tinkerToggle: false,
+
+
       date: new Date(),
       toggleNotify: true,
 
       payment: false,
       paymentToggle: false,
       confirm: false,
-      orderStatus: false,
       faqMenu: false,
       search: false,
+      orderSuccessToggle: false,
 
       status: null,
       searchResult: [],
@@ -154,12 +157,28 @@ const app = new Vue({
       activeRestaurantDiscount: window.localStorage.getItem('restaurantDiscount'),
       restaurantTiming: null,
       restaurantConfig: null,
+      restaurantID: window.localStorage.getItem('restaurantID'),
 
       cartWatcher: null,
       currentCartBasket: null,
       totalSumInBasket: null,
 
       mealCounter: 1,
+
+      deliveryTime: null,
+
+      currentAddress: null,
+
+      orderHistory: null,
+      orderPage: {
+        nextPageUrl: null,
+        previousPageUrl: null, 
+        to: null,
+        total: null,
+      },
+
+      termsCondition: null,
+      privacyPolicy: null,
 
     }
   },
@@ -272,6 +291,9 @@ const app = new Vue({
     this.cart()
     this.getRestaurantConfig()
     this.bulmaCalendar()
+    this.getOrderHistory()
+    this.getTermsCondition()
+    this.getprivacyPolicy()
     //this.createTerm().then(() => this.status = false )
   },
 
@@ -280,13 +302,13 @@ const app = new Vue({
     verifyMethod() { // Verify method calibrace open 
       let self = this
       self.verification.loader = true
-      Vue.axios.patch('/verification' + window.localStorage.getItem('userId'), {
+      Vue.axios.patch('/verification/' + window.localStorage.getItem('userId'), {
         code: this.verification.code.toString(),
         user_verification_id: window.localStorage.getItem('userVerificationId').toString(),
       }).then((response) => {
         window.localStorage.removeItem('userPassword')
         window.localStorage.removeItem('userEmail')
-        window.location ='/'
+        window.location ='/login'
       }).catch(error=>{
         self.verification.loader = false
         self.verification.status = " Error Processing code try again or request a new code in 380 seconds"
@@ -382,6 +404,12 @@ const app = new Vue({
     .then(coordinates => {
       this.coordinates.lat = coordinates.lat
       this.coordinates.lng = coordinates.lng
+      Vue.axios
+      .get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" +this.coordinates.lat + "," +this.coordinates.lng +"&key=AIzaSyDMMvXXoWKcvj12iqduwt5l294fLPBsuaM")
+      .then((response) => {
+        this.currentAddress = response.data.results[0].formatted_address;
+      })
+
     })
     .catch(function (error) {
       this.coordinates.status = 'Pls Allow Location Permission'
@@ -528,12 +556,11 @@ calendars.forEach(calendar => {
 });
 
 // To access to bulmaCalendar instance of an element
-const element = document.querySelector('#delivery-time');
+const element = document.querySelector('#delivery-time-id');
 if (element) {
   // bulmaCalendar instance is available as element.bulmaCalendar
   element.bulmaCalendar.on('select', datepicker => {
-    let joe = datepicker.data.value();
-    console.log(joe)
+    this.deliveryTime = datepicker.data.value();
   });
 }
 },    
@@ -579,54 +606,182 @@ cart() {
 
 
 
-  payByCard(value) {
+  payByCard(amount, customerID, mail, phone, name) {
 
     const config = {
-      headers: { 'Authorization': 'Bearer FLWSECK_TEST-SANDBOXDEMOKEY-X' }
+      headers: { 
+        'Authorization': 'Bearer FLWSECK-8be91ba7e997cfb2d9b973f92a1ffd12-X',
+        'Access-Control-Allow-Origin' : '*',
+      }
     }
+
+    const token = 'FLWSECK-8be91ba7e997cfb2d9b973f92a1ffd12-X'
 
     let uri = 'https://api.flutterwave.com/v3/payments'
 
     Vue.axios.post(uri, {
 
-   "tx_ref":"hooli-tx-1920bbtytty",
-   "amount":"100",
-   "currency":"NGN",
-   "redirect_url":"https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc",
-   "payment_options":"card",
-   "meta":{
-      "consumer_id":23,
-      "consumer_mac":"92a3-912ba-1192a"
-   },
-   "customer":{
-      "email":"user@gmail.com",
-      "phonenumber":"080****4528",
-      "name":"Yemi Desola"
-   },
-   "customizations":{
-      "title":"Pied Piper Payments",
-      "description":"Middleout isn't free. Pay the price",
+     "tx_ref":"hooli-tx-1920bbtytty",
+     "amount": amount,
+     "currency":"NGN",
+     "redirect_url":"https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc",
+     "payment_options":"card",
+     "meta":{
+      "consumer_id": customerID,
+    },
+    "customer":{
+      "email": mail,
+      "phonenumber": phone,
+      "name": name
+    },
+    "customizations":{
+      "title":" Bellewise Order Payment",
+      "description":" Payment for order placed",
       "logo":"https://assets.piedpiper.com/logo.png"
-   }
-
-      }, config).then((response) => {
-        // stuff here
-      }).catch(error=>{
-        // stuff here
-      })
     }
+  },
+
+  {
+  headers: {
+    'Authorization': `Bearer ${token}`,
+    'Access-Control-Allow-Origin' : '*'
+  }
+
+  }).then((response) => {
+        console.log(response)
+      }).catch(error=>{
+        console.log(error)
+      })
+    },
 
 
+    checkout(summary, orderStatus, phone, deliveryTime, address, basket, name, userID, orderCharge, totalPrice, paymentStatus) {
+      let checkoutOrder = {
+        summary: summary,
+        paymentStatus: paymentStatus,
+        phone: phone,
+        deliveryTime: deliveryTime,
+        address: address,
+        basket: basket,
+        name: name,
+        userID: userID,
+        orderCharge: orderCharge,
+        totalPrice: totalPrice,
+        orderStatus: orderStatus
+      }
+      console.log(checkoutOrder)
+      window.localStorage.setItem("checkoutOrder", JSON.stringify(checkoutOrder)); //store
+
+    Vue.axios.post('/api/order', {
+      priceSummary: checkoutOrder.summary,
+      paymentStatus: checkoutOrder.paymentStatus,
+      phone: checkoutOrder.phone,
+      deliveryTime: checkoutOrder.deliveryTime,
+      address: checkoutOrder.address,
+      basket: checkoutOrder.basket,
+      name: checkoutOrder.name,
+      userID: checkoutOrder.userID,
+      totalPrice: checkoutOrder.totalPrice,
+      orderCharge: checkoutOrder.orderCharge,
+      orderStatus: checkoutOrder.orderStatus
+    })
+    .then(function (response) {
+      window.localStorage.clear()
+    })
+    .catch(function (error) {
+      // Catch errors
+    });
+
+    },
 
 
+  getOrderHistory(api) {
+    this.status = true
+    let api_url = api || '/api/order' 
+    Vue.axios
+    .get(api_url).then((response) => {
+      this.orderHistory = response.data.data
+      this.status = false
 
+      let nextPageUrl = response.data.next_page_url
+      this.orderPage.nextPageUrl = nextPageUrl 
 
+      let previousPageUrl = response.data.prev_page_url
+      this.orderPage.previousPageUrl =  previousPageUrl 
 
+      this.orderPage.to = response.data.to
+      this.orderPage.total = response.data.total
+    })
+  },
 
+  searchOrderHistory() {
+    this.isSpinning = true
+    this.searchResult= []
+    if(this.searchQuery.length > 1) {
+      axios.get('/api/order/search',{params: { search_query: this.searchQuery }}).then(response => {
+        this.searchResult = response.data
+        this.isSpinning = false
+      });
+    }
+  },
+
+  getTermsCondition() {
+    let api_url = "https://admin.bellewisefoods.com/api/setting/term/" +1
+    Vue.axios
+    .get(api_url).then((response) => {
+      this.termsCondition = response.data
+      console.log(response)
+    })
+  },
+
+  getprivacyPolicy() {
+    let api_url = "https://admin.bellewisefoods.com/api/setting/policy/" +1
+    Vue.axios
+    .get(api_url).then((response) => {
+      this.privacyPolicy = response.data
+      console.log(response)
+    })
+  },
+
+ makePayment(amount, customerID, mail, phone, name) {
+    FlutterwaveCheckout({
+      public_key: "FLWPUBK-3493d4c3450de778b23d1d806821e44d-X",
+      tx_ref: "hooli-tx-1920bbtyt",
+      amount: amount,
+      currency: "NGN",
+      country: "NG",
+      payment_options: "card",
+      redirect_url: // specified redirect URL
+        "https://callbacks.piedpiper.com/flutterwave.aspx?ismobile=34",
+      meta: {
+        consumer_id: customerID,
+        consumer_mac: "",
+      },
+      customer: {
+        email: mail,
+        phone_number: phone,
+        name: name,
+      },
+      callback: function (data) {
+        console.log(data);
+      },
+      onclose: function() {
+        // close modal
+      },
+      customizations: {
+        title: " Bellewise Foods",
+        description: "Payment for items in cart",
+        logo: window.location.href+'/images/logo.webp',
+      },
+    });
+  },
+
+  clearStorage() {
+    window.localStorage.clear()
+    window.location.reload()
+  },
 
   }, //Method calibrace close
-
-
 
 
 computed: { // Computed calibrace open
@@ -635,8 +790,6 @@ computed: { // Computed calibrace open
      let single = JSON.parse(window.localStorage.getItem("singleMenu")); //get them back
      return single
    },
-
-
 
 } // Computed calibrace open
 

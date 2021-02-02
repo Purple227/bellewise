@@ -14,7 +14,7 @@
 
 @verbatim
 
-			<div class="card">
+			<div class="card" v-if="currentCartBasket">
 				<header class="card-header bg-orange">
 					<p class="card-header-title is-centered">
 						<span class="subtitle is-bold has-text-white"> Ordering List  </span>
@@ -23,7 +23,7 @@
 				<div class="card-content">
 					<div class="content">
 
-						<p class="is-bold"> <!-- Estimated Delivery Time {{ restaurantConfig.minimium_delivery_time }} to {{ restaurantConfig.maximium_delivery_time }} min  --> </p>
+						<p class="is-bold"> Estimated Delivery Time {{ restaurantConfig == null ? '00:00' : restaurantConfig.minimium_delivery_time }} to {{ restaurantConfig == null ? '00:00' : restaurantConfig.maximium_delivery_time }} </p>
 
 						<div class="notification is-light" v-for="(menu, index) in currentCartBasket " :key="index"> <!-- Notifacatin tag open -->
 							<button class="delete" @click="removeFromCart(menu.id)"></button>
@@ -67,34 +67,47 @@
 					
 						<div class="">
 							<p class="subtitle  is-inline"> Set Delivery Time</p> 
-	                         <input id="delivery-time" type="date" data-display-mode="dialog"  data-color="danger" data-type="time" >							
+	                         <input id="delivery-time-id" type="date" data-display-mode="dialog"  data-color="danger" data-type="time" >						
 						</div>
 						<br>
 
 						<div class="">
 							<p class="subtitle  is-inline">Order</p> 
-							<p class="subtitle is-inline is-pulled-right"> {{ totalSumInBasket == null ? 0.00 : totalSumInBasket.toFixed(2) }} </p> 
+							<p class="subtitle is-inline is-pulled-right"> ₦{{ totalSumInBasket == null ? 0.00 : totalSumInBasket.toFixed(2) }} </p> 
 						</div>
 						<br>
 
 						<div class="">
 							<p class="subtitle is-inline">Delivery</p> 
-							<p class="subtitle is-inline is-pulled-right">N500.00</p> 
+							<p class="subtitle is-inline is-pulled-right"> ₦500.00 </p> 
 						</div>
 						<br>
 
 						<div class="">
-							<p class="subtitle is-inline">Summary</p> 
-							<p class="subtitle is-inline is-pulled-right"> ₦ {{ totalSumInBasket == null ? 0.00 : totalSumInBasket + 500 | money(2) }}</p> 
+							<p class="subtitle is-inline">Sum</p> 
+							<p class="subtitle is-inline is-pulled-right"> ₦{{ totalSumInBasket == null ? 0.00 : totalSumInBasket + 500 | money(2) }} </p> 
 						</div>
 
 					</div>
 				</div>
-				<footer class="card-footer">
-					<a  href="/order" class="card-footer-item is-bold has-text-black"> Add Item </a>
-					<a class="card-footer-item is-bold has-text-black" @click="[confirm = true]"> Ordr Now </a>
+				<footer class="card-footer ">
+					<a  href="/order" class="card-footer-item is-bold has-text-black button mt-3"> Add Item </a>
+					<a href="#" class="card-footer-item is-bold has-text-black button" @click="[confirm = true]"> Place Order </a>
 				</footer>
 			</div>
+
+
+
+
+
+<div class="card" v-else>
+  <div class="card-content">
+    <div class="content is-bold has-text-centered subtitle">
+  <span class="fa"> Add an item to cart. Click or tab <a href="/shop" class="orange"> here </a>  </span>
+    </div>
+  </div>
+</div>
+
 
 	@endverbatim
 
@@ -111,7 +124,7 @@
 </div>
 
 <!-- Order Status -->
-<div class="" v-if="orderStatus"> 
+<div class="" v-if="orderSuccessToggle"> 
 @include("modals.order_status")
 </div>
 
@@ -120,9 +133,13 @@
 @include("modals.payment")
 </div>
 
-
 </div> <!-- Box container tag open -->
 
+
+
+@push('payment_scripts')
+      <script src="https://checkout.flutterwave.com/v3.js"></script>
+@endpush
 
 
 @endsection

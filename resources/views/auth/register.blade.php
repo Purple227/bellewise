@@ -96,7 +96,7 @@
     </div>
 
     <p class="help is-danger">
-        @{{ registerDetails.errors.phone }}
+        @{{ registerDetails.errors.message ? 'Invalid phone number' : '' }}
     </p>
 
 </div> <!-- First column tag close -->

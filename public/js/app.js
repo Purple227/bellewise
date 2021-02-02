@@ -66624,14 +66624,15 @@ var app = new Vue({
       address: null,
       isActive: false,
       isDropDown: false,
+      tinkerToggle: false,
       date: new Date(),
       toggleNotify: true,
       payment: false,
       paymentToggle: false,
       confirm: false,
-      orderStatus: false,
       faqMenu: false,
       search: false,
+      orderSuccessToggle: false,
       status: null,
       searchResult: [],
       searchQuery: '',
@@ -66642,10 +66643,22 @@ var app = new Vue({
       activeRestaurantDiscount: window.localStorage.getItem('restaurantDiscount'),
       restaurantTiming: null,
       restaurantConfig: null,
+      restaurantID: window.localStorage.getItem('restaurantID'),
       cartWatcher: null,
       currentCartBasket: null,
       totalSumInBasket: null,
-      mealCounter: 1
+      mealCounter: 1,
+      deliveryTime: null,
+      currentAddress: null,
+      orderHistory: null,
+      orderPage: {
+        nextPageUrl: null,
+        previousPageUrl: null,
+        to: null,
+        total: null
+      },
+      termsCondition: null,
+      privacyPolicy: null
     };
   },
   validations: {
@@ -66733,7 +66746,10 @@ var app = new Vue({
     this.restaurantActiveMenu();
     this.cart();
     this.getRestaurantConfig();
-    this.bulmaCalendar(); //this.createTerm().then(() => this.status = false )
+    this.bulmaCalendar();
+    this.getOrderHistory();
+    this.getTermsCondition();
+    this.getprivacyPolicy(); //this.createTerm().then(() => this.status = false )
   },
   methods: {
     //Method calibrace open
@@ -66741,13 +66757,13 @@ var app = new Vue({
       // Verify method calibrace open 
       var self = this;
       self.verification.loader = true;
-      Vue.axios.patch('/verification' + window.localStorage.getItem('userId'), {
+      Vue.axios.patch('/verification/' + window.localStorage.getItem('userId'), {
         code: this.verification.code.toString(),
         user_verification_id: window.localStorage.getItem('userVerificationId').toString()
       }).then(function (response) {
         window.localStorage.removeItem('userPassword');
         window.localStorage.removeItem('userEmail');
-        window.location = '/';
+        window.location = '/login';
       })["catch"](function (error) {
         self.verification.loader = false;
         self.verification.status = " Error Processing code try again or request a new code in 380 seconds";
@@ -66825,6 +66841,9 @@ var app = new Vue({
       }).then(function (coordinates) {
         _this.coordinates.lat = coordinates.lat;
         _this.coordinates.lng = coordinates.lng;
+        Vue.axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + _this.coordinates.lat + "," + _this.coordinates.lng + "&key=AIzaSyDMMvXXoWKcvj12iqduwt5l294fLPBsuaM").then(function (response) {
+          _this.currentAddress = response.data.results[0].formatted_address;
+        });
       })["catch"](function (error) {
         this.coordinates.status = 'Pls Allow Location Permission';
       });
@@ -66970,6 +66989,8 @@ var app = new Vue({
       this.cart();
     },
     bulmaCalendar: function bulmaCalendar() {
+      var _this7 = this;
+
       // Initialize all input of date type.
       var calendars = bulma_extensions_bulma_calendar_dist_js_bulma_calendar_min_js__WEBPACK_IMPORTED_MODULE_7___default.a.attach('[type="date"]', '[color="info"]'); // Loop on each calendar initialized
 
@@ -66981,13 +67002,12 @@ var app = new Vue({
         });
       }); // To access to bulmaCalendar instance of an element
 
-      var element = document.querySelector('#delivery-time');
+      var element = document.querySelector('#delivery-time-id');
 
       if (element) {
         // bulmaCalendar instance is available as element.bulmaCalendar
         element.bulmaCalendar.on('select', function (datepicker) {
-          var joe = datepicker.data.value();
-          console.log(joe);
+          _this7.deliveryTime = datepicker.data.value();
         });
       }
     },
@@ -67028,36 +67048,164 @@ var app = new Vue({
       this.mealCounter--;
       var check = this.mealCounter <= 0 ? this.mealCounter = 1 : this.mealCounter;
     },
-    payByCard: function payByCard(value) {
+    payByCard: function payByCard(amount, customerID, mail, phone, name) {
       var config = {
         headers: {
-          'Authorization': 'Bearer FLWSECK_TEST-SANDBOXDEMOKEY-X'
+          'Authorization': 'Bearer FLWSECK-8be91ba7e997cfb2d9b973f92a1ffd12-X',
+          'Access-Control-Allow-Origin': '*'
         }
       };
+      var token = 'FLWSECK-8be91ba7e997cfb2d9b973f92a1ffd12-X';
       var uri = 'https://api.flutterwave.com/v3/payments';
       Vue.axios.post(uri, {
         "tx_ref": "hooli-tx-1920bbtytty",
-        "amount": "100",
+        "amount": amount,
         "currency": "NGN",
         "redirect_url": "https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc",
         "payment_options": "card",
         "meta": {
-          "consumer_id": 23,
-          "consumer_mac": "92a3-912ba-1192a"
+          "consumer_id": customerID
         },
         "customer": {
-          "email": "user@gmail.com",
-          "phonenumber": "080****4528",
-          "name": "Yemi Desola"
+          "email": mail,
+          "phonenumber": phone,
+          "name": name
         },
         "customizations": {
-          "title": "Pied Piper Payments",
-          "description": "Middleout isn't free. Pay the price",
+          "title": " Bellewise Order Payment",
+          "description": " Payment for order placed",
           "logo": "https://assets.piedpiper.com/logo.png"
         }
-      }, config).then(function (response) {// stuff here
-      })["catch"](function (error) {// stuff here
+      }, {
+        headers: {
+          'Authorization': "Bearer ".concat(token),
+          'Access-Control-Allow-Origin': '*'
+        }
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
       });
+    },
+    checkout: function checkout(summary, orderStatus, phone, deliveryTime, address, basket, name, userID, orderCharge, totalPrice, paymentStatus) {
+      var checkoutOrder = {
+        summary: summary,
+        paymentStatus: paymentStatus,
+        phone: phone,
+        deliveryTime: deliveryTime,
+        address: address,
+        basket: basket,
+        name: name,
+        userID: userID,
+        orderCharge: orderCharge,
+        totalPrice: totalPrice,
+        orderStatus: orderStatus
+      };
+      console.log(checkoutOrder);
+      window.localStorage.setItem("checkoutOrder", JSON.stringify(checkoutOrder)); //store
+
+      Vue.axios.post('/api/order', {
+        priceSummary: checkoutOrder.summary,
+        paymentStatus: checkoutOrder.paymentStatus,
+        phone: checkoutOrder.phone,
+        deliveryTime: checkoutOrder.deliveryTime,
+        address: checkoutOrder.address,
+        basket: checkoutOrder.basket,
+        name: checkoutOrder.name,
+        userID: checkoutOrder.userID,
+        totalPrice: checkoutOrder.totalPrice,
+        orderCharge: checkoutOrder.orderCharge,
+        orderStatus: checkoutOrder.orderStatus
+      }).then(function (response) {
+        window.localStorage.clear();
+      })["catch"](function (error) {// Catch errors
+      });
+    },
+    getOrderHistory: function getOrderHistory(api) {
+      var _this8 = this;
+
+      this.status = true;
+      var api_url = api || '/api/order';
+      Vue.axios.get(api_url).then(function (response) {
+        _this8.orderHistory = response.data.data;
+        _this8.status = false;
+        var nextPageUrl = response.data.next_page_url;
+        _this8.orderPage.nextPageUrl = nextPageUrl;
+        var previousPageUrl = response.data.prev_page_url;
+        _this8.orderPage.previousPageUrl = previousPageUrl;
+        _this8.orderPage.to = response.data.to;
+        _this8.orderPage.total = response.data.total;
+      });
+    },
+    searchOrderHistory: function searchOrderHistory() {
+      var _this9 = this;
+
+      this.isSpinning = true;
+      this.searchResult = [];
+
+      if (this.searchQuery.length > 1) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/order/search', {
+          params: {
+            search_query: this.searchQuery
+          }
+        }).then(function (response) {
+          _this9.searchResult = response.data;
+          _this9.isSpinning = false;
+        });
+      }
+    },
+    getTermsCondition: function getTermsCondition() {
+      var _this10 = this;
+
+      var api_url = "https://admin.bellewisefoods.com/api/setting/term/" + 1;
+      Vue.axios.get(api_url).then(function (response) {
+        _this10.termsCondition = response.data;
+        console.log(response);
+      });
+    },
+    getprivacyPolicy: function getprivacyPolicy() {
+      var _this11 = this;
+
+      var api_url = "https://admin.bellewisefoods.com/api/setting/policy/" + 1;
+      Vue.axios.get(api_url).then(function (response) {
+        _this11.privacyPolicy = response.data;
+        console.log(response);
+      });
+    },
+    makePayment: function makePayment(amount, customerID, mail, phone, name) {
+      FlutterwaveCheckout({
+        public_key: "FLWPUBK-3493d4c3450de778b23d1d806821e44d-X",
+        tx_ref: "hooli-tx-1920bbtyt",
+        amount: amount,
+        currency: "NGN",
+        country: "NG",
+        payment_options: "card",
+        redirect_url: // specified redirect URL
+        "https://callbacks.piedpiper.com/flutterwave.aspx?ismobile=34",
+        meta: {
+          consumer_id: customerID,
+          consumer_mac: ""
+        },
+        customer: {
+          email: mail,
+          phone_number: phone,
+          name: name
+        },
+        callback: function callback(data) {
+          console.log(data);
+        },
+        onclose: function onclose() {// close modal
+        },
+        customizations: {
+          title: " Bellewise Foods",
+          description: "Payment for items in cart",
+          logo: window.location.href + '/images/logo.webp'
+        }
+      });
+    },
+    clearStorage: function clearStorage() {
+      window.localStorage.clear();
+      window.location.reload();
     }
   },
   //Method calibrace close

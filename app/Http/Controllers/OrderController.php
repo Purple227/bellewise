@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use Nexmo\Client\Credentials\Basic;
+use Nexmo\Client;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    
+
 
     public function order()
     {
@@ -21,7 +24,7 @@ class OrderController extends Controller
     
     public function track()
     {
-        return view('order.track');
+        return view('order.partials.track');
     }
 
     public function index()
@@ -34,43 +37,80 @@ class OrderController extends Controller
         return view('order.favorite');
     }
 
-    public function saveOrder()
+    public function saveOrder(Request $request)
     {
+
         $order_id = mt_rand(100000, 999999);
 
         // New  object
         $order = new Order;
 
         $order->order_id = $order_id;
-        $order->payment = $request->payment;
-        $order->status = $request->status;
-        $order->price = $request->price_summary;
-        $order->phone = $request->contact_number;
-        $order->delivery_time = $request->delivery_time;
+        $order->payment = $request->paymentStatus;
+        $order->price = $request->totalPrice;
+        $order->phone = $request->phone;
+        $order->delivery_time = $request->deliveryTime;
         $order->address = $request->address;
+        $order->name = $request->name;
+        $order->user_id = $request->userID;
+        $order->price_summary = $request->priceSummary;
+        $order->order_charge = $request->orderCharge;
+        $order->order_status = $request->orderStatus;
         $order->save();
 
+        $order = Order::find($order->id);
 
-            //Tags save to database
-        $tags = $request->tags;
-        foreach ($tags as $tag) {
-           $tag_data[] =Tag::firstOrCreate([
-            'name' => $tag
-        ]);     
-       } 
-
-     //I collected the tag id
-       if (isset($tag_data) ) {
-           $tag_count = count($tag_data);
-           for ($i=0; $i<$tag_count; $i++) { 
-            $tag_id[] = $tag_data[$i]['id'];
+        $b = $request->basket;
+        for ($i=0; $i < count($b) ; $i++) { 
+            $tag = $order->tags()->create([
+                'name' => $b[$i] ['name'],
+                'count' => $b[$i] ['count'],
+                'price' => $b[$i] ['price'],
+            ]);
         }
 
-    // A blast tag id get inserted here for many to many relationship
-        $order->tags()->attach($tag_id);
-    }
-}
+        $nexmo_credentials = new Basic('e1ee698d', '3vsIsgixcRp5bmRM');
+        $user_credentials = new Client($nexmo_credentials);
 
+        $message = $user_credentials->message()->send([
+            'to' => $request->phone,
+            'from' => 'Bellewisefoods',
+            'text' => 'Hello,'.' '.$request->name. ' '.'your order is place succesfully below is your order ID:'.' '.$order_id.' '.'to aid you check your order status'
+        ]);
+
+    }
+
+    public function getOrder()
+    {
+
+
+        $orders = Order::with('tags')
+        ->orderBy('id', 'desc')
+        ->paginate(5);
+/*        foreach ($orders->tags as $tag) {
+           $tag->name;
+           $tag->price;
+           $tag->count;
+       }*/
+       return response()->json($orders);
+   }
+
+   public function search(Request $request)
+   {
+    $search_query = $request->search_query;
+    $data = Order::where('order_id','LIKE',"%$search_query%")
+    ->with('tags')
+    ->take(5)
+    ->get();
+    return response()->json($data);
+   }
+
+    public function orderUpdate(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $order->status = $request->status;
+        $order->save();
+    }
 
 
 }

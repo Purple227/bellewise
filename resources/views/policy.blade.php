@@ -3,7 +3,7 @@
 @extends('layouts.app')
 @section('content')
 
-
+@verbatim
 
 <div class="terms-container"> <!-- Privacy container tag open -->
 
@@ -19,16 +19,31 @@
 
 
 
-<div class="content has-text-weight-semibold box">
+  <div class="card" v-if="privacyPolicy == null">
+    <div class="card-content">
+      <div class="content is-bold has-text-centered subtitle">
+        <span class="fa"> Coming soon. </span>
+      </div>
+    </div>
+  </div>
 
-Minim adipisicing anim officia eu consequat veniam minim dolore eu anim ea cupidatat id aliquip sunt dolor velit cillum nostrud sit reprehenderit ex quis minim aute aliquip qui reprehenderit voluptate eiusmod adipisicing pariatur commodo eiusmod commodo veniam cillum ut in aliqua laboris incididunt ut pariatur aliqua magna exercitation consectetur magna irure dolore cupidatat eu fugiat officia sit cupidatat sed aliqua sunt dolore ea adipisicing deserunt aute pariatur est sunt sint sit id voluptate ut adipisicing amet ea sed elit laboris nostrud adipisicing tempor enim laboris ut labore laborum nulla elit sint voluptate enim in ex eiusmod duis ea consectetur consectetur est anim voluptate mollit voluptate non ut culpa id consequat quis adipisicing aute dolor ut adipisicing nulla labore labore ea nisi incididunt pariatur amet officia aute magna et nostrud est laborum amet et sunt reprehenderit nisi laborum laboris minim proident exercitation eiusmod veniam aute consectetur occaecat ullamco non sit reprehenderit excepteur commodo in ullamco laborum incididunt mollit occaecat dolore eiusmod exercitation proident ad labore eu adipisicing aliquip incididunt laborum sed eu in ut tempor elit in.
-
+<div class="content has-text-weight-semibold box" v-else>
+	<p v-html="privacyPolicy.policy"></p>
+	<time :datetime="privacyPolicy.updated_at" class="orange"> Last Updated At ::{{ privacyPolicy.updated_at  | format('D MMM YYYY') }} </time>
 </div>
 
 
 
 </div> <!-- Privacy container tag close -->
 
+@endverbatim
 
+<div class="" v-if="currentCartBasket">
+@include('layouts.partials.view_cart')
+</div>
+
+<div class="" v-else>
+@include('layouts.partials.order_action')
+</div>
 
 @endsection

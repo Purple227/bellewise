@@ -19,10 +19,14 @@ class CreateOrdersTable extends Migration
             $table->integer('order_id');
             $table->string('phone');
             $table->float('price', 10, 2);
+            $table->float('order_charge', 10, 2);
+            $table->float('price_summary', 10, 2);
             $table->string('delivery_time')->nullable();
-            $table->string('status');
             $table->string('payment');
             $table->string('address');
+            $table->string('name');
+            $table->integer('user_id');
+            $table->string('order_status');
 
             $table->timestamps();
         });

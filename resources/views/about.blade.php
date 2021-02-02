@@ -103,6 +103,19 @@
 </div>
 
 
+
+
+<div class="" v-if="currentBasket">
+@include('layouts.partials.view_cart')
+</div>
+
+<div class="" v-else>
+@include('layouts.partials.order_action')
+</div>
+
+
+
+
 </div> <!-- Container tag close -->
 
 

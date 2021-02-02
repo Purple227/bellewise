@@ -9,11 +9,6 @@
 	<div class="columns is-mobile">
 		<div class="column is-half-desktop is-offset-one-quarter-desktop">
 
-			<div class="notification bg-light-orange" v-if="verification.status">
-				<button class="delete" @click="verification.status = false"></button>
-				@{{ verification.status }}
-			</div>
-
 			<section class="hero verification-hero box">
 				<div class="hero-body">
 					<div class="container">
@@ -30,6 +25,14 @@
 					<p class="deep-grey has-text-centered is-small"> We have sent a four digit verification code to your mobile number. Resend code if you didn't get any code </p>
 				</p>
 				<br>
+
+
+			<div class="notification bg-light-orange" v-if="verification.status">
+				<button class="delete" @click="verification.status = false"></button>
+				@{{ verification.status }}
+			</div>
+
+				
 
 				<div class="field has-addons has-addons-centered">
 					<div class="control">

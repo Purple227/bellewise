@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/verification', 'Auth\VerificationController@verify')->name('verify');
+Route::patch('verification/{id}', 'Auth\VerificationController@checkVerification');
+
 
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/terms', 'PageController@terms')->name('terms');
@@ -33,14 +35,13 @@ Route::get('/shop', 'ShopController@shop')->name('shop');
 
 Route::get('/order', 'OrderController@order')->name('order');
 Route::get('/order/view', 'OrderController@single')->name('single_order');
-Route::get('/order/history', 'OrderController@index')->name('history');
-Route::get('/favorite', 'OrderController@favorite')->name('favorite');
-Route::get('/track-order', 'OrderController@track')->name('track');
+Route::get('/order/history', 'OrderController@index')->name('history')->middleware('auth');
+Route::get('/favorite', 'OrderController@favorite')->name('favorite')->middleware('auth');
+Route::get('/order/track', 'OrderController@track')->name('track')->middleware('auth');
 
-Route::get('/cart', 'CartController@cart')->name('cart')->middleware('auth');;
+Route::get('/cart', 'CartController@cart')->name('cart')->middleware('auth');
 
 Route::post('user/login', 'Auth\UserController@authenticate');
-Route::patch('verification/{id}', 'Auth\VerificationController@checkVerification');
 
 Route::get('/faq', 'FAQController@index')->name('faq');
 

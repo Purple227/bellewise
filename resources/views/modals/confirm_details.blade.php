@@ -3,28 +3,30 @@
 <div class="modal is-active animate__animated animate__backInLeft animate__fast">
 	<div class="modal-background"></div>
 	<div class="modal-card">
-		<!--header class="modal-card-head">
-			<p class="modal-card-title"> Confirm Details</p>
-			<button class="delete" aria-label="close" @click="confirm = false"></button>
-		</header-->
-		<section class="modal-card-body">
-
-
-			<div class="card"> <!-- card tag open -->
-
 				<div class="card-header bg-orange"> <!-- card header tag open -->
 					<div class="card-header-title is-centered ">
 						<span class="subtitle is-bold has-text-white"> Confirm Details </span>
 					</div>
 				</div> <!-- card header tag close -->
+		<section class="modal-card-body">
 
+
+			<div class="card"> <!-- card tag open -->
+
+{{--
+				div class="card-header bg-orange"> <!-- card header tag open -->
+					<div class="card-header-title is-centered ">
+						<span class="subtitle is-bold has-text-white"> Confirm Details </span>
+					</div>
+				</div> <!-- card header tag close -->
+--}}
 
 				<div class="card-content"> <!-- Card content tag open -->
 
 					<div class="field">
 						<label class="label"> Name  </label>						
 						<div class="control has-icons-left has-icons-right">
-							<input class="input" type="text" v-model="confirmDetail.name == null ? confirmDetail.name = {{ Auth::user()->name }} : confirmDetail.name" required>
+							<input class="input" type="text" v-model="confirmDetail.name == null ? confirmDetail.name = '{{ Auth::user()->name }}' : confirmDetail.name" required>
 							<span class="icon is-small is-left">
 								<i class="fas fa-user fa-lg light-orange"></i>
 							</span>
@@ -36,9 +38,9 @@
 					</div>
 
 					<div class="field">
-						<label class="label"> Phone </label>						
+						<label class="label"> Phone  </label>						
 						<div class="control has-icons-left has-icons-right">
-							<input class="input" type="tel" v-model="confirmDetail.phone == null ? confirmDetail.phone = {{ Auth::user()->phone }} : confirmDetail.phone" required>
+							<input class="input is-info" type="tel" minlength="10" maxlength="14" placeholder="Number input" v-model="confirmDetail.phone == null ? confirmDetail.phone = '{{ Auth::user()->phone }}' : confirmDetail.phone" required>
 							<span class="icon is-small is-left">
 								<i class="fas fa-phone fa-lg light-orange"></i>
 							</span>
@@ -49,20 +51,23 @@
 						</div>
 					</div>
 
-					<div class="field">
+
+
+					<div class="field is-hidden-desktop" >
+						<label class="label"> Address </label>
+						<div class="control has-icons-left has-icons-right">
+							<div class="">
+								<textarea class="textarea" v-model="confirmDetail.address == null ? confirmDetail.address = currentAddress : confirmDetail.address">  </textarea>							</div>
+						</div>
+					</div>
+					
+
+					<div class="field is-hidden-mobile" >
 						<label class="label"> Address</label>
 						<div class="control has-icons-left has-icons-right">
-
-							<div class="is-hidden-mobile">
-								<gmap-autocomplete class="input" value="{{-- Auth::user()->address --}}" required>
-								</gmap-autocomplete>
+							<div class="">
+								<textarea class="textarea" v-model="confirmDetail.address == null ? confirmDetail.address = '{{ Auth::user()->address }}' : confirmDetail.address">  </textarea>
 							</div>
-
-							<div class="is-hidden-desktop is-hidden-tablet">
-								<gmap-autocomplete class="textarea" v-model="confirmDetail.address" required>
-								</gmap-autocomplete>
-							</div>
-
 						</div>
 					</div>
 
@@ -73,7 +78,7 @@
 
 		</section>
 		<footer class="modal-card-foot">
-			<button class="button bg-orange has-text-white" @click="[confirm = false, payment = true]"> Next </button>
+			<button class="button bg-orange has-text-white" @click="[confirm = false, payment = true ]" :disabled="$v.confirmDetail.$invalid"> Next </button>
 			<button class="button is-black" @click="confirm = false"> Cancel</button>
 		</footer>
 	</div>
