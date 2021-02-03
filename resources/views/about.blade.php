@@ -105,7 +105,7 @@
 
 
 
-<div class="" v-if="currentBasket">
+<div class="" v-if="currentCartBasket">
 @include('layouts.partials.view_cart')
 </div>
 
