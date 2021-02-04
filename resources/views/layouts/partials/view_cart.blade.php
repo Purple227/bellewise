@@ -5,7 +5,7 @@
 			<div class=" notification is-black fixed-cart">
 
 				<div class="buttons has-addons is-inline">
-					<span class="button bg-orange has-text-white is-bold"> View </span>
+					<span class="button bg-orange has-text-white is-bold"> Cart </span>
 					<span class="button is-bold orange"> {{ currentCartBasket == null ? 0 : currentCartBasket.length }}  </span>
 				</div>
 

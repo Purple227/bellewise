@@ -20,14 +20,18 @@
 			<div class="content animate__animated animate__backInLeft animate__slow">
 
 
-          <p class="title is-bold is-size-2-desktop has-text-justified is-size-4-mobile">
-            Bellewise Foods 
-            <br>
-            Delivery Service 
-          </p>
+        <p class="title is-bold is-size-2-desktop has-text-justified is-size-4-mobile">
+          Bellewise Foods 
+          <br>
+          Delivery Service 
+        </p>
 
 
-        <p class="is-italic is-mobile is-bold">
+        <p class="is-italic is-mobile is-bold" v-if="HomeWriteUp">
+         @{{ HomeWriteUp.substring(0, 45) }}
+       </p>
+
+       <p class="is-italic is-mobile is-bold" v-else>
          Your No.1 Simplified Food Plug. 
          Get your favourite meals from your favourite spot delivered to you with just a few clicks.
          Fast and efficient.
@@ -65,35 +69,35 @@
     <div class="columns is-gapless is-marginless is-paddingless"> <!-- Columns wrapper tag open -->
 
 
-       <div class="column"> <!-- First column tag open -->
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="/images/mobile.svg" alt="Placeholder image">
-          </figure>
+     <div class="column"> <!-- First column tag open -->
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="/images/mobile.svg" alt="Placeholder image">
+        </figure>
+      </div>
+    </div> <!-- First column tag close -->
+
+    <div class="column"> <!-- Second column tag open -->
+
+      <div class="has-text-centered center"> <!-- Content tag open -->
+
+        <p class="is-bold subtitle"> Save time and energy</p>
+
+        Download the app and sit back,
+        <br>
+        We'll handle the rest.
+
+        <br>
+        <br>
+
+        <div class="buttons is-centered">
+          <button class="button is-bold is-black"> Google Play </button>
+          <button class="button is-bold is-black"> App Store </button>
         </div>
-      </div> <!-- First column tag close -->
 
-      <div class="column"> <!-- Second column tag open -->
+      </div> <!-- Content tag close -->
 
-        <div class="has-text-centered center"> <!-- Content tag open -->
-
-          <p class="is-bold subtitle"> Save time and energy</p>
-
-          Download the app and sit back,
-          <br>
-          We'll handle the rest.
-
-          <br>
-          <br>
-
-          <div class="buttons is-centered">
-            <button class="button is-bold is-black"> Google Play </button>
-            <button class="button is-bold is-black"> App Store </button>
-          </div>
-
-        </div> <!-- Content tag close -->
-
-      </div> <!-- Second column tag close -->
+    </div> <!-- Second column tag close -->
 
 
   </div> <!-- Columns wrapper tag close -->
@@ -184,11 +188,11 @@
 
 
 <div class="" v-if="currentCartBasket">
-@include('layouts.partials.view_cart')
+  @include('layouts.partials.view_cart')
 </div>
 
 <div class="" v-else>
-@include('layouts.partials.order_action')
+  @include('layouts.partials.order_action')
 </div>
 
 

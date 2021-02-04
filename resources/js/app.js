@@ -179,6 +179,7 @@ const app = new Vue({
 
       termsCondition: null,
       privacyPolicy: null,
+      HomeWriteUp: null,
 
     }
   },
@@ -294,6 +295,7 @@ const app = new Vue({
     this.getOrderHistory()
     this.getTermsCondition()
     this.getprivacyPolicy()
+    this.getHomeWriteUp()
     //this.createTerm().then(() => this.status = false )
   },
 
@@ -739,6 +741,15 @@ cart() {
     Vue.axios
     .get(api_url).then((response) => {
       this.privacyPolicy = response.data
+      console.log(response)
+    })
+  },
+
+  getHomeWriteUp() {
+    let api_url = "https://admin.bellewisefoods.com/api/setting/write-up/" +1
+    Vue.axios
+    .get(api_url).then((response) => {
+      this.HomeWriteUp = response.data
       console.log(response)
     })
   },

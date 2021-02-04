@@ -6,8 +6,8 @@ Bellewise is a food plug that get all your favorite meal from any restaurant and
 ## Below is a screen-shot of the application UI
 
 ![](/public/images/screenshot/Home.png)
-
-
+![](/public/images/screenshot/Order.png)
+![](/public/images/screenshot/OrderList.png)
 
 
 ## How To Install My App

@@ -56,7 +56,7 @@
           <button class="button is-bold"> ₦{{ mealCounter * (getSingleMenu.price - (getSingleMenu.price * activeRestaurantDiscount / 100)) | money(2) }} </button>
         </div>
 
-        <div class="buttons has-addons is-centered" @click="removeFromCart(getSingleMenu.id)" v-if="currentCartBasket.some(check => check.id === getSingleMenu.ID)">
+        <div class="buttons has-addons is-centered" @click="removeFromCart(getSingleMenu.id)" v-if=" currentCartBasket == null ? false : currentCartBasket.some(check => check.id === getSingleMenu.ID)">
           <button class="button is-bold"> <i class="fas fa-star" style="color: red"></i> </button>
           <button class="button is-bold"> Remove From Cart</button>
         </div>
