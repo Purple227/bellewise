@@ -27,8 +27,8 @@
         </p>
 
 
-        <p class="is-italic is-mobile is-bold" v-if="HomeWriteUp">
-         @{{ HomeWriteUp.substring(0, 45) }}
+        <p class="is-italic is-mobile is-bold" v-if="HomeWriteUp.write_up">
+         @{{ HomeWriteUp.write_up.substring(0, 45) }}
        </p>
 
        <p class="is-italic is-mobile is-bold" v-else>
