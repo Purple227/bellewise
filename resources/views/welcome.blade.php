@@ -34,7 +34,7 @@
        </p>
 
         <p class="is-italic is-mobile is-bold" v-else>
-         @{{ HomeWriteUp.write_up.substring(0, 45) }}
+         @{{ HomeWriteUp.write_up.substring(0, 200) }}
        </p>
 
        <a href="/shop" class="button is-black is-bold is-medium is-fullwidth"> Order Food Now </a>
