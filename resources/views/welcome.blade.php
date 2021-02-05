@@ -30,7 +30,7 @@
        <p class="is-italic is-mobile is-bold" v-if="HomeWriteUp == null">
          Your No.1 Simplified Food Plug. 
          Get your favourite meals from your favourite spot delivered to you with just a few clicks.
-         Fast and efficient.
+         Fast and efficient. 
        </p>
 
         <p class="is-italic is-mobile is-bold" v-else>
