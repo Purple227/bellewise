@@ -39,7 +39,7 @@ Route::get('/order/history', 'OrderController@index')->name('history')->middlewa
 Route::get('/favorite', 'OrderController@favorite')->name('favorite')->middleware('auth');
 Route::get('/order/track', 'OrderController@track')->name('track')->middleware('auth');
 
-Route::get('/cart', 'CartController@cart')->name('cart')->middleware('auth');
+Route::get('/cart', 'CartController@cart')->name('cart');//->middleware('auth');
 
 Route::post('user/login', 'Auth\UserController@authenticate');
 
