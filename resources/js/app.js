@@ -179,7 +179,7 @@ const app = new Vue({
 
       termsCondition: null,
       privacyPolicy: null,
-      HomeWriteUp: null,
+      homeWriteUp: null,
 
     }
   },
@@ -749,7 +749,7 @@ cart() {
     let api_url = "https://admin.bellewisefoods.com/api/setting/write-up/" +1
     Vue.axios
     .get(api_url).then((response) => {
-      this.HomeWriteUp = response.data
+      this.homeWriteUp = response.data
       console.log(response)
     })
   },

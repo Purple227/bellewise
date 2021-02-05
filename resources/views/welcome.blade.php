@@ -27,14 +27,14 @@
         </p>
 
 
-       <p class="is-italic is-mobile is-bold" v-if="HomeWriteUp == null">
+       <p class="is-italic is-mobile is-bold" v-if="homeWriteUp == null">
          Your No.1 Simplified Food Plug. 
          Get your favourite meals from your favourite spot delivered to you with just a few clicks.
          Fast and efficient. 
        </p>
 
         <p class="is-italic is-mobile is-bold" v-else>
-         @{{ HomeWriteUp.write_up.substring(0, 200) }}
+         @{{ homeWriteUp.write_up.substring(0, 200) }}
        </p>
 
        <a href="/shop" class="button is-black is-bold is-medium is-fullwidth"> Order Food Now </a>
