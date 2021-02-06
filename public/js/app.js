@@ -66742,6 +66742,7 @@ var app = new Vue({
   },
   // Validation calibrace close
   mounted: function mounted() {
+    this.getHomeWriteUp();
     this.getUserLoctionInfo();
     this.activeRestaurantData();
     this.restaurantActiveMenu();
@@ -66750,8 +66751,7 @@ var app = new Vue({
     this.bulmaCalendar();
     this.getOrderHistory();
     this.getTermsCondition();
-    this.getprivacyPolicy();
-    this.getHomeWriteUp(); //this.createTerm().then(() => this.status = false )
+    this.getprivacyPolicy(); //this.createTerm().then(() => this.status = false )
   },
   methods: {
     //Method calibrace open
@@ -67127,7 +67127,7 @@ var app = new Vue({
       var _this8 = this;
 
       this.status = true;
-      var api_url = api || '/api/order';
+      var api_url = api || '/auth/order';
       Vue.axios.get(api_url).then(function (response) {
         _this8.orderHistory = response.data.data;
         _this8.status = false;
@@ -67146,7 +67146,7 @@ var app = new Vue({
       this.searchResult = [];
 
       if (this.searchQuery.length > 1) {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/order/search', {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/auth/order/search', {
           params: {
             search_query: this.searchQuery
           }

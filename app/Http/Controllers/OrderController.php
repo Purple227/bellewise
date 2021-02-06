@@ -87,11 +87,6 @@ class OrderController extends Controller
         $orders = Order::with('tags')
         ->orderBy('id', 'desc')
         ->paginate(5);
-/*        foreach ($orders->tags as $tag) {
-           $tag->name;
-           $tag->price;
-           $tag->count;
-       }*/
        return response()->json($orders);
    }
 
@@ -112,5 +107,26 @@ class OrderController extends Controller
         $order->save();
     }
 
+
+    public function geAuthOrder()
+    {
+        $orders = Order::where('user_id', Auth::id() )
+        ->with('tags')
+        ->orderBy('id', 'desc')
+        ->paginate(5);
+       return response()->json($orders);
+   }
+
+
+   public function authSearch(Request $request)
+   {
+    $search_query = $request->search_query;
+    $data = Order::where('user_id', Auth::id() )
+    ->where('order_id','LIKE',"%$search_query%")
+    ->with('tags')
+    ->take(5)
+    ->get();
+    return response()->json($data);
+   }
 
 }

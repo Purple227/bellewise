@@ -38,6 +38,8 @@ Route::get('/order/view', 'OrderController@single')->name('single_order');
 Route::get('/order/history', 'OrderController@index')->name('history')->middleware('auth');
 Route::get('/favorite', 'OrderController@favorite')->name('favorite')->middleware('auth');
 Route::get('/order/track', 'OrderController@track')->name('track')->middleware('auth');
+Route::get('/auth/order', 'OrderController@geAuthOrder');
+Route::get('auth/order/search', 'OrderController@authSearch');
 
 Route::get('/cart', 'CartController@cart')->name('cart')->middleware('auth');
 

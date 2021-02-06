@@ -286,6 +286,7 @@ const app = new Vue({
 
 
   mounted() {
+    this.getHomeWriteUp()
     this.getUserLoctionInfo()
     this.activeRestaurantData()
     this.restaurantActiveMenu()
@@ -295,7 +296,6 @@ const app = new Vue({
     this.getOrderHistory()
     this.getTermsCondition()
     this.getprivacyPolicy()
-    this.getHomeWriteUp()
     //this.createTerm().then(() => this.status = false )
   },
 
@@ -699,7 +699,7 @@ cart() {
 
   getOrderHistory(api) {
     this.status = true
-    let api_url = api || '/api/order' 
+    let api_url = api || '/auth/order' 
     Vue.axios
     .get(api_url).then((response) => {
       this.orderHistory = response.data.data
@@ -720,7 +720,7 @@ cart() {
     this.isSpinning = true
     this.searchResult= []
     if(this.searchQuery.length > 1) {
-      axios.get('/api/order/search',{params: { search_query: this.searchQuery }}).then(response => {
+      axios.get('/auth/order/search',{params: { search_query: this.searchQuery }}).then(response => {
         this.searchResult = response.data
         this.isSpinning = false
       });
