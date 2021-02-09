@@ -87,6 +87,16 @@ class UserController extends Controller
     }
 
 
+
+   public function search(Request $request)
+   {
+    $search_query = $request->search_query;
+    $data = Order::where('email','LIKE',"%$search_query%")
+    ->take(5)
+    ->get();
+    return response()->json($data);
+   }
+
     /**
      * Display the specified resource.
      *

@@ -30,6 +30,8 @@ Route::get('/order/{id}', 'OrderController@showOrder');
 Route::get('/order/all/pending', 'OrderController@pendingOrder');
 Route::get('/all/order', 'OrderController@allOrder');
 
+Route::get('/user/search', 'Auth\UserController@search');
+
 //Route::post('user/login', 'Auth\UserController@authenticate');
 //Route::post('user/logout', 'Auth\UserController@logout');
 
