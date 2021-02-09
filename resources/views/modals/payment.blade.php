@@ -23,12 +23,13 @@
 
 			</div>
 
-
 	</section>
+
 	<footer class="modal-card-foot">
-		<button class="button bg-orange has-text-white" @click="[payment = false, confirm = false, checkout(totalSumInBasket == null ? 0.00 : totalSumInBasket + 500, 'pending', confirmDetail.phone, deliveryTime, confirmDetail.address, currentCartBasket, '{{Auth::user()->name}}', {{Auth::user()->id}}, 500, totalSumInBasket == null ? 0.00 : totalSumInBasket, 'Cash On Delivery' ), orderSuccessToggle = true]"> Order </button>
+		<button class="button bg-orange has-text-white" @click="[payment = false, confirm = false, checkout(totalSumInBasket == null ? 0.00 : deliveryCharge.delivery_charge + totalSumInBasket, 'pending', confirmDetail.phone, deliveryTime, confirmDetail.address, currentCartBasket, '{{Auth::user()->name}}', {{Auth::user()->id}}, deliveryCharge.delivery_charge, totalSumInBasket == null ? 0.00 : totalSumInBasket, 'Cash On Delivery' ), orderSuccessToggle = true]"> Order </button>
 		<button class="button is-black" @click="[payment = false]"> Cancel </button>
 	</footer>
+	
 </div>
 </div>
 

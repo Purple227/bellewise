@@ -180,6 +180,9 @@ const app = new Vue({
       termsCondition: null,
       privacyPolicy: null,
       homeWriteUp: null,
+      deliveryCharge: null,
+
+      blah: window.location.href,
 
     }
   },
@@ -296,6 +299,8 @@ const app = new Vue({
     this.getOrderHistory()
     this.getTermsCondition()
     this.getprivacyPolicy()
+    this.getDeliveryCharge()
+    //this.test()
     //this.createTerm().then(() => this.status = false )
   },
 
@@ -774,15 +779,15 @@ cart() {
         name: name,
       },
       callback: function (data) {
-        console.log(data);
+        console.log(name);
       },
       onclose: function() {
         // close modal
       },
       customizations: {
         title: " Bellewise Foods",
-        description: "Payment for items in cart",
-        logo: window.location.href+'/images/logo.webp',
+        description: " Thanks for shopping with us. Your order is on it way",
+        logo: window.location.href+'images/logo.webp',
       },
     });
   },
@@ -791,6 +796,24 @@ cart() {
     window.localStorage.clear()
     window.location.reload()
   },
+
+  getDeliveryCharge() {
+    let api_url = "https://admin.bellewisefoods.com/api/setting/dellivery-charge/" +1
+    Vue.axios
+    .get(api_url).then((response) => {
+      this.deliveryCharge = response.data
+      console.log(response)
+    })
+  },  
+
+  /*test() {
+    let api_url = "/api/all/order"
+    Vue.axios
+    .get(api_url).then((response) => {
+      console.log(window.location.href+'images/logo.webp')
+    })
+  },*/  
+
 
   }, //Method calibrace close
 

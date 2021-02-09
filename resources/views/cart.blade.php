@@ -34,7 +34,7 @@
 								<div class="content">
 									<strong> {{ menu.name }} </strong>
 									<br>
-									<strong> ₦{{ menu.count * menu.price }} </strong>
+									<strong> ₦{{ menu.price }} </strong>
 								</div>
 							</div> <!-- First column tag close -->
 
@@ -72,13 +72,13 @@
 
 					<div class="">
 						<p class="subtitle is-inline">Delivery</p> 
-						<p class="subtitle is-inline is-pulled-right"> ₦500.00 </p> 
+						<p class="subtitle is-inline is-pulled-right"> ₦ {{ deliveryCharge.delivery_charge }} </p> 
 					</div>
 					<br>
 
 					<div class="">
 						<p class="subtitle is-inline">Sum</p> 
-						<p class="subtitle is-inline is-pulled-right"> ₦{{ totalSumInBasket == null ? 0.00 : totalSumInBasket + 500 | money(2) }} </p> 
+						<p class="subtitle is-inline is-pulled-right"> ₦{{ totalSumInBasket == null ? 0.00 : totalSumInBasket + deliveryCharge.delivery_charge | money(2) }} </p> 
 					</div>
 
 				</div>

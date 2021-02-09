@@ -82,8 +82,6 @@ class OrderController extends Controller
 
     public function getOrder()
     {
-
-
         $orders = Order::with('tags')
         ->orderBy('id', 'desc')
         ->paginate(5);
@@ -105,6 +103,14 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = $request->status;
         $order->save();
+
+        $message = $user_credentials->message()->send([
+            'to' => $request->phone,
+            'from' => 'Bellewisefoods',
+            'text' => 'Hello,'.' '. $request->name. ' '.' order ID:'.' '.$request->order_id.' '.'have been' .''. $request->order_status
+        ]);
+
+
     }
 
 
@@ -127,6 +133,39 @@ class OrderController extends Controller
     ->take(5)
     ->get();
     return response()->json($data);
+   }
+
+    public function showOrder($id)
+    {
+      $order = Order::find($id);
+      foreach ($order->tags as $tag) {
+           $tag->name;
+        }       
+      return response()->json($order);
+    }
+
+    public function pendingOrder()
+    {
+        $orders = Order::where('order_status', 'pending' )
+        ->with('tags')
+        ->orderBy('id', 'desc')
+        ->paginate(5);
+       return response()->json($orders);
+   }
+
+    public function confirmOrder()
+    {
+        $orders = Order::where('order_status', 'confirm' )
+        ->with('tags')
+        ->orderBy('id', 'desc')
+        ->paginate(5);
+       return response()->json($orders);
+   }
+
+    public function allOrder()
+    {
+        $orders = Order::all();
+        return response()->json($orders);
    }
 
 }

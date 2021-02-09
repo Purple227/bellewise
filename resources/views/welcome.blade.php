@@ -23,7 +23,7 @@
         <p class="title is-bold is-size-2-desktop has-text-justified is-size-4-mobile">
           Bellewise Foods 
           <br>
-          Delivery Service 
+          Delivery Service
         </p>
 
 

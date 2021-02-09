@@ -27,7 +27,7 @@
          </p>
 
          <p class="">
-          {{ getSingleMenu.descripion }}
+          {{ getSingleMenu.description }}
          </p>
 
          <div class="buttons is-centered">

@@ -26,6 +26,10 @@ Route::get('/order', 'OrderController@getOrder');
 Route::get('/order/search', 'OrderController@search');
 Route::patch('/order/{id}', 'OrderController@orderUpdate');
 
+Route::get('/order/{id}', 'OrderController@showOrder');
+Route::get('/order/all/pending', 'OrderController@pendingOrder');
+Route::get('/all/order', 'OrderController@allOrder');
+
 //Route::post('user/login', 'Auth\UserController@authenticate');
 //Route::post('user/logout', 'Auth\UserController@logout');
 
