@@ -104,6 +104,8 @@
 
    <p class="is-bold"> Delivery Time {{ searchQuery.length  > 1 ? searchResult[0].delivery_time == null ? 'Immediately' : searchHistory[0].delivery_time : orderHistory[0].delivery_time == null ? 'Immediately' : orderHistory[0].delivery_time }} </p>
 
+   <p class="is-bold">  {{ searchQuery.length  > 1 ? searchResult[0].restaurant_name : orderHistory[0].restaurant_name }} </p>
+
 
    <div class="notification is-light"> <!-- Notifacatin tag open -->
 
@@ -176,7 +178,7 @@
 </div>
 </li>
 
-<li class="steps-segment" v-bind:class="{ 'is-active': searchQuery.length  > 1 ? searchResult[0].order_status == 'on the way' : orderHistory[0].order_status == 'on the way' }">
+<li class="steps-segment" v-bind:class="{ 'is-active': searchQuery.length  > 1 ? searchResult[0].order_status == 'on_the_way' : orderHistory[0].order_status == 'on the way' }">
  <span class="steps-marker">
   <span class="icon">
    <i class="fa fa-truck"></i>

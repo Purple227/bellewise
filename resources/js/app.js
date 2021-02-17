@@ -159,6 +159,11 @@ const app = new Vue({
       restaurantConfig: null,
       restaurantID: window.localStorage.getItem('restaurantID'),
 
+      promo: {
+        discount: window.localStorage.getItem('promoDiscount'),
+        amount: window.localStorage.getItem('promoPrice')
+      },
+
       cartWatcher: null,
       currentCartBasket: null,
       totalSumInBasket: null,
@@ -182,7 +187,9 @@ const app = new Vue({
       homeWriteUp: null,
       deliveryCharge: null,
 
-      blah: window.location.href,
+      loader: {
+        button: false,
+      },
 
     }
   },
@@ -469,11 +476,15 @@ const app = new Vue({
   },
 
 
-  restaurantActiveMenu( name, ID,  discount ) {
+  restaurantActiveMenu( name, ID,  discount, promoDiscount, promoPrice ) {
+
     this.status = true
     let checkID = ID == undefined ? '' : window.localStorage.setItem('restaurantID', ID)
     let api = name == undefined ? '' :  name.length >= 63 ? name : window.localStorage.setItem('restaurantName', name)
     let checkDiscount = discount == undefined ? '' : window.localStorage.setItem('restaurantDiscount', parseInt(discount))
+    let checkPromoDiscount = promoDiscount == undefined ? '' : window.localStorage.setItem('promoDiscount', parseInt(promoDiscount))
+    let checkPromoPrice = promoPrice == undefined ? '' : window.localStorage.setItem('promoPrice', parseInt(promoPrice))
+
     let api_url = api || "https://admin.bellewisefoods.com/api/restaurant-menu/active/" +window.localStorage.getItem('restaurantID')
 
     Vue.axios
@@ -612,57 +623,113 @@ cart() {
   },
 
 
+  checkout(summary, orderStatus, phone, deliveryTime, address, basket, name, userID, orderCharge, totalPrice, paymentStatus, restaurantName) {
+    
+    this.loader.button = true
 
-  payByCard(amount, customerID, mail, phone, name) {
-
-    const config = {
-      headers: { 
-        'Authorization': 'Bearer FLWSECK-8be91ba7e997cfb2d9b973f92a1ffd12-X',
-        'Access-Control-Allow-Origin' : '*',
-      }
+    let checkoutOrder = {
+      summary: summary,
+      paymentStatus: paymentStatus,
+      phone: phone,
+      deliveryTime: deliveryTime,
+      address: address,
+      basket: basket,
+      name: name,
+      userID: userID,
+      orderCharge: orderCharge,
+      totalPrice: totalPrice,
+      orderStatus: orderStatus,
+      restaurantName: restaurantName
     }
 
-    const token = 'FLWSECK-8be91ba7e997cfb2d9b973f92a1ffd12-X'
+    console.log(checkoutOrder)
+      window.localStorage.setItem("checkoutOrder", JSON.stringify(checkoutOrder)); //store
 
-    let uri = 'https://api.flutterwave.com/v3/payments'
+      Vue.axios.post('/api/order', {
+        priceSummary: checkoutOrder.summary,
+        paymentStatus: checkoutOrder.paymentStatus,
+        phone: checkoutOrder.phone,
+        deliveryTime: checkoutOrder.deliveryTime,
+        address: checkoutOrder.address,
+        basket: checkoutOrder.basket,
+        name: checkoutOrder.name,
+        userID: checkoutOrder.userID,
+        totalPrice: checkoutOrder.totalPrice,
+        orderCharge: checkoutOrder.orderCharge,
+        orderStatus: checkoutOrder.orderStatus,
+        restaurantName: checkoutOrder.restaurantName,
+      })
+      .then(function (response) {
+        window.localStorage.clear()
+        window.location ='/success'
+      })
+      .catch(function (error) {
+        this.loader.button = false
+      });
 
-    Vue.axios.post(uri, {
-
-     "tx_ref":"hooli-tx-1920bbtytty",
-     "amount": amount,
-     "currency":"NGN",
-     "redirect_url":"https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc",
-     "payment_options":"card",
-     "meta":{
-      "consumer_id": customerID,
     },
-    "customer":{
-      "email": mail,
-      "phonenumber": phone,
-      "name": name
-    },
-    "customizations":{
-      "title":" Bellewise Order Payment",
-      "description":" Payment for order placed",
-      "logo":"https://assets.piedpiper.com/logo.png"
-    }
-  },
 
-  {
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Access-Control-Allow-Origin' : '*'
-  }
 
-  }).then((response) => {
-        console.log(response)
-      }).catch(error=>{
-        console.log(error)
+    getOrderHistory(api) {
+      this.status = true
+      let api_url = api || '/auth/order' 
+      Vue.axios
+      .get(api_url).then((response) => {
+        this.orderHistory = response.data.data
+        this.status = false
+
+        let nextPageUrl = response.data.next_page_url
+        this.orderPage.nextPageUrl = nextPageUrl 
+
+        let previousPageUrl = response.data.prev_page_url
+        this.orderPage.previousPageUrl =  previousPageUrl 
+
+        this.orderPage.to = response.data.to
+        this.orderPage.total = response.data.total
       })
     },
 
+    searchOrderHistory() {
+      this.isSpinning = true
+      this.searchResult= []
+      if(this.searchQuery.length > 1) {
+        axios.get('/auth/order/search',{params: { search_query: this.searchQuery }}).then(response => {
+          this.searchResult = response.data
+          this.isSpinning = false
+        });
+      }
+    },
 
-    checkout(summary, orderStatus, phone, deliveryTime, address, basket, name, userID, orderCharge, totalPrice, paymentStatus) {
+    getTermsCondition() {
+      let api_url = "https://admin.bellewisefoods.com/api/setting/term/" +1
+      Vue.axios
+      .get(api_url).then((response) => {
+        this.termsCondition = response.data
+        console.log(response)
+      })
+    },
+
+    getprivacyPolicy() {
+      let api_url = "https://admin.bellewisefoods.com/api/setting/policy/" +1
+      Vue.axios
+      .get(api_url).then((response) => {
+        this.privacyPolicy = response.data
+        console.log(response)
+      })
+    },
+
+    getHomeWriteUp() {
+      let api_url = "https://admin.bellewisefoods.com/api/setting/write-up/" +1
+      Vue.axios
+      .get(api_url).then((response) => {
+        this.homeWriteUp = response.data
+        console.log(response)
+      })
+    },
+
+    makePayment(summary, orderStatus, phone, deliveryTime, address, basket, name, userID, orderCharge, totalPrice, paymentStatus, restaurantName, mail) {
+
+
       let checkoutOrder = {
         summary: summary,
         paymentStatus: paymentStatus,
@@ -674,103 +741,23 @@ cart() {
         userID: userID,
         orderCharge: orderCharge,
         totalPrice: totalPrice,
-        orderStatus: orderStatus
+        orderStatus: orderStatus,
+        restaurantName: restaurantName
       }
-      console.log(checkoutOrder)
+
       window.localStorage.setItem("checkoutOrder", JSON.stringify(checkoutOrder)); //store
 
-    Vue.axios.post('/api/order', {
-      priceSummary: checkoutOrder.summary,
-      paymentStatus: checkoutOrder.paymentStatus,
-      phone: checkoutOrder.phone,
-      deliveryTime: checkoutOrder.deliveryTime,
-      address: checkoutOrder.address,
-      basket: checkoutOrder.basket,
-      name: checkoutOrder.name,
-      userID: checkoutOrder.userID,
-      totalPrice: checkoutOrder.totalPrice,
-      orderCharge: checkoutOrder.orderCharge,
-      orderStatus: checkoutOrder.orderStatus
-    })
-    .then(function (response) {
-      window.localStorage.clear()
-    })
-    .catch(function (error) {
-      // Catch errors
-    });
-
-    },
-
-
-  getOrderHistory(api) {
-    this.status = true
-    let api_url = api || '/auth/order' 
-    Vue.axios
-    .get(api_url).then((response) => {
-      this.orderHistory = response.data.data
-      this.status = false
-
-      let nextPageUrl = response.data.next_page_url
-      this.orderPage.nextPageUrl = nextPageUrl 
-
-      let previousPageUrl = response.data.prev_page_url
-      this.orderPage.previousPageUrl =  previousPageUrl 
-
-      this.orderPage.to = response.data.to
-      this.orderPage.total = response.data.total
-    })
-  },
-
-  searchOrderHistory() {
-    this.isSpinning = true
-    this.searchResult= []
-    if(this.searchQuery.length > 1) {
-      axios.get('/auth/order/search',{params: { search_query: this.searchQuery }}).then(response => {
-        this.searchResult = response.data
-        this.isSpinning = false
-      });
-    }
-  },
-
-  getTermsCondition() {
-    let api_url = "https://admin.bellewisefoods.com/api/setting/term/" +1
-    Vue.axios
-    .get(api_url).then((response) => {
-      this.termsCondition = response.data
-      console.log(response)
-    })
-  },
-
-  getprivacyPolicy() {
-    let api_url = "https://admin.bellewisefoods.com/api/setting/policy/" +1
-    Vue.axios
-    .get(api_url).then((response) => {
-      this.privacyPolicy = response.data
-      console.log(response)
-    })
-  },
-
-  getHomeWriteUp() {
-    let api_url = "https://admin.bellewisefoods.com/api/setting/write-up/" +1
-    Vue.axios
-    .get(api_url).then((response) => {
-      this.homeWriteUp = response.data
-      console.log(response)
-    })
-  },
-
- makePayment(amount, customerID, mail, phone, name) {
-    FlutterwaveCheckout({
-      public_key: "FLWPUBK-3493d4c3450de778b23d1d806821e44d-X",
-      tx_ref: "hooli-tx-1920bbtyt",
-      amount: amount,
-      currency: "NGN",
-      country: "NG",
-      payment_options: "card",
+      FlutterwaveCheckout({
+        public_key: "FLWPUBK-3493d4c3450de778b23d1d806821e44d-X",
+        tx_ref: "hooli-tx-1920bbtyt",
+        amount: summary,
+        currency: "NGN",
+        country: "NG",
+        payment_options: "card",
       redirect_url: // specified redirect URL
-        "https://callbacks.piedpiper.com/flutterwave.aspx?ismobile=34",
+      "https://www.bellewisefoods.com/success",
       meta: {
-        consumer_id: customerID,
+        consumer_id: userID,
         consumer_mac: "",
       },
       customer: {
@@ -778,9 +765,35 @@ cart() {
         phone_number: phone,
         name: name,
       },
+
       callback: function (data) {
-        console.log(name);
+
+        checkoutOrder = JSON.parse(window.localStorage.getItem("checkoutOrder")); //get them back
+
+        Vue.axios.post('/api/order', {
+          priceSummary: checkoutOrder.summary,
+          paymentStatus: checkoutOrder.paymentStatus,
+          phone: checkoutOrder.phone,
+          deliveryTime: checkoutOrder.deliveryTime,
+          address: checkoutOrder.address,
+          basket: checkoutOrder.basket,
+          name: checkoutOrder.name,
+          userID: checkoutOrder.userID,
+          totalPrice: checkoutOrder.totalPrice,
+          orderCharge: checkoutOrder.orderCharge,
+          orderStatus: checkoutOrder.orderStatus,
+          restaurantName: checkoutOrder.restaurantName,
+        })
+        .then(function (response) {
+          window.localStorage.clear()
+          window.location ='/success'
+        })
+        .catch(function (error) {
+          this.loader.button = false
+        });
+
       },
+
       onclose: function() {
         // close modal
       },
@@ -790,21 +803,21 @@ cart() {
         logo: window.location.href+'images/logo.webp',
       },
     });
-  },
+    },
 
-  clearStorage() {
-    window.localStorage.clear()
-    window.location.reload()
-  },
+    clearStorage() {
+      window.localStorage.clear()
+      window.location.reload()
+    },
 
-  getDeliveryCharge() {
-    let api_url = "https://admin.bellewisefoods.com/api/setting/dellivery-charge/" +1
-    Vue.axios
-    .get(api_url).then((response) => {
-      this.deliveryCharge = response.data
-      console.log(response)
-    })
-  },  
+    getDeliveryCharge() {
+      let api_url = "https://admin.bellewisefoods.com/api/setting/dellivery-charge/" +1
+      Vue.axios
+      .get(api_url).then((response) => {
+        this.deliveryCharge = response.data
+        console.log(response)
+      })
+    },  
 
   /*test() {
     let api_url = "/api/all/order"

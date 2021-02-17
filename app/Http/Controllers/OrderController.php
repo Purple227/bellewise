@@ -56,6 +56,7 @@ class OrderController extends Controller
         $order->price_summary = $request->priceSummary;
         $order->order_charge = $request->orderCharge;
         $order->order_status = $request->orderStatus;
+        $order->restaurant_name = $request->restaurantName;
         $order->save();
 
         $order = Order::find($order->id);
@@ -101,16 +102,14 @@ class OrderController extends Controller
     public function orderUpdate(Request $request, $id)
     {
         $order = Order::find($id);
-        $order->status = $request->status;
+        $order->order_status = $request->status;
         $order->save();
 
         $message = $user_credentials->message()->send([
             'to' => $request->phone,
             'from' => 'Bellewisefoods',
-            'text' => 'Hello,'.' '. $request->name. ' '.' order ID:'.' '.$request->order_id.' '.'have been' .''. $request->order_status
+            'text' => 'Hello,'.' '. $request->name. ' '.' order ID:'.' '.$request->order_id.' '.'have been' .''. $request->status
         ]);
-
-
     }
 
 
@@ -166,6 +165,6 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         return response()->json($orders);
-   }
+    }
 
 }

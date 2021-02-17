@@ -24,4 +24,10 @@ class PageController extends Controller
         return view('policy');
     }
 
+    public function success()
+    {
+        return view('success');
+    }
+
+
 }

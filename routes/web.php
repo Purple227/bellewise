@@ -48,7 +48,7 @@ Route::post('user/login', 'Auth\UserController@authenticate');
 Route::get('/faq', 'FAQController@index')->name('faq');
 
 
-
+Route::get('/success', 'PageController@success')->name('success')->middleware('auth');
 
 
 

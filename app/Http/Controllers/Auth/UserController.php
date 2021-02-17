@@ -21,7 +21,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::orderBy('id', 'desc')->paginate(5);
+        return response()->json($users);
     }
 
     public function authenticate(Request $request)
@@ -91,7 +92,7 @@ class UserController extends Controller
    public function search(Request $request)
    {
     $search_query = $request->search_query;
-    $data = Order::where('email','LIKE',"%$search_query%")
+    $data = User::where('email','LIKE',"%$search_query%")
     ->take(5)
     ->get();
     return response()->json($data);
@@ -106,6 +107,12 @@ class UserController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function allUser()
+    {
+        $users = User::all();
+        return response()->json($users);
     }
 
     /**

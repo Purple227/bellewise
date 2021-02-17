@@ -71,7 +71,7 @@
 
           <article class="media"> <!-- Media article tag open -->
             <figure class="media-left" >
-              <a href="/order" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id)">
+              <a href="/order" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id, activeRestaurants.discount, activeRestaurants.promos[0].discount, activeRestaurants.promos[0].amount)">
                 <p class="image is-128x128">
                   <img src="/images/default_image.svg" v-if="activeRestaurants.image.length <= 'default_image.svg'.length">
                   <img :src="'https://admin.bellewisefoods.com/storage/'+activeRestaurants.image" v-else>
@@ -79,7 +79,7 @@
               </a>
             </figure>
             <div class="media-content "> <!-- Media content tag open -->
-              <a href="/order" style="text-decoration: none;" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id, activeRestaurants.discount)">
+              <a href="/order" style="text-decoration: none;" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id, activeRestaurants.discount, activeRestaurants.promos[0].discount, activeRestaurants.promos[0].amount)">
                 <div class="content">
                   <p class="is-marginless">
                     <strong> {{ activeRestaurants.name.substring(0,20) }} </strong> <small> Updated </small> <small> {{ activeRestaurants.updated_at | format('D MMM YYYY') }} </small>
@@ -88,6 +88,8 @@
                       <!--span class="tag is-black"> tags </span-->
                     </div>
                     <strong class="fas fa-tag is-bold" style="color: #FF4500"> <span class="has-text-black"> {{ activeRestaurants.discount }} % Off</span> </strong> 
+                    <br>
+                    <strong class="fa fa-gift is-bold" style="color: #FF4500"> <span class="has-text-black"> {{ activeRestaurants.promos.length == 0 ? 'Yummy' : 'On Promo' + ' ' + activeRestaurants.promos[0].discount + '% Off if you purchase up to' + ' ' + activeRestaurants.promos[0].amount }} </span> </strong> 
                   </p>
                 </div>
               </a>

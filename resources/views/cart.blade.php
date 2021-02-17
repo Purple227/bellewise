@@ -66,20 +66,28 @@
 
 					<div class="">
 						<p class="subtitle  is-inline">Order</p> 
-						<p class="subtitle is-inline is-pulled-right"> ₦{{ totalSumInBasket == null ? 0.00 : totalSumInBasket.toFixed(2) }} </p> 
+						<p class="subtitle is-inline is-pulled-right"> ₦{{ totalSumInBasket | money(2) }} </p> 
 					</div>
 					<br>
 
 					<div class="">
 						<p class="subtitle is-inline">Delivery</p> 
-						<p class="subtitle is-inline is-pulled-right"> ₦ {{ deliveryCharge.delivery_charge }} </p> 
+						<p class="subtitle is-inline is-pulled-right"> ₦{{ deliveryCharge.delivery_charge | money(2) }} </p> 
 					</div>
 					<br>
 
 					<div class="">
 						<p class="subtitle is-inline">Sum</p> 
-						<p class="subtitle is-inline is-pulled-right"> ₦{{ totalSumInBasket == null ? 0.00 : totalSumInBasket + deliveryCharge.delivery_charge | money(2) }} </p> 
+						<p class="subtitle is-inline is-pulled-right"> ₦{{ totalSumInBasket + deliveryCharge.delivery_charge | money(2) }} </p> 
 					</div>
+
+					<br>
+
+					<div class="" v-if="promo.discount != null && promo.amount != null">
+						<p class="subtitle is-inline"> Promo Price</p> 
+						<p class="subtitle is-inline is-pulled-right"> ₦ {{ (totalSumInBasket + deliveryCharge.delivery_charge) -  ( promo.discount / 100) | money(2) }} </p> 
+					</div>
+
 
 				</div>
 			</div>
@@ -121,11 +129,6 @@
 	<!-- Confirm section -->
 	<div class="" v-if="confirm"> 
 		@include("modals.confirm_details")
-	</div>
-
-	<!-- Order Status -->
-	<div class="" v-if="orderSuccessToggle"> 
-		@include("modals.order_status")
 	</div>
 
 	<!-- Payment section -->

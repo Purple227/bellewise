@@ -67,6 +67,7 @@
             <th> <span class="orange"> Cart </span> </th>
             <th> <span class="orange"> Status </span> </th>
             <th> <span class="orange"> Payment Status </span> </th>
+            <th> <span class="orange"> Restaurant Name </span> </th>
             <th> <span class="orange"> Delivery Time </span> </th>
             <th> <span class="orange"> Total Price </span> </th>
             <th> <span class="orange"> Price Summary </span> </th>
@@ -83,6 +84,7 @@
             <td> {{ order.tags.length }} </td>
             <td>  <span class="tag is-bold is-medium">  {{ order.order_status }}  </span> </td>
             <td> {{ order.payment }} </td>
+            <td> {{ order.restaurant_name }} </td>
             <td> {{ order.delivery_time == null ? 'Now' : order.delivery_time }} </td>
             <td> {{ order.price | money(2) }} </td>
             <td> {{ order.price_summary | money(2) }} </td>

@@ -28,9 +28,11 @@ Route::patch('/order/{id}', 'OrderController@orderUpdate');
 
 Route::get('/order/{id}', 'OrderController@showOrder');
 Route::get('/order/all/pending', 'OrderController@pendingOrder');
+Route::get('/order/all/confirm', 'OrderController@confirmOrder');
 Route::get('/all/order', 'OrderController@allOrder');
 
 Route::get('/user/search', 'Auth\UserController@search');
+Route::get('/user/all', 'Auth\UserController@allUser');
 
 //Route::post('user/login', 'Auth\UserController@authenticate');
 //Route::post('user/logout', 'Auth\UserController@logout');

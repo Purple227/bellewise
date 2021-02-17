@@ -27,6 +27,7 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->integer('user_id');
             $table->string('order_status');
+            $table->string('restaurant_name');
 
             $table->timestamps();
         });

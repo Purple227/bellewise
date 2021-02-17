@@ -20,7 +20,6 @@
     <div class="columns"> <!-- Columns wrapper tag open -->
 
         <div class="column"> <!-- First column tag open -->
-
             <div class="field">
                 <label class="label"> Name <span class="orange"> * </span>  </label>
 
@@ -47,6 +46,7 @@
                     </div>
                 </div>
             </div>
+
 
 
 
@@ -184,7 +184,7 @@
     <div class="field-body">
         <div class="field is-grouped">
             <div class="control">
-                <button type="submit" class="button bg-orange is-bold" v-bind:class="{ 'is-loading': registerDetails.loader }" :disabled="$v.registerDetails.$invalid" @click="registerPostMethod"> Register </button>
+                <button type="submit" class="button bg-orange is-bold has-text-white" v-bind:class="{ 'is-loading': registerDetails.loader }" :disabled="$v.registerDetails.$invalid" @click="registerPostMethod"> Register </button>
             </div>
         </div>
     </div>
