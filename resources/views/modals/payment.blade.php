@@ -35,17 +35,6 @@
 		<button class="button is-black" @click="[payment = false]"> Cancel </button>
 	</footer>
 	
-
-
-
-
-
-
-
-<button @click="makePayment( promo.discount != null ? (totalSumInBasket + deliveryCharge.delivery_charge) -  ( (totalSumInBasket + deliveryCharge.delivery_charge) * promo.discount / 100)  : (totalSumInBasket + deliveryCharge.delivery_charge), 'pending', confirmDetail.phone, deliveryTime, confirmDetail.address, currentCartBasket, '{{Auth::user()->name}}', {{Auth::user()->id}}, deliveryCharge.delivery_charge, totalSumInBasket, ' Paid', activeRestaurantName, '{{Auth::user()->email}}')"> online bill  </button>
-
-
-	
 </div>
 </div>
 
