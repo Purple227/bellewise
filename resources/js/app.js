@@ -768,7 +768,7 @@ cart() {
 
       callback: function() {
 
-        checkoutOrder = JSON.parse(window.localStorage.getItem("checkoutOrder")); //get them back
+        let checkoutOrder = JSON.parse(window.localStorage.getItem("checkoutOrder")); //get them back
 
         Vue.axios.post('/api/order', {
           priceSummary: checkoutOrder.summary,

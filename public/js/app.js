@@ -67197,7 +67197,7 @@ var app = new Vue({
           name: name
         },
         callback: function callback() {
-          checkoutOrder = JSON.parse(window.localStorage.getItem("checkoutOrder")); //get them back
+          var checkoutOrder = JSON.parse(window.localStorage.getItem("checkoutOrder")); //get them back
 
           Vue.axios.post('/api/order', {
             priceSummary: checkoutOrder.summary,
