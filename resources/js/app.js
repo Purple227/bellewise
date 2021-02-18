@@ -766,7 +766,7 @@ cart() {
         name: name,
       },
 
-      callback: function (data) {
+      callback: function() {
 
         checkoutOrder = JSON.parse(window.localStorage.getItem("checkoutOrder")); //get them back
 
@@ -795,7 +795,7 @@ cart() {
       },
 
       onclose: function() {
-        // close modal
+        //console.log('we see')
       },
       customizations: {
         title: " Bellewise Foods",

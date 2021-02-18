@@ -85,7 +85,7 @@
 
 					<div class="" v-if="promo.discount != null && promo.amount != null">
 						<p class="subtitle is-inline"> Promo Price</p> 
-						<p class="subtitle is-inline is-pulled-right"> ₦ {{ (totalSumInBasket + deliveryCharge.delivery_charge) -  ( promo.discount / 100) | money(2) }} </p> 
+						<p class="subtitle is-inline is-pulled-right"> ₦ {{ (totalSumInBasket + deliveryCharge.delivery_charge) -  ( (totalSumInBasket + deliveryCharge.delivery_charge) * promo.discount / 100) | money(2) }} </p> 
 					</div>
 
 
