@@ -482,6 +482,7 @@ const app = new Vue({
     let checkID = ID == undefined ? '' : window.localStorage.setItem('restaurantID', ID)
     let api = name == undefined ? '' :  name.length >= 63 ? name : window.localStorage.setItem('restaurantName', name)
     let checkDiscount = discount == undefined ? '' : window.localStorage.setItem('restaurantDiscount', parseInt(discount))
+    
     let checkPromoDiscount = promoDiscount == undefined ? '' : window.localStorage.setItem('promoDiscount', parseInt(promoDiscount))
     let checkPromoPrice = promoPrice == undefined ? '' : window.localStorage.setItem('promoPrice', parseInt(promoPrice))
 

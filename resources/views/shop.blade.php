@@ -71,7 +71,7 @@
 
           <article class="media"> <!-- Media article tag open -->
             <figure class="media-left" >
-              <a href="/order" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id, activeRestaurants.discount, activeRestaurants.promos[0].discount, activeRestaurants.promos[0].amount)">
+              <a href="/order" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id, activeRestaurants.discount, activeRestaurants.promos.length == 0 ? undefined : activeRestaurants.promos[0].discount, activeRestaurants.promos.length == 0 ? undefined : activeRestaurants.promos[0].amount)">
                 <p class="image is-128x128">
                   <img src="/images/default_image.svg" v-if="activeRestaurants.image.length <= 'default_image.svg'.length">
                   <img :src="'https://admin.bellewisefoods.com/storage/'+activeRestaurants.image" v-else>
@@ -79,7 +79,7 @@
               </a>
             </figure>
             <div class="media-content "> <!-- Media content tag open -->
-              <a href="/order" style="text-decoration: none;" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id, activeRestaurants.discount, activeRestaurants.promos[0].discount, activeRestaurants.promos[0].amount)">
+              <a href="/order" style="text-decoration: none;" @click="restaurantActiveMenu(activeRestaurants.name, activeRestaurants.id, activeRestaurants.discount, activeRestaurants.promos.length == 0 ? undefined : activeRestaurants.promos[0].discount, activeRestaurants.promos.length == 0 ? undefined : activeRestaurants.promos[0].amount)">
                 <div class="content">
                   <p class="is-marginless">
                     <strong> {{ activeRestaurants.name.substring(0,20) }} </strong> <small> Updated </small> <small> {{ activeRestaurants.updated_at | format('D MMM YYYY') }} </small>

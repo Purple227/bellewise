@@ -22,7 +22,7 @@
 				</label>
 
 				<label class="radio is-bold">
-					<input type="radio" name="foobar" @click="[paymentToggle = true, makePayment( promo.amount >= totalSumInBasket ? totalSumInBasket  -  (totalSumInBasket  * promo.discount / 100) + deliveryCharge.delivery_charge : (totalSumInBasket + deliveryCharge.delivery_charge), 'pending', confirmDetail.phone, deliveryTime, confirmDetail.address, currentCartBasket, '{{Auth::user()->name}}', {{Auth::user()->id}}, deliveryCharge.delivery_charge, totalSumInBasket, ' Paid', activeRestaurantName, '{{Auth::user()->email}}') ]">
+					<input type="radio" name="foobar" @click="[paymentToggle = true, makePayment( totalSumInBasket >= promo.amount ? totalSumInBasket  -  (totalSumInBasket  * promo.discount / 100) + deliveryCharge.delivery_charge : (totalSumInBasket + deliveryCharge.delivery_charge), 'pending', confirmDetail.phone, deliveryTime, confirmDetail.address, currentCartBasket, '{{Auth::user()->name}}', {{Auth::user()->id}}, deliveryCharge.delivery_charge, totalSumInBasket, ' Paid', activeRestaurantName, '{{Auth::user()->email}}') ]">
 					Credit Card 
 				</label>
 
@@ -31,7 +31,7 @@
 	</section>
 
 	<footer class="modal-card-foot">
-		<button class="button bg-orange has-text-white" @click="[confirm = false, checkout( promo.amount >= totalSumInBasket ? totalSumInBasket  -  (totalSumInBasket  * promo.discount / 100) + deliveryCharge.delivery_charge : (totalSumInBasket + deliveryCharge.delivery_charge), 'pending', confirmDetail.phone, deliveryTime, confirmDetail.address, currentCartBasket, '{{Auth::user()->name}}', {{Auth::user()->id}}, deliveryCharge.delivery_charge, totalSumInBasket, 'Cash On Delivery', activeRestaurantName)]"  v-bind:class="{ 'is-loading': loader.button }"> Place Order </button>
+		<button class="button bg-orange has-text-white" @click="[confirm = false, checkout( totalSumInBasket >= promo.amount ? totalSumInBasket  -  (totalSumInBasket  * promo.discount / 100) + deliveryCharge.delivery_charge : (totalSumInBasket + deliveryCharge.delivery_charge), 'pending', confirmDetail.phone, deliveryTime, confirmDetail.address, currentCartBasket, '{{Auth::user()->name}}', {{Auth::user()->id}}, deliveryCharge.delivery_charge, totalSumInBasket, 'Cash On Delivery', activeRestaurantName)]"  v-bind:class="{ 'is-loading': loader.button }"> Place Order </button>
 
 		<button class="button is-black" @click="[payment = false]"> Cancel </button>
 	</footer>
