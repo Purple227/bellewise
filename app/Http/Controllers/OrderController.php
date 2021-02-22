@@ -105,6 +105,9 @@ class OrderController extends Controller
         $order->order_status = $request->status;
         $order->save();
 
+        $nexmo_credentials = new Basic('e1ee698d', '3vsIsgixcRp5bmRM');
+        $user_credentials = new Client($nexmo_credentials);
+
         $message = $user_credentials->message()->send([
             'to' => $request->phone,
             'from' => 'Bellewisefoods',
