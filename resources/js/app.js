@@ -663,6 +663,7 @@ cart() {
       .then(function (response) {
         window.localStorage.clear()
         window.location ='/success'
+        console.log(response)
       })
       .catch(function (error) {
         this.loader.button = false

@@ -40,6 +40,8 @@ class OrderController extends Controller
     public function saveOrder(Request $request)
     {
 
+        //return $request->phone;
+
         $order_id = mt_rand(100000, 999999);
 
         // New  object
@@ -70,14 +72,64 @@ class OrderController extends Controller
             ]);
         }
 
-        $nexmo_credentials = new Basic('e1ee698d', '3vsIsgixcRp5bmRM');
+/*        $nexmo_credentials = new Basic('e1ee698d', '3vsIsgixcRp5bmRM');
         $user_credentials = new Client($nexmo_credentials);
 
         $message = $user_credentials->message()->send([
             'to' => $request->phone,
             'from' => 'Bellewisefoods',
             'text' => 'Hello,'.' '.$request->name. ' '.'your order is place succesfully below is your order ID:'.' '.$order_id.' '.'to aid you check your order status'
-        ]);
+        ]);*/
+
+
+
+
+// decode the JSON data
+// set second parameter boolean TRUE for associative array output.
+$result = json_encode($request->phone);
+
+/*if (json_last_error() === JSON_ERROR_NONE) {
+    return 'yeppy first valid';
+}
+
+// OR this is equivalent
+
+if (json_last_error() === 0) {
+    return 'yeppy second valid';
+}*/
+
+
+ $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://konnect.dotgo.com/api/v1/Accounts/mvg4WmICsRk1bPNvo14iaA==/Messages",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "{\r\"id\":\"your_unique_id_for_request\",\r\"from\":\"\",\r\"to\":[$result],\r\"sender_mask\":\"KOTP\",\r\"body\":\"Hello, $request->name your order is place succesfully below is your order ID:$order_id to aid you check your order status\"\r}\r",
+    CURLOPT_HTTPHEADER => array(
+        "Authorization: r9iMM1tw30tfbdbBRelzcHcq3TY1pcH051Htuc1sfQ0=",
+        "Content-Type: application/json"
+    )
+    ));
+
+    $response = curl_exec($curl);
+    $err      = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+    return "cURL Error #:" . $err;
+    } else {
+    return $response;
+    }
+
+
+
+
 
     }
 
@@ -111,7 +163,7 @@ class OrderController extends Controller
         $message = $user_credentials->message()->send([
             'to' => $request->phone,
             'from' => 'Bellewisefoods',
-            'text' => 'Hello,'.' '. $request->name. ' '.' order ID:'.' '.$request->order_id.' '.'have been' .''. $request->status
+            'text' => 'Hello,'.' '. $request->name. ' '.' order ID:'.' '.$request->order_id.' '.'have been' .' '. $request->status
         ]);
     }
 
