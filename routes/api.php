@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Route::patch('verification/{id}', 'Auth\VerificationController@checkVerification');
-Route::post('resend-code', 'Auth\VerificationController@resendCode');
+Route::patch('/resend/code/{id}', 'Auth\VerificationController@resendCode');
 
 Route::post('/order', 'OrderController@saveOrder');
 Route::get('/order', 'OrderController@getOrder');

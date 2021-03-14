@@ -284,8 +284,8 @@ const app = new Vue({
 
       code: {
         required,
-        minLength: minLength(4),
-        maxLength: maxLength(4)
+        minLength: minLength(6),
+        maxLength: maxLength(6)
       }
 
     } //Verification calibrace close
@@ -318,14 +318,13 @@ const app = new Vue({
       self.verification.loader = true
       Vue.axios.patch('/verification/' + window.localStorage.getItem('userId'), {
         code: this.verification.code.toString(),
-        user_verification_id: window.localStorage.getItem('userVerificationId').toString(),
       }).then((response) => {
-        window.localStorage.removeItem('userPassword')
-        window.localStorage.removeItem('userEmail')
+        window.localStorage.removeItem('userId')
+        window.localStorage.removeItem('phone')
         window.location ='/login'
       }).catch(error=>{
         self.verification.loader = false
-        self.verification.status = " Error Processing code try again or request a new code in 380 seconds"
+        self.verification.status = " Error Processing code try resending code"
       })
 
   }, // Verify method calibrace close
@@ -333,14 +332,13 @@ const app = new Vue({
   resendCode() {
     let self = this
     self.verification.loader = true
-    Vue.axios.post('/api/resend-code', {
-      user_phone: window.localStorage.getItem('userPhone').toString(),
+    Vue.axios.patch('/api/resend/code/' + window.localStorage.getItem('userId'), {
+      phone: window.localStorage.getItem('phone').toString(),
     }).then((response) => {
-      window.localStorage.setItem('userVerificationId', response.data)
       self.verification.status = 'Code resend successful'
     }).catch(error=>{
       self.verification.loader = false
-      self.verification.status = 'Please wait for atleast 380 seconds before requesting a new code.'
+      self.verification.status = 'Failed Please try again after a while.'
     })
 
   },
@@ -357,10 +355,7 @@ const app = new Vue({
     })
     .then(function (response) {
       window.localStorage.setItem('userId', response.data.user_id)
-      window.localStorage.setItem('userVerificationId', response.data.user_verification_id)
-      window.localStorage.setItem('userPhone', response.data.user_phone)
-      window.localStorage.setItem('userPassword', response.data.user_password)
-      window.localStorage.setItem('userEmail', response.data.user_email)
+      window.localStorage.setItem('phone', response.data.phone)
       window.location ='/verification'
     })
     .catch(function (error) {

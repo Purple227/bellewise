@@ -66742,8 +66742,8 @@ var app = new Vue({
       //Verification calibrace open
       code: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_8__["required"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_8__["minLength"])(4),
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_8__["maxLength"])(4)
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_8__["minLength"])(6),
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_8__["maxLength"])(6)
       }
     } //Verification calibrace close
 
@@ -66770,29 +66770,27 @@ var app = new Vue({
       var self = this;
       self.verification.loader = true;
       Vue.axios.patch('/verification/' + window.localStorage.getItem('userId'), {
-        code: this.verification.code.toString(),
-        user_verification_id: window.localStorage.getItem('userVerificationId').toString()
+        code: this.verification.code.toString()
       }).then(function (response) {
-        window.localStorage.removeItem('userPassword');
-        window.localStorage.removeItem('userEmail');
+        window.localStorage.removeItem('userId');
+        window.localStorage.removeItem('phone');
         window.location = '/login';
       })["catch"](function (error) {
         self.verification.loader = false;
-        self.verification.status = " Error Processing code try again or request a new code in 380 seconds";
+        self.verification.status = " Error Processing code try resending code";
       });
     },
     // Verify method calibrace close
     resendCode: function resendCode() {
       var self = this;
       self.verification.loader = true;
-      Vue.axios.post('/api/resend-code', {
-        user_phone: window.localStorage.getItem('userPhone').toString()
+      Vue.axios.patch('/api/resend/code/' + window.localStorage.getItem('userId'), {
+        phone: window.localStorage.getItem('phone').toString()
       }).then(function (response) {
-        window.localStorage.setItem('userVerificationId', response.data);
         self.verification.status = 'Code resend successful';
       })["catch"](function (error) {
         self.verification.loader = false;
-        self.verification.status = 'Please wait for atleast 380 seconds before requesting a new code.';
+        self.verification.status = 'Failed Please try again after a while.';
       });
     },
     registerPostMethod: function registerPostMethod() {
@@ -66806,10 +66804,7 @@ var app = new Vue({
         email: this.registerDetails.email
       }).then(function (response) {
         window.localStorage.setItem('userId', response.data.user_id);
-        window.localStorage.setItem('userVerificationId', response.data.user_verification_id);
-        window.localStorage.setItem('userPhone', response.data.user_phone);
-        window.localStorage.setItem('userPassword', response.data.user_password);
-        window.localStorage.setItem('userEmail', response.data.user_email);
+        window.localStorage.setItem('phone', response.data.phone);
         window.location = '/verification';
       })["catch"](function (error) {
         self.registerDetails.loader = false;

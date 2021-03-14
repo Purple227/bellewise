@@ -22,7 +22,7 @@
 
 			<div class="box">
 				<p class="subtitle is-bold has-text-centered is-marginless"> Enter Verification Code 
-					<p class="deep-grey has-text-centered is-small"> We have sent a four digit verification code to your mobile number. Resend code if you didn't get any code </p>
+					<p class="deep-grey has-text-centered is-small"> We have sent a six digit verification code to your mobile number. Resend code if you didn't get any code </p>
 				</p>
 				<br>
 
@@ -36,7 +36,7 @@
 
 				<div class="field has-addons has-addons-centered">
 					<div class="control">
-						<input class="input" minlength="4" maxlength="4" type="number" placeholder=" Verification Code" v-model="verification.code">
+						<input class="input" minlength="6" maxlength="6" type="number" placeholder=" Verification Code" v-model="verification.code">
 					</div>
 				</div>
 

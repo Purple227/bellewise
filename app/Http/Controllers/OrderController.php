@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
-use Nexmo\Client\Credentials\Basic;
-use Nexmo\Client;
+//use Nexmo\Client\Credentials\Basic;
+//use Nexmo\Client;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -127,10 +127,6 @@ if (json_last_error() === 0) {
     return $response;
     }
 
-
-
-
-
     }
 
     public function getOrder()
@@ -157,14 +153,45 @@ if (json_last_error() === 0) {
         $order->order_status = $request->status;
         $order->save();
 
-        $nexmo_credentials = new Basic('e1ee698d', '3vsIsgixcRp5bmRM');
+/*        $nexmo_credentials = new Basic('e1ee698d', '3vsIsgixcRp5bmRM');
         $user_credentials = new Client($nexmo_credentials);
 
         $message = $user_credentials->message()->send([
             'to' => $request->phone,
             'from' => 'Bellewisefoods',
             'text' => 'Hello,'.' '. $request->name. ' '.' order ID:'.' '.$request->order_id.' '.'have been' .' '. $request->status
-        ]);
+        ]);*/
+
+
+
+ $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://konnect.dotgo.com/api/v1/Accounts/mvg4WmICsRk1bPNvo14iaA==/Messages",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "{\r\"id\":\"your_unique_id_for_request\",\r\"from\":\"\",\r\"to\":[$result],\r\"sender_mask\":\"KOTP\",\r\"body\":\"Hello, $request->name order ID:$request->order_id have been $request->status\"\r}\r",
+    CURLOPT_HTTPHEADER => array(
+        "Authorization: r9iMM1tw30tfbdbBRelzcHcq3TY1pcH051Htuc1sfQ0=",
+        "Content-Type: application/json"
+    )
+    ));
+
+    $response = curl_exec($curl);
+    $err      = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+    return "cURL Error #:" . $err;
+    } else {
+    return $response;
+    }
+
     }
 
 
