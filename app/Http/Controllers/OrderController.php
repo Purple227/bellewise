@@ -162,6 +162,7 @@ if (json_last_error() === 0) {
             'text' => 'Hello,'.' '. $request->name. ' '.' order ID:'.' '.$request->order_id.' '.'have been' .' '. $request->status
         ]);*/
 
+$result = json_encode($request->phone);
 
 
  $curl = curl_init();
