@@ -32,7 +32,7 @@
     "bulma-extensions": "^6.2.7",
     "bulma-o-steps": "^1.0.9",
     "bulma-pageloader": "^0.3.0",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "vue-axios": "^2.1.5",
     "vue-browser-geolocation": "^1.8.0",
     "vue-clickaway": "^2.2.2",
